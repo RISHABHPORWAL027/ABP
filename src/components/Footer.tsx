@@ -39,13 +39,14 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Main Headline */}
-          <h2 className="font-sans font-extrabold text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white mb-6 min-h-[1.1em]">
+          <h2 className="font-sans font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white mb-6 min-h-[1.1em]">
             <TypewriterText
               words={[
                 "Connect with us.",
                 "Start a conversation.",
                 "hello@allbyplay.com",
               ]}
+              loop={true}
               className="text-white"
               cursorColor="text-[#FF0043]"
             />

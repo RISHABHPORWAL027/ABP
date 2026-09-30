@@ -111,11 +111,8 @@ export const TestimonialsWithVerticalMarquee: React.FC = () => {
 
         <h2 className="font-sans font-extrabold text-4xl sm:text-6xl tracking-tight leading-[1.05] text-white mb-6 uppercase min-h-[1.1em]">
           <TypewriterText
-            words={[
-              "WHAT ARTISTS & LABELS SAY .",
-              "REVIEWS & TESTIMONIALS .",
-              "REAL CAMPAIGN RESULTS .",
-            ]}
+            words={["WHAT ARTISTS & LABELS SAY ."]}
+            loop={false}
             className="text-white"
             cursorColor="text-[#FF0043]"
           />

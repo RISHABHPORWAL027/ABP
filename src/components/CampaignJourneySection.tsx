@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -19,6 +19,19 @@ export const CampaignJourneySection: React.FC = () => {
   const handleMouseMove = (e: React.MouseEvent) => {
     setMousePosition({ x: e.clientX, y: e.clientY });
   };
+
+  // Automatically dismiss preview modal when scrolling away from section
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      if (rect.bottom < 50 || rect.top > window.innerHeight - 50) {
+        setModal({ active: false, index: 0 });
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const servicesList = [
     {
@@ -69,6 +82,7 @@ export const CampaignJourneySection: React.FC = () => {
     <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
+      onMouseLeave={() => setModal({ active: false, index: 0 })}
       className="w-full bg-[#0a0a0c] text-white py-24 md:py-32 font-sans relative overflow-hidden border-t border-white/10"
     >
       {/* Background Image Overlay */}
@@ -95,11 +109,8 @@ export const CampaignJourneySection: React.FC = () => {
 
             <h2 className="font-sans font-extrabold text-4xl sm:text-6xl tracking-tight leading-[1.05] text-white mb-6 min-h-[1.1em]">
               <TypewriterText
-                words={[
-                  "The full campaign journey.",
-                  "Tailored for artists & labels.",
-                  "Strategy, PR & Spotify growth.",
-                ]}
+                words={["The full campaign journey."]}
+                loop={false}
                 className="text-white"
                 cursorColor="text-[#FF0043]"
               />
@@ -172,7 +183,7 @@ export const CampaignJourneySection: React.FC = () => {
             }}
             exit={{ scale: 0.4, opacity: 0 }}
             transition={{ type: "spring", stiffness: 350, damping: 25 }}
-            className="fixed pointer-events-none z-50 overflow-hidden rounded-2xl w-[320px] sm:w-[380px] h-[220px] sm:h-[260px] bg-[#14121a] border-2 border-white/25 shadow-[0_25px_60px_rgba(0,0,0,0.85)] p-2.5"
+            className="fixed pointer-events-none z-50 overflow-hidden rounded-2xl w-[210px] sm:w-[320px] md:w-[380px] h-[140px] sm:h-[220px] md:h-[260px] bg-[#14121a] border-2 border-white/25 shadow-[0_25px_60px_rgba(0,0,0,0.85)] p-2 sm:p-2.5"
           >
             <div className="relative w-full h-full rounded-xl overflow-hidden bg-black">
               {/* Live Preview Video */}

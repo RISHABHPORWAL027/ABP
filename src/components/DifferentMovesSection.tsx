@@ -88,11 +88,8 @@ export const DifferentMovesSection: React.FC = () => {
 
             <h2 className="font-sans font-extrabold text-4xl sm:text-6xl tracking-tight leading-[1.05] text-white mb-6 min-h-[1.1em]">
               <TypewriterText
-                words={[
-                  "Different music. Different moves.",
-                  "Custom release positioning.",
-                  "Campaigns built around culture.",
-                ]}
+                words={["Different music. Different moves."]}
+                loop={false}
                 className="text-white"
                 cursorColor="text-[#FF0043]"
               />

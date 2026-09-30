@@ -84,11 +84,8 @@ export default function Home() {
                   </span>
                   <h2 className="font-sans text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight leading-tight mb-8 text-white min-h-[1.1em]">
                     <TypewriterText
-                      words={[
-                        "WE TURN GREAT MUSIC INTO CULTURAL MOMENTS.",
-                        "CREATIVE STORYTELLING & DATA STRATEGY.",
-                        "BRIDGING INDIE ARTISTRY & CULTURE.",
-                      ]}
+                      words={["WE TURN GREAT MUSIC INTO CULTURAL MOMENTS."]}
+                      loop={false}
                       className="text-white"
                       cursorColor="text-[#FF0043]"
                     />

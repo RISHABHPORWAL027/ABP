@@ -53,7 +53,13 @@ export const FlipCampaignCard: React.FC<FlipCampaignCardProps> = ({
         {/* FRONT SIDE OF CARD */}
         <div
           className={`absolute inset-0 w-full h-full rounded-[24px] sm:rounded-[28px] p-5 sm:p-9 md:p-12 flex flex-col justify-between overflow-hidden ${bgColor} ${textColor}`}
-          style={{ backfaceVisibility: "hidden" }}
+          style={{
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            opacity: isFlipped ? 0 : 1,
+            pointerEvents: isFlipped ? "none" : "auto",
+            transition: "opacity 0.3s ease",
+          }}
         >
           {/* Subtle Concentric Rings SVG Background */}
           <div className="absolute -right-24 -bottom-24 w-[300px] sm:w-[420px] h-[300px] sm:h-[420px] opacity-15 pointer-events-none">
@@ -105,7 +111,11 @@ export const FlipCampaignCard: React.FC<FlipCampaignCardProps> = ({
           className="absolute inset-0 w-full h-full rounded-[24px] sm:rounded-[28px] p-5 sm:p-9 md:p-12 flex flex-col justify-between overflow-hidden bg-[#16121b] text-white border-2 border-[#FF0043]/40"
           style={{
             backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
+            opacity: isFlipped ? 1 : 0,
+            pointerEvents: isFlipped ? "auto" : "none",
+            transition: "opacity 0.3s ease",
           }}
         >
           {/* Header */}

@@ -63,11 +63,8 @@ export const AbpJourneySection: React.FC = () => {
             {/* Main Headline */}
             <h2 className="font-sans font-extrabold text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-[#111111] mb-6 min-h-[1.1em]">
               <TypewriterText
-                words={[
-                  "Built to move music forward.",
-                  "Founder-led agency since 2023.",
-                  "Strategy that moves music further.",
-                ]}
+                words={["Built to move music forward."]}
+                loop={false}
                 className="text-[#111111]"
                 cursorColor="text-[#FF0043]"
               />
