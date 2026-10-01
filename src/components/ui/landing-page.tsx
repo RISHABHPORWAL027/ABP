@@ -182,9 +182,22 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, classN
       }
     });
 
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
     const posIndex = Math.min(newActiveSection, calculatedPositions.length - 1);
     const currentPos = calculatedPositions[posIndex];
-    const transform = `translate3d(${currentPos.left}vw, ${currentPos.top}vh, 0) translate3d(-50%, -50%, 0) scale3d(${currentPos.scale}, ${currentPos.scale}, 1)`;
+
+    let left = currentPos.left;
+    let top = currentPos.top;
+    let scale = currentPos.scale;
+
+    // Mobile & Tablet responsive backdrop alignment
+    if (isMobile) {
+      left = 50; // Centered to avoid horizontal overflow
+      top = newActiveSection === 3 ? 50 : 34; // Top backdrop placement on small screens
+      scale = Math.min(scale, 0.95);
+    }
+
+    const transform = `translate3d(${left}vw, ${top}vh, 0) translate3d(-50%, -50%, 0) scale3d(${scale}, ${scale}, 1)`;
 
     setGlobeTransform(transform);
     setActiveSection(newActiveSection);
@@ -204,10 +217,12 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, classN
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
     updateScrollPosition();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
       }
@@ -215,8 +230,12 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, classN
   }, [updateScrollPosition]);
 
   useEffect(() => {
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
     const initialPos = calculatedPositions[0];
-    const initialTransform = `translate3d(${initialPos.left}vw, ${initialPos.top}vh, 0) translate3d(-50%, -50%, 0) scale3d(${initialPos.scale}, ${initialPos.scale}, 1)`;
+    const left = isMobile ? 50 : initialPos.left;
+    const top = isMobile ? 34 : initialPos.top;
+    const scale = isMobile ? Math.min(initialPos.scale, 0.95) : initialPos.scale;
+    const initialTransform = `translate3d(${left}vw, ${top}vh, 0) translate3d(-50%, -50%, 0) scale3d(${scale}, ${scale}, 1)`;
     setGlobeTransform(initialTransform);
   }, [calculatedPositions]);
 
@@ -240,7 +259,7 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, classN
         />
       </div>
 
-      {/* Floating Side Navigation Dots */}
+      {/* Floating Side Navigation Dots (Desktop & Tablet) */}
       <div className="hidden sm:flex fixed right-4 lg:right-8 top-1/2 -translate-y-1/2 z-40">
         <div className="space-y-4 lg:space-y-6">
           {displaySections.map((section, index) => (
@@ -276,20 +295,43 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, classN
         </div>
       </div>
 
-      {/* Rotating 3D Earth Globe with Smooth Fixed Transitions */}
+      {/* Mobile Floating Bottom Indicator Bar */}
+      <div className="flex sm:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-[#14121a]/95 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 shadow-2xl items-center gap-3">
+        {displaySections.map((section, index) => (
+          <button
+            key={section.id || index}
+            onClick={() => {
+              sectionRefs.current[index]?.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+              });
+            }}
+            className={cn(
+              "w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer",
+              activeSection === index ? "bg-[#FF0043] scale-125 shadow-[0_0_8px_#FF0043]" : "bg-white/40"
+            )}
+            aria-label={`Go to section ${index + 1}`}
+          />
+        ))}
+        <span className="font-space text-[10px] font-extrabold tracking-widest text-[#ffe600] uppercase border-l border-white/20 pl-2">
+          0{activeSection + 1}/04
+        </span>
+      </div>
+
+      {/* Rotating 3D DVD Disc with Responsive Fixed Scroll Transitions */}
       <div
         className="fixed z-10 pointer-events-none will-change-transform transition-all duration-[1300ms] ease-[cubic-bezier(0.23,1,0.32,1)]"
         style={{
           transform: globeTransform,
-          filter: `opacity(${activeSection === 3 ? 0.35 : 0.85})`,
+          filter: `opacity(${activeSection === 3 ? 0.3 : 0.85})`,
         }}
       >
-        <div className="scale-90 md:scale-100 lg:scale-110">
+        <div className="scale-75 sm:scale-90 md:scale-100 lg:scale-110">
           <Globe />
         </div>
       </div>
 
-      {/* Rendered Journey Sections — Transparent, Clean, Professional */}
+      {/* Rendered Journey Sections — Fully Responsive for Mobile, Tablet & Desktop */}
       {displaySections.map((section, index) => (
         <section
           key={section.id || index}
@@ -297,10 +339,10 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, classN
             sectionRefs.current[index] = el;
           }}
           className={cn(
-            "relative min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20 z-20 py-20 lg:py-28",
+            "relative min-h-screen flex flex-col justify-center px-5 sm:px-8 md:px-12 lg:px-20 z-20 py-16 sm:py-20 lg:py-28",
             "w-full max-w-full overflow-hidden",
             section.align === "center" && "items-center text-center",
-            section.align === "right" && "items-end text-right",
+            section.align === "right" && "items-end text-right md:text-right text-left",
             section.align !== "center" && section.align !== "right" && "items-start text-left"
           )}
         >
@@ -309,13 +351,13 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, classN
               "w-full max-w-xl lg:max-w-2xl xl:max-w-3xl bg-transparent p-0 border-none shadow-none transition-all duration-700"
             )}
           >
-            {/* Minimalist Badge Header (No Sparkles Icon, No Heavy Box) */}
+            {/* Minimalist Badge Header */}
             {section.badge && (
               <div
                 className={cn(
-                  "flex items-center gap-2 mb-4 text-[#FF0043] font-space font-extrabold text-xs tracking-[2.5px] uppercase",
+                  "flex items-center gap-2 mb-3 sm:mb-4 text-[#FF0043] font-space font-extrabold text-xs tracking-[2.5px] uppercase",
                   section.align === "center" && "justify-center",
-                  section.align === "right" && "justify-end"
+                  section.align === "right" && "justify-start md:justify-end"
                 )}
               >
                 <span className="w-2 h-2 rounded-full bg-[#FF0043] inline-block animate-pulse" />
@@ -330,7 +372,7 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, classN
                   <div className="text-3xl sm:text-5xl lg:text-6xl font-sans font-extrabold text-white">
                     {section.title}
                   </div>
-                  <div className="text-[#ffe600] text-sm sm:text-base md:text-lg font-space font-extrabold tracking-wider uppercase">
+                  <div className="text-[#ffe600] text-xs sm:text-base md:text-lg font-space font-extrabold tracking-wider uppercase">
                     {section.subtitle}
                   </div>
                 </div>
@@ -340,22 +382,22 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, classN
             </h2>
 
             {/* Clean Description */}
-            <p className="text-white/80 leading-relaxed text-base sm:text-lg font-normal mb-8 max-w-2xl">
+            <p className="text-white/85 leading-relaxed text-sm sm:text-base md:text-lg font-normal mb-6 sm:mb-8 max-w-2xl">
               {section.description}
             </p>
 
-            {/* Clean Minimalist Features (No cards, no heavy box borders, no AI icons) */}
+            {/* Minimalist Features */}
             {section.features && section.features.length > 0 && (
-              <div className="space-y-6 mb-8 text-left max-w-2xl">
+              <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8 text-left max-w-2xl">
                 {section.features.map((feature, featureIndex) => (
                   <div
                     key={feature.title || featureIndex}
-                    className="border-l-2 border-[#FF0043] pl-5 py-0.5 space-y-1"
+                    className="border-l-2 border-[#FF0043] pl-4 sm:pl-5 py-0.5 space-y-1"
                   >
-                    <h3 className="font-sans font-bold text-white text-base sm:text-lg">
+                    <h3 className="font-sans font-bold text-white text-sm sm:text-base md:text-lg">
                       {feature.title}
                     </h3>
-                    <p className="text-white/70 text-sm sm:text-base font-normal leading-relaxed">
+                    <p className="text-white/70 text-xs sm:text-sm md:text-base font-normal leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
@@ -367,9 +409,9 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, classN
             {section.actions && section.actions.length > 0 && (
               <div
                 className={cn(
-                  "flex flex-wrap items-center gap-4 pt-2",
+                  "flex flex-wrap items-center gap-3 sm:gap-4 pt-2",
                   section.align === "center" && "justify-center",
-                  section.align === "right" && "justify-end",
+                  section.align === "right" && "justify-start md:justify-end",
                   (!section.align || section.align === "left") && "justify-start"
                 )}
               >
@@ -378,7 +420,7 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, classN
                     key={action.label || actionIndex}
                     onClick={action.onClick}
                     className={cn(
-                      "group inline-flex items-center gap-2 px-6 py-3 rounded-full font-space font-extrabold text-xs tracking-widest uppercase transition-all duration-300 cursor-pointer shadow-lg",
+                      "group inline-flex items-center gap-2 px-5 sm:px-6 py-3 rounded-full font-space font-extrabold text-xs tracking-widest uppercase transition-all duration-300 cursor-pointer shadow-lg w-full sm:w-auto justify-center",
                       action.variant === "primary"
                         ? "bg-[#FF0043] text-white hover:bg-[#FF0043]/80"
                         : "bg-white/10 border border-white/20 text-white hover:bg-white/20"
