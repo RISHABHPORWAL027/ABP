@@ -14,7 +14,7 @@ export const HeroSection: React.FC = () => {
   ];
 
   return (
-    <section className="w-full bg-[#FF0043] text-white pt-6 pb-24 overflow-hidden font-sans relative">
+    <section className="w-full bg-[#FF0043] text-white pt-2 md:pt-4 pb-24 overflow-hidden font-sans relative">
 
       <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10">
         {/* Top Text Content */}

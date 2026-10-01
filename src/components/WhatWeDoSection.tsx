@@ -18,7 +18,7 @@ export const WhatWeDoSection: React.FC = () => {
           </div>
 
           {/* Main Headline */}
-          <h2 className="font-sans font-extrabold text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-[#111111] mb-10 min-h-[1.1em]">
+          <h2 className="font-sans font-extrabold text-2xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-[#111111] mb-8 min-h-[1.1em]">
             <TypewriterText
               words={["Every play starts with a plan."]}
               loop={false}

@@ -101,7 +101,7 @@ export const TestimonialsWithVerticalMarquee: React.FC = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[550px] bg-[#FF0043]/10 blur-[180px] rounded-full pointer-events-none" />
 
       {/* Header Container */}
-      <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10 mb-16 text-center">
+      <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10 mb-16 text-center flex flex-col items-center">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-md mb-4">
           <span className="w-2.5 h-2.5 rounded-full bg-[#FF0043] animate-pulse" />
           <span className="font-space font-extrabold text-xs tracking-[2px] uppercase text-[#FF0043]">
@@ -109,16 +109,16 @@ export const TestimonialsWithVerticalMarquee: React.FC = () => {
           </span>
         </div>
 
-        <h2 className="font-sans font-extrabold text-4xl sm:text-6xl tracking-tight leading-[1.05] text-white mb-6 uppercase min-h-[1.1em]">
+        <h2 className="font-sans font-extrabold text-2xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-white mb-6 uppercase min-h-[1.1em] text-center w-full flex justify-center">
           <TypewriterText
             words={["WHAT ARTISTS & LABELS SAY ."]}
             loop={false}
-            className="text-white"
+            className="text-white text-center justify-center"
             cursorColor="text-[#FF0043]"
           />
         </h2>
 
-        <p className="font-sans font-medium text-base sm:text-lg text-white/75 leading-relaxed max-w-2xl mx-auto">
+        <p className="font-sans font-medium text-base sm:text-lg text-white/75 leading-relaxed max-w-2xl mx-auto text-center">
           Real stories from independent artists, managers, and label executives who built their release campaigns with All By Play.
         </p>
       </div>

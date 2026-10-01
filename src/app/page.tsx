@@ -42,11 +42,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#000000] text-white selection:bg-[#FF0043] selection:text-white font-sans overflow-x-hidden">
-      {/* Navigation Header */}
-      <Navbar />
-
-      {/* Main Hero Section */}
-      <HeroSection />
+      {/* Unified Hero Header Container */}
+      <div className="bg-[#FF0043]">
+        <Navbar className="bg-[#FF0043]" />
+        <HeroSection />
+      </div>
 
       {/* Marquee Ribbon Banner at base of Hero */}
       <MarqueeBanner
@@ -74,7 +74,7 @@ export default function Home() {
               <span className="text-[#009082] font-space text-xs font-extrabold tracking-widest uppercase">
                 CAMPAIGNS & SHOWCASES
               </span>
-              <h3 className="font-sans font-extrabold text-3xl sm:text-5xl uppercase tracking-tight mt-2 text-white">
+              <h3 className="font-sans font-extrabold text-2xl sm:text-5xl uppercase tracking-tight mt-2 text-white">
                 FEATURED REELS & RESULTS
               </h3>
             </ScrollReveal>

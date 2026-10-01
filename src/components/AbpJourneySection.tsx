@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useRef, useState } from "react";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { TypewriterText } from "@/components/TypewriterText";
 
@@ -117,7 +119,7 @@ export const AbpJourneySection: React.FC = () => {
             </div>
 
             {/* Main Headline */}
-            <h2 className="font-sans font-extrabold text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-[#111111] mb-6 min-h-[1.1em]">
+            <h2 className="font-sans font-extrabold text-2xl sm:text-5xl lg:text-7xl tracking-tight leading-[1.1] text-[#111111] mb-6 min-h-[1.1em]">
               <TypewriterText
                 words={["Built to move music forward."]}
                 loop={false}
@@ -127,9 +129,17 @@ export const AbpJourneySection: React.FC = () => {
             </h2>
 
             {/* Subtitle Paragraph */}
-            <p className="font-sans font-medium text-lg sm:text-2xl text-[#333333] leading-relaxed max-w-3xl">
+            <p className="font-sans font-medium text-lg sm:text-2xl text-[#333333] leading-relaxed max-w-3xl mb-6">
               Founded in January 2023, All By Play has grown into a music-first, founder-led agency working across indie, label, and Bollywood campaigns.
             </p>
+
+            <Link
+              href="/journey"
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#FF0043] text-white font-space font-extrabold text-xs tracking-widest uppercase hover:bg-[#FF0043]/90 transition-all shadow-lg hover:shadow-[#FF0043]/30"
+            >
+              <span>Explore Interactive 3D Journey</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
           </ScrollReveal>
         </div>
 

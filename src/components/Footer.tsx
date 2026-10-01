@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { TypewriterText } from "@/components/TypewriterText";
 
@@ -39,7 +40,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Main Headline */}
-          <h2 className="font-sans font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white mb-6 min-h-[1.1em]">
+          <h2 className="font-sans font-extrabold text-2xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1] text-white mb-6 min-h-[1.1em]">
             <TypewriterText
               words={[
                 "Connect with us.",
@@ -159,45 +160,50 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Footer Bottom Bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-left">
+        <div className="border-t border-white/10 pt-8 mt-16 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           {/* Logo & Copyright */}
-          <div className="flex items-center gap-3">
-            <Image
-              src="/ABP_logo.png"
-              alt="ABP Logo"
-              width={28}
-              height={28}
-              className="object-contain"
-            />
-            <span className="font-sans font-extrabold text-base tracking-wider uppercase text-white">
-              allbyplay <span className="text-[#FF0043]">.</span>
-            </span>
-            <span className="text-white/40 text-xs font-medium ml-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-2.5 sm:gap-4">
+            <div className="flex items-center gap-2.5">
+              <Image
+                src="/ABP_logo.png"
+                alt="ABP Logo"
+                width={26}
+                height={26}
+                className="object-contain"
+              />
+              <span className="font-sans font-black text-base tracking-wider uppercase text-white">
+                allbyplay <span className="text-[#FF0043]">.</span>
+              </span>
+            </div>
+
+            <span className="hidden sm:inline-block text-white/20">•</span>
+
+            <span className="text-white/40 text-xs font-medium">
               © {new Date().getFullYear()} All By Play. All rights reserved.
             </span>
           </div>
 
           {/* Nav Links */}
-          <ul className="flex items-center gap-6 text-xs font-bold tracking-widest uppercase text-white/70">
+          <ul className="flex items-center justify-center flex-wrap gap-5 sm:gap-8 text-xs font-space font-extrabold tracking-widest uppercase text-white/70">
             <li>
-              <a href="#work" className="hover:text-[#009082] transition-colors">
+              <Link href="/#work" className="hover:text-[#ffe600] transition-colors">
                 WORK
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#journey" className="hover:text-[#009082] transition-colors">
+              <Link href="/journey" className="hover:text-[#ffe600] transition-colors">
                 JOURNEY
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#services" className="hover:text-[#009082] transition-colors">
+              <Link href="/services" className="hover:text-[#ffe600] transition-colors">
                 SERVICES
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#about" className="hover:text-[#009082] transition-colors">
+              <Link href="/#about" className="hover:text-[#ffe600] transition-colors">
                 ABOUT
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

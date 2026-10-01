@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -36,6 +37,7 @@ export const CampaignJourneySection: React.FC = () => {
   const servicesList = [
     {
       num: "01",
+      slug: "content-social-media",
       title: "Release campaigns",
       desc: "Pre- and post-release support built around your timeline, goals, and what the music actually needs.",
       tags: "STRATEGY / ROLLOUT / REPORTING",
@@ -43,6 +45,7 @@ export const CampaignJourneySection: React.FC = () => {
     },
     {
       num: "02",
+      slug: "content-social-media",
       title: "Instagram & content",
       desc: "Content plans, creative direction, edit-page pushes, and influencer support for stronger social reach.",
       tags: "CONTENT / CREATORS / CULTURE",
@@ -50,6 +53,7 @@ export const CampaignJourneySection: React.FC = () => {
     },
     {
       num: "03",
+      slug: "spotify-growth-strategy",
       title: "Spotify growth",
       desc: "Data-led plans built around playlists, streams, profile visits, and real audience behaviour.",
       tags: "DISCOVERY / DATA / LISTENERS",
@@ -57,6 +61,7 @@ export const CampaignJourneySection: React.FC = () => {
     },
     {
       num: "04",
+      slug: "pr-activation-media",
       title: "PR activation",
       desc: "Story-led placements across social, print, digital, radio, television, podcasts, and indie platforms.",
       tags: "NARRATIVE / PRESS / REACH",
@@ -64,6 +69,7 @@ export const CampaignJourneySection: React.FC = () => {
     },
     {
       num: "05",
+      slug: "ads-performance-marketing",
       title: "Ads marketing",
       desc: "Targeted campaigns across Instagram, YouTube, lead generation, and redirection channels.",
       tags: "TARGETING / MEDIA / RESULTS",
@@ -71,6 +77,7 @@ export const CampaignJourneySection: React.FC = () => {
     },
     {
       num: "06",
+      slug: "branding-digital-identity",
       title: "Branding support",
       desc: "A clear identity and visual language that helps artists and labels show up consistently.",
       tags: "IDENTITY / DIRECTION / DESIGN",
@@ -115,12 +122,13 @@ export const CampaignJourneySection: React.FC = () => {
         <div className="flex flex-col border-t border-white/15 relative">
           {servicesList.map((service, idx) => (
             <ScrollReveal key={idx} direction="up" delay={idx * 100}>
-              <div
+              <Link
+                href={`/services/${service.slug}`}
                 onMouseEnter={() => setModal({ active: true, index: idx })}
                 onMouseLeave={() => setModal({ active: false, index: idx })}
-                className="group py-10 border-b border-white/15 cursor-pointer transition-all duration-300 hover:bg-white/[0.03] hover:px-6 hover:-mx-6 rounded-2xl"
+                className="group py-8 px-4 sm:px-6 -mx-4 sm:-mx-6 border-b border-white/15 cursor-pointer block transition-colors duration-300 hover:bg-white/[0.04] rounded-2xl"
               >
-                <div className="flex items-start justify-between gap-6">
+                <div className="flex items-center justify-between gap-6">
                   {/* Left Column: Number + Content */}
                   <div className="flex items-start gap-6 sm:gap-10 flex-1">
                     <span className="font-space text-xs sm:text-sm font-extrabold text-white/40 pt-2 shrink-0">
@@ -142,14 +150,14 @@ export const CampaignJourneySection: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Right Column: Arrow Icon Button with Hover Position Shift */}
-                  <div className="pt-2">
-                    <div className="w-12 h-12 rounded-full border border-white/20 group-hover:border-[#FF0043] group-hover:bg-[#FF0043] text-white flex items-center justify-center transition-all group-hover:scale-110 shadow-lg">
-                      <ArrowUpRight className="w-5 h-5 stroke-[2.5] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  {/* Right Column: Arrow Icon Button with Steady Hit-Area (No Layout Shift) */}
+                  <div className="shrink-0 p-2">
+                    <div className="w-12 h-12 rounded-full border border-white/20 group-hover:border-[#FF0043] group-hover:bg-[#FF0043] text-white flex items-center justify-center transition-colors shadow-lg">
+                      <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </ScrollReveal>
           ))}
         </div>

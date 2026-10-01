@@ -7,16 +7,20 @@ import { ArrowUpRight } from "lucide-react";
 import { MenuVertical } from "@/components/ui/menu-vertical";
 import { SlideTabs } from "@/components/ui/slide-tabs";
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+  className?: string;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ className = "" }) => {
   const navLinks = [
-    { name: "Work", href: "#work" },
-    { name: "Journey", href: "#journey" },
-    { name: "Services", href: "#services" },
-    { name: "About", href: "#about" },
+    { name: "Work", href: "/#work" },
+    { name: "Journey", href: "/journey" },
+    { name: "Services", href: "/services" },
+    { name: "About", href: "/#about" },
   ];
 
   return (
-    <header className="w-full bg-[#FF0043] text-white py-6 md:py-8 font-sans relative z-50">
+    <header className={`w-full bg-transparent text-white py-6 md:py-8 font-sans relative z-50 ${className}`}>
       <div className="max-w-[1380px] mx-auto px-6 md:px-12 flex items-center justify-between relative z-50">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-3.5 group">
