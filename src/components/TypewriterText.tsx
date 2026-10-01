@@ -70,14 +70,15 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
   }, [currentText, isDeleting, currentWordIndex, words, typingSpeed, deletingSpeed, pauseDuration, loop]);
 
   return (
-    <span className={`inline-grid grid-cols-1 grid-rows-1 text-left align-top ${className}`}>
-      {/* Invisible Ghost Text reserving full height to eliminate screen flickering */}
-      <span className="col-start-1 row-start-1 invisible pointer-events-none select-none" aria-hidden="true">
+    <span className={`inline-grid grid-cols-1 grid-rows-1 text-left align-top whitespace-nowrap ${className}`}>
+      {/* Invisible Ghost Text reserving full height & width (including cursor) to eliminate screen flickering */}
+      <span className="col-start-1 row-start-1 invisible pointer-events-none select-none whitespace-nowrap" aria-hidden="true">
         {longestText}
+        <span className="inline-block ml-1 opacity-0 font-normal">|</span>
       </span>
 
       {/* Active Typewriter Text */}
-      <span className="col-start-1 row-start-1">
+      <span className="col-start-1 row-start-1 whitespace-nowrap">
         {currentText}
         {!isFinished && (
           <span className={`inline-block ml-1 ${cursorColor} animate-pulse font-normal opacity-90`}>

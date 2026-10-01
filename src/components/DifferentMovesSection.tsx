@@ -115,7 +115,7 @@ export const DifferentMovesSection: React.FC = () => {
           <div className="flex items-center justify-start">
             <a
               href="#connect"
-              className="inline-flex items-center gap-2.5 border-2 border-white/40 text-white font-sans font-extrabold text-sm sm:text-base px-8 py-3.5 rounded-full hover:bg-white hover:text-[#000000] hover:border-white transition-all hover:scale-105"
+              className="inline-flex items-center gap-2.5 border-2 border-white/60 text-white font-sans font-extrabold text-sm sm:text-base px-8 py-3.5 rounded-full transition-all duration-300 ease-out hover:bg-white hover:text-[#000000] hover:border-white hover:scale-[1.03] hover:shadow-xl active:scale-95 cursor-pointer"
             >
               Discuss a campaign
               <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />

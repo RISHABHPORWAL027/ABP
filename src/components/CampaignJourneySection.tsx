@@ -85,17 +85,6 @@ export const CampaignJourneySection: React.FC = () => {
       onMouseLeave={() => setModal({ active: false, index: 0 })}
       className="w-full bg-[#0a0a0c] text-white py-24 md:py-32 font-sans relative overflow-hidden border-t border-white/10"
     >
-      {/* Background Image Overlay */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <Image
-          src="/black.png"
-          alt="Services Background"
-          fill
-          className="object-cover object-center opacity-50 mix-blend-screen"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0c]/80 via-transparent to-[#0a0a0c]/90" />
-      </div>
-
       <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10">
         {/* Top Header */}
         <div className="max-w-3xl mb-16">

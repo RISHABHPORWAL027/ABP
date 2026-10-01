@@ -10,6 +10,7 @@ import { MagneticButton } from "@/components/MagneticButton";
 import { MarqueeBanner } from "@/components/MarqueeBanner";
 import { Curved3DCardCarousel } from "@/components/Curved3DCardCarousel";
 import { DifferentMovesSection } from "@/components/DifferentMovesSection";
+import { WhatWeDoSection } from "@/components/WhatWeDoSection";
 import { CampaignJourneySection } from "@/components/CampaignJourneySection";
 import { AbpJourneySection } from "@/components/AbpJourneySection";
 import { FounderSection } from "@/components/FounderSection";
@@ -60,69 +61,8 @@ export default function Home() {
       />
 
       <main className="flex-1">
-        {/* STATEMENT SECTION (SEAMLESS DARK FLOW) */}
-        <section id="about" className="bg-[#0a0a0c] text-white py-24 md:py-32 relative overflow-hidden font-sans">
-          {/* Background Image Overlay with Smooth Faded Flow */}
-          <div className="absolute inset-0 z-0 pointer-events-none">
-            <Image
-              src="/black-redscreen.png"
-              alt="Mission Background"
-              fill
-              className="object-cover object-center opacity-40 mix-blend-screen"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#000000] via-[#0a0a0c]/40 to-[#0a0a0c]" />
-          </div>
-
-          <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10">
-            <div className="flex flex-col lg:flex-row items-start justify-between gap-16 lg:gap-24">
-              {/* Statement Left */}
-              <div className="flex-1 lg:max-w-[55%]">
-                <ScrollReveal direction="up">
-                  <span className="text-[#009082] text-xs font-bold tracking-widest uppercase mb-4 inline-block font-space">
-                    MISSION & PHILOSOPHY
-                  </span>
-                  <h2 className="font-sans text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight leading-tight mb-8 text-white min-h-[1.1em]">
-                    <TypewriterText
-                      words={["WE TURN GREAT MUSIC INTO CULTURAL MOMENTS."]}
-                      loop={false}
-                      className="text-white"
-                      cursorColor="text-[#FF0043]"
-                    />
-                  </h2>
-                  <p className="text-white/80 text-base md:text-lg font-medium leading-relaxed max-w-xl">
-                    All By Play bridges the gap between independent artistry and mainstream culture. We combine data-driven digital strategy with authentic creative storytelling.
-                  </p>
-                </ScrollReveal>
-              </div>
-
-              {/* Statement Right - Feature Items */}
-              <div className="flex-1 w-full flex flex-col justify-center">
-                {[
-                  { title: "STRATEGY", desc: "Tailored release roadmaps aligned with streaming algorithm signals and listener demographics." },
-                  { title: "CULTURE", desc: "Authentic creator partnerships and community-driven content that resonates with fans." },
-                  { title: "GROWTH", desc: "Sustainable fanbase expansion with measurable monthly active listeners and venue tickets sold." },
-                ].map((item, idx) => (
-                  <ScrollReveal key={idx} direction="up" delay={idx * 150}>
-                    <div className="border-b border-white/10 py-8 group cursor-pointer transition-colors hover:border-white/20">
-                      <div className="flex items-center justify-between">
-                        <h3 className="font-space text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase tracking-tight text-white group-hover:text-[#009082] transition-colors">
-                          {item.title}
-                        </h3>
-                        <span className="text-sm text-[#FF0043] font-bold">
-                          0{idx + 1}
-                        </span>
-                      </div>
-                      <p className="text-[#a0a0a0] font-sans text-sm mt-3 max-w-md">
-                        {item.desc}
-                      </p>
-                    </div>
-                  </ScrollReveal>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* WHAT WE DO SECTION */}
+        <WhatWeDoSection />
 
         {/* DIFFERENT MUSIC. DIFFERENT MOVES SECTION */}
         <DifferentMovesSection />
@@ -149,7 +89,7 @@ export default function Home() {
         {/* THE FULL CAMPAIGN JOURNEY SECTION */}
         <CampaignJourneySection />
 
-        {/* THE ABP JOURNEY - BUILT TO MOVE MUSIC FORWARD */}
+        {/* THE ABP JOURNEY SECTION */}
         <AbpJourneySection />
 
         {/* DISCOGRAPHY & AUDIO EXPERIENCE SECTION */}

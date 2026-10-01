@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { RotatingDVD } from "@/components/RotatingDVD";
 import { TypewriterText } from "@/components/TypewriterText";
@@ -16,22 +15,10 @@ export const HeroSection: React.FC = () => {
 
   return (
     <section className="w-full bg-[#FF0043] text-white pt-6 pb-24 overflow-hidden font-sans relative">
-      {/* Background Image Overlay */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <Image
-          src="/hersection_bg.png"
-          alt="Hero Background"
-          fill
-          priority
-          className="object-cover object-center opacity-20 mix-blend-overlay"
-        />
-        {/* Soft Radial Vignette */}
-        <div className="absolute inset-0 bg-radial from-transparent via-[#FF0043]/40 to-[#FF0043]/90" />
-      </div>
 
       <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10">
         {/* Top Text Content */}
-        <div className="max-w-4xl mb-14">
+        <div className="max-w-6xl mb-14">
           {/* Badge */}
           <div className="flex items-center gap-2.5 mb-6">
             <span className="w-3 h-3 rounded-full bg-[#ffe600] inline-block animate-pulse shadow-md shadow-[#ffe600]/50" />
@@ -40,13 +27,13 @@ export const HeroSection: React.FC = () => {
             </span>
           </div>
 
-          {/* Main Headline with Static Top Lines & Typewriter Animation Below */}
-          <h1 className="font-sans font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-[76px] xl:text-[88px] tracking-tight leading-[1.08] text-white mb-6 sm:mb-8">
+          {/* Main Headline with exact design specs: Syne 700, 100.84px, line-height 88.74px, letter-spacing -7.56px */}
+          <h1 className="font-syne font-bold text-4xl sm:text-6xl md:text-7xl lg:text-[88px] xl:text-[100.84px] tracking-[-2px] sm:tracking-[-4px] md:tracking-[-5px] lg:tracking-[-6.5px] xl:tracking-[-7.56px] leading-[0.95] md:leading-[0.9] xl:leading-[88.74px] text-white mb-6 sm:mb-8">
             Let&apos;s turn your <br />
-            melodies into <br />
+            melodies into{" "}
             <TypewriterText
               words={typewriterWords}
-              className="text-[#ffe600] border-b-2 sm:border-b-4 border-[#ffe600]/40 pb-1"
+              className="text-[#ffe600]"
               cursorColor="text-[#ffe600]"
             />
           </h1>
@@ -60,7 +47,7 @@ export const HeroSection: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-5">
             <a
               href="#brief"
-              className="inline-flex items-center justify-center gap-2.5 bg-[#ffe600] text-[#000000] font-sans font-extrabold text-base sm:text-lg px-7 sm:px-9 py-3.5 sm:py-4 rounded-full hover:bg-yellow-300 transition-all hover:scale-105 shadow-xl shadow-black/15"
+              className="inline-flex items-center justify-center gap-2.5 bg-[#ffe600] text-[#000000] font-sans font-extrabold text-base sm:text-lg px-7 sm:px-9 py-3.5 sm:py-4 rounded-full transition-all duration-300 ease-out hover:bg-yellow-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-black/20 active:scale-95 shadow-xl shadow-black/15 cursor-pointer"
             >
               Share your brief
               <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
@@ -68,7 +55,7 @@ export const HeroSection: React.FC = () => {
 
             <a
               href="#work"
-              className="inline-flex items-center justify-center gap-2.5 border-2 border-white/70 text-white font-sans font-bold text-base sm:text-lg px-7 sm:px-9 py-3.5 sm:py-4 rounded-full hover:bg-white hover:text-[#000000] transition-all hover:border-white shadow-md"
+              className="inline-flex items-center justify-center gap-2.5 border-2 border-white/80 text-white font-sans font-extrabold text-base sm:text-lg px-7 sm:px-9 py-3.5 sm:py-4 rounded-full transition-all duration-300 ease-out hover:bg-white hover:text-[#000000] hover:border-white hover:scale-[1.03] hover:shadow-2xl hover:shadow-black/20 active:scale-95 shadow-md cursor-pointer"
             >
               Explore the work
             </a>
