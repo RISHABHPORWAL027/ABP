@@ -4,20 +4,24 @@ import React, { useEffect, useRef, useState } from "react";
 
 interface CountUpNumberProps {
   end: number;
+  start?: number;
   duration?: number; // duration in ms
   prefix?: string;
   suffix?: string;
+  padZeros?: number; // e.g., 2 to format 3 as "03"
   className?: string;
 }
 
 export const CountUpNumber: React.FC<CountUpNumberProps> = ({
   end,
+  start = 0,
   duration = 2000,
   prefix = "",
   suffix = "",
+  padZeros = 0,
   className = "",
 }) => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(start);
   const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
 
@@ -36,9 +40,9 @@ export const CountUpNumber: React.FC<CountUpNumberProps> = ({
             if (!startTime) startTime = currentTime;
             const progress = Math.min((currentTime - startTime) / duration, 1);
             
-            // Ease out quad formula for smooth decelerating count
+            // Ease out cubic formula for smooth decelerating count
             const easeProgress = 1 - Math.pow(1 - progress, 3);
-            const currentCount = Math.floor(easeProgress * end);
+            const currentCount = Math.floor(start + easeProgress * (end - start));
 
             setCount(currentCount);
 
@@ -61,12 +65,16 @@ export const CountUpNumber: React.FC<CountUpNumberProps> = ({
     return () => {
       if (element) observer.unobserve(element);
     };
-  }, [end, duration, hasAnimated]);
+  }, [end, start, duration, hasAnimated]);
+
+  const displayCount = padZeros
+    ? String(count).padStart(padZeros, "0")
+    : String(count);
 
   return (
     <span ref={ref} className={className}>
       {prefix}
-      {count}
+      {displayCount}
       {suffix}
     </span>
   );

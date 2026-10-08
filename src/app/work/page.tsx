@@ -7,8 +7,12 @@ import { Footer } from "@/components/Footer";
 import DiscCascadeCarousel, {
   DiscCascadeItem,
 } from "@/components/ui/disc-cascade-carousel";
+import { ParticleTextAnimation } from "@/components/ui/particle-text-animation";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Play, X, ExternalLink, Sparkles, Disc, Flame, ArrowUpRight } from "lucide-react";
+
+import { SpotifyCard, SpotifyTrack } from "@/components/ui/spotify-card";
+import { LiquidGlassCarousel } from "@/components/ui/liquid-glass-carousel";
 
 export default function WorkPage() {
   const [selectedVideo, setSelectedVideo] = useState<{
@@ -19,6 +23,70 @@ export default function WorkPage() {
   } | null>(null);
 
   const [activeFilter, setActiveFilter] = useState<string>("ALL");
+
+  // Spotify Target Songs Data
+  const spotifyCampaignTracks: SpotifyTrack[] = [
+    {
+      id: "finding-her",
+      title: "Finding Her",
+      artist: "Kushagra, Bharath, Saaheal",
+      albumArt: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=600&q=80",
+      duration: "3:27",
+      durationSeconds: 207,
+      spotifyUrl: "https://open.spotify.com/search/Finding%20Her%20Kushagra",
+      description: "Search for music and podcasts, browse your library, and control playback.",
+    },
+    {
+      id: "sajna-ve",
+      title: "Sajna Ve",
+      artist: "Prateeksha Srivastava ft. Arjun Deswal",
+      albumArt: "https://img.youtube.com/vi/FzjBVeOJdug/maxresdefault.jpg",
+      duration: "3:45",
+      durationSeconds: 225,
+      spotifyUrl: "https://open.spotify.com/search/Sajna%20Ve%20Prateeksha",
+      description: "Viral Indian romantic indie anthem with 15M+ streams across Spotify & DSPs.",
+    },
+    {
+      id: "sheesha",
+      title: "SHEESHA",
+      artist: "Mitta Ror ft. Swara Verma",
+      albumArt: "https://img.youtube.com/vi/i52TYO13Nyg/maxresdefault.jpg",
+      duration: "2:58",
+      durationSeconds: 178,
+      spotifyUrl: "https://open.spotify.com/search/SHEESHA%20Mitta%20Ror",
+      description: "#1 Trending short-form creator audio with 25M+ organic reel views.",
+    },
+    {
+      id: "oops-king",
+      title: "OOPS",
+      artist: "KING ft. Zahrah S Khan",
+      albumArt: "https://img.youtube.com/vi/wo2-ldwHqyQ/maxresdefault.jpg",
+      duration: "3:12",
+      durationSeconds: 192,
+      spotifyUrl: "https://open.spotify.com/search/OOPS%20King",
+      description: "Global hit album release drive with over 100M+ total views & streams.",
+    },
+    {
+      id: "bairan",
+      title: "Bairan",
+      artist: "Silver Strings Music",
+      albumArt: "https://img.youtube.com/vi/vsHtDl4Wee4/maxresdefault.jpg",
+      duration: "3:30",
+      durationSeconds: 210,
+      spotifyUrl: "https://open.spotify.com/search/Bairan%20Silver%20Strings",
+      description: "Top 50 Indie India chartbuster with multi-million Spotify stream growth.",
+    },
+    {
+      id: "bargad",
+      title: "bargad",
+      artist: "sufr ft. Arpit Bala & Toorjo Dey",
+      albumArt: "https://img.youtube.com/vi/NlvLxP9ehWE/maxresdefault.jpg",
+      duration: "4:05",
+      durationSeconds: 245,
+      spotifyUrl: "https://open.spotify.com/search/bargad%20sufr",
+      description: "Featured on Spotify Fresh Finds India with cult indie fan engagement.",
+    },
+  ];
 
   // Work items mapped for DiscCascadeCarousel and showcase grid
   const campaignWorkItems: (DiscCascadeItem & { youtubeId: string; subtitle: string; category: string; stats: string })[] = [
@@ -193,17 +261,12 @@ export default function WorkPage() {
       </div>
 
       <main className="flex-1">
-        {/* HERO TITLE SECTION */}
-        <section className="pt-12 pb-6 px-6 md:px-12 max-w-[1380px] mx-auto text-center">
-          <ScrollReveal direction="up">
-
-            <h1 className="font-extrabold text-4xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-white mb-4">
-              OUR WORK <span className="text-[#FF0043]">&amp;</span> REELS
-            </h1>
-            <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base font-sans">
-              Interact with our 3D disc cascade carousel showcasing viral reels, hit music videos, and multi-million stream campaigns. Click any disc to launch the YouTube preview.
-            </p>
-          </ScrollReveal>
+        {/* INTERACTIVE PARTICLE HERO TITLE SECTION */}
+        <section className="relative w-full pt-4 pb-2 bg-[#000000]">
+          <ParticleTextAnimation
+            text="OUR WORK"
+            subtitle="VIRAL REELS · MUSIC VIDEOS · STREAMING CAMPAIGNS"
+          />
         </section>
 
         {/* 3D DISC CASCADE CAROUSEL CONTAINER */}
@@ -219,108 +282,27 @@ export default function WorkPage() {
           />
         </section>
 
-        {/* CAMPAIGNS GRID & EXPLORER */}
-        <section className="py-20 px-6 md:px-12 max-w-[1380px] mx-auto">
+        {/* SPOTIFY FEATURED RELEASES SECTION */}
+        <section className="py-20 px-6 md:px-12 max-w-[1380px] mx-auto border-t border-white/10">
           <ScrollReveal direction="up">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-white/10 pb-8">
               <div>
-                <span className="text-[#009082] text-xs font-extrabold tracking-widest uppercase font-space block mb-2">
-                  FULL CAMPAIGN CATALOGUE
+                <span className="text-[#1ED760] font-space text-xs font-extrabold tracking-widest uppercase block mb-2">
+                  SPOTIFY CAMPAIGNS & STREAMING DRIVES
                 </span>
-                <h2 className="text-3xl sm:text-5xl font-extrabold uppercase text-white tracking-tight">
-                  FEATURED RELEASES <span className="text-[#FF0043]">.</span>
+                <h2 className="font-sans font-black text-3xl sm:text-5xl uppercase tracking-tight text-white">
+                  SPOTIFY FEATURED TRACKS <span className="text-[#1ED760]">.</span>
                 </h2>
               </div>
-
-              {/* Filter Pills */}
-              <div className="flex flex-wrap gap-2">
-                {categories.map((cat) => (
-                  <button
-                    key={cat}
-                    onClick={() => setActiveFilter(cat)}
-                    className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 ${
-                      activeFilter === cat
-                        ? "bg-[#FF0043] text-white shadow-lg shadow-[#FF0043]/30 scale-105"
-                        : "bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/10"
-                    }`}
-                  >
-                    {cat}
-                  </button>
-                ))}
-              </div>
+              <p className="text-gray-400 max-w-md text-xs sm:text-sm font-sans">
+                Explore our top Spotify-focused campaigns, DSP chartbusters, and viral indie releases built for long-term algorithmic growth.
+              </p>
             </div>
           </ScrollReveal>
 
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredItems.map((item, idx) => (
-              <ScrollReveal key={idx} direction="up" delay={idx * 80}>
-                <div
-                  onClick={() =>
-                    setSelectedVideo({
-                      title: item.title,
-                      artist: item.subtitle,
-                      youtubeId: item.youtubeId,
-                      category: item.category,
-                    })
-                  }
-                  className="group relative bg-[#111111] border border-white/10 rounded-2xl overflow-hidden cursor-pointer hover:border-[#FF0043]/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#FF0043]/10 flex flex-col justify-between"
-                >
-                  {/* Thumbnail / Video Preview Header */}
-                  <div className="relative aspect-video w-full overflow-hidden bg-black">
-                    <img
-                      src={`https://img.youtube.com/vi/${item.youtubeId}/hqdefault.jpg`}
-                      alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 opacity-85 group-hover:opacity-100"
-                    />
-
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-black/40" />
-
-                    {/* Category Tag */}
-                    <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-extrabold tracking-widest text-[#009082] uppercase border border-[#009082]/30">
-                      {item.category}
-                    </div>
-
-                    {/* Play Button Overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-14 h-14 rounded-full bg-[#FF0043] text-white flex items-center justify-center group-hover:scale-115 transition-transform duration-300 shadow-xl shadow-[#FF0043]/40">
-                        <Play className="w-6 h-6 fill-current ml-1" />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Body Content */}
-                  <div className="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-center justify-between mb-1">
-                        <h3 className="text-xl sm:text-2xl font-extrabold uppercase text-white tracking-tight group-hover:text-[#FF0043] transition-colors">
-                          {item.title}
-                        </h3>
-                        <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-white transition-colors" />
-                      </div>
-                      <p className="text-xs font-semibold text-gray-400 mb-4">
-                        {item.subtitle}
-                      </p>
-                    </div>
-
-                    {/* Stats Ribbon */}
-                    <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-space font-bold">
-                      <span className="text-[#009082] flex items-center gap-1.5">
-                        <Flame className="w-3.5 h-3.5 text-[#FF0043]" />
-                        {item.stats}
-                      </span>
-                      <span className="text-gray-500 group-hover:text-white transition-colors flex items-center gap-1">
-                        Watch Reel <ArrowUpRight className="w-3.5 h-3.5" />
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          {/* Liquid Glass Refraction Carousel for Spotify Cards */}
+          <LiquidGlassCarousel tracks={spotifyCampaignTracks} />
         </section>
-
 
       </main>
 

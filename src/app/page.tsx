@@ -13,7 +13,6 @@ import { DifferentMovesSection } from "@/components/DifferentMovesSection";
 import { WhatWeDoSection } from "@/components/WhatWeDoSection";
 import { CampaignJourneySection } from "@/components/CampaignJourneySection";
 import { AbpJourneySection } from "@/components/AbpJourneySection";
-import { FounderSection } from "@/components/FounderSection";
 import { TestimonialsWithVerticalMarquee } from "@/components/ui/testimonials-with-verticalmarquee";
 import { LogoCloudMarquee } from "@/components/ui/logo-cloud-marquee";
 import { CountUpNumber } from "@/components/CountUpNumber";
@@ -83,8 +82,6 @@ export default function Home() {
         {/* THE ABP JOURNEY SECTION */}
         <AbpJourneySection />
 
-
-
         {/* METRICS & STATS SECTION WITH ANIMATED COUNT UP */}
         <section className="bg-white text-[#000000] py-24 border-t border-b border-black/10 font-sans">
           <div className="max-w-[1380px] mx-auto px-6 md:px-12">
@@ -112,9 +109,6 @@ export default function Home() {
 
         {/* CLIENT REVIEWS & TESTIMONIALS VERTICAL MARQUEE */}
         <TestimonialsWithVerticalMarquee />
-
-        {/* FOUNDER SECTION */}
-        <FounderSection />
 
         {/* TRUSTED BY LABELS - LOGO CLOUD MARQUEE */}
         <LogoCloudMarquee />
