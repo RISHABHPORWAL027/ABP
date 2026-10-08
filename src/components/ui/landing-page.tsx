@@ -323,7 +323,7 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, classN
         className="fixed z-10 pointer-events-none will-change-transform transition-all duration-[1300ms] ease-[cubic-bezier(0.23,1,0.32,1)]"
         style={{
           transform: globeTransform,
-          filter: `opacity(${activeSection === 3 ? 0.3 : 0.85})`,
+          filter: `opacity(${activeSection === 3 ? 0.2 : 0.4})`,
         }}
       >
         <div className="scale-75 sm:scale-90 md:scale-100 lg:scale-110">

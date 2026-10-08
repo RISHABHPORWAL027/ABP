@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, MoreVertical, X } from "lucide-react";
 
@@ -21,6 +22,7 @@ export const MenuVertical: React.FC<MenuVerticalProps> = ({
   ctaLabel = "Connect",
   ctaHref = "#connect",
 }) => {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
   // Lock body scroll when mobile menu is open
@@ -92,36 +94,46 @@ export const MenuVertical: React.FC<MenuVerticalProps> = ({
                 </div>
 
                 <nav className="flex flex-col gap-3">
-                  {items.map((item, idx) => (
-                    <motion.div
-                      key={item.name}
-                      initial={{ opacity: 0, x: 25 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{
-                        delay: 0.06 + idx * 0.05,
-                        type: "spring",
-                        stiffness: 280,
-                        damping: 24,
-                      }}
-                    >
-                      <Link
-                        href={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className="group flex items-center justify-between py-4 px-5 rounded-2xl bg-white/5 active:bg-white/15 border border-white/10 transition-colors w-full"
-                      >
-                        <span className="font-syne font-extrabold text-3xl tracking-tight text-white active:text-[#ffe600]">
-                          {item.name}
-                        </span>
+                  {items.map((item, idx) => {
+                    const isPathActive = item.href.startsWith("/#")
+                      ? pathname === "/"
+                      : pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
 
-                        <div className="flex items-center gap-2.5">
-                          <span className="font-space font-extrabold text-xs text-[#ffe600]">
-                            0{idx + 1}
+                    return (
+                      <motion.div
+                        key={item.name}
+                        initial={{ opacity: 0, x: 25 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{
+                          delay: 0.06 + idx * 0.05,
+                          type: "spring",
+                          stiffness: 280,
+                          damping: 24,
+                        }}
+                      >
+                        <Link
+                          href={item.href}
+                          onClick={() => setIsOpen(false)}
+                          className={`group flex items-center justify-between py-4 px-5 rounded-2xl border transition-colors w-full ${
+                            isPathActive
+                              ? "bg-white/20 border-[#ffe600] text-[#ffe600]"
+                              : "bg-white/5 active:bg-white/15 border-white/10 text-white"
+                          }`}
+                        >
+                          <span className={`font-syne font-extrabold text-3xl tracking-tight ${isPathActive ? "text-[#ffe600]" : "text-white"}`}>
+                            {item.name}
                           </span>
-                          <ArrowUpRight className="w-5 h-5 text-white/80 stroke-[2.5]" />
-                        </div>
-                      </Link>
-                    </motion.div>
-                  ))}
+
+                          <div className="flex items-center gap-2.5">
+                            <span className="font-space font-extrabold text-xs text-[#ffe600]">
+                              0{idx + 1}
+                            </span>
+                            <ArrowUpRight className="w-5 h-5 text-white/80 stroke-[2.5]" />
+                          </div>
+                        </Link>
+                      </motion.div>
+                    );
+                  })}
                 </nav>
               </div>
 

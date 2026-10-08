@@ -14,9 +14,9 @@ interface TypewriterTextProps {
 
 export const TypewriterText: React.FC<TypewriterTextProps> = ({
   words,
-  typingSpeed = 70,
-  deletingSpeed = 40,
-  pauseDuration = 2200,
+  typingSpeed = 65,
+  deletingSpeed = 35,
+  pauseDuration = 2400,
   loop = true,
   className = "",
   cursorColor = "text-[#FF0043]",
@@ -26,7 +26,7 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
   const [isDeleting, setIsDeleting] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
 
-  // Find longest phrase to reserve container height & eliminate flickering
+  // Find longest phrase to reserve container space & eliminate flickering
   const longestText =
     words && words.length > 0
       ? words.reduce((a, b) => (a.length > b.length ? a : b), words[0])
@@ -45,7 +45,6 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
           setCurrentText(fullText.slice(0, currentText.length + 1));
         }, typingSpeed);
       } else {
-        // Word is fully typed - pause before deleting or finish
         if (!loop && words.length === 1) {
           setIsFinished(true);
           return;
@@ -70,15 +69,18 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
   }, [currentText, isDeleting, currentWordIndex, words, typingSpeed, deletingSpeed, pauseDuration, loop]);
 
   return (
-    <span className={`inline-grid grid-cols-1 grid-rows-1 align-top whitespace-normal md:whitespace-nowrap ${className}`}>
-      {/* Invisible Ghost Text reserving full height & width (including cursor) to eliminate screen flickering */}
-      <span className="col-start-1 row-start-1 invisible pointer-events-none select-none whitespace-normal md:whitespace-nowrap" aria-hidden="true">
+    <span className={`inline-grid grid-cols-1 grid-rows-1 align-top whitespace-normal ${className}`}>
+      {/* Invisible Ghost Text reserving full space */}
+      <span
+        className="col-start-1 row-start-1 invisible pointer-events-none select-none whitespace-normal"
+        aria-hidden="true"
+      >
         {longestText}
         <span className="inline-block ml-1 opacity-0 font-normal">|</span>
       </span>
 
       {/* Active Typewriter Text */}
-      <span className="col-start-1 row-start-1 whitespace-normal md:whitespace-nowrap">
+      <span className="col-start-1 row-start-1 whitespace-normal">
         {currentText}
         {!isFinished && (
           <span className={`inline-block ml-1 ${cursorColor} animate-pulse font-normal opacity-90`}>

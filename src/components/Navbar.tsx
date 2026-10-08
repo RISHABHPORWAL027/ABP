@@ -13,7 +13,7 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ className = "" }) => {
   const navLinks = [
-    { name: "Work", href: "/#work" },
+    { name: "Work", href: "/work" },
     { name: "Journey", href: "/journey" },
     { name: "Services", href: "/services" },
     { name: "About", href: "/#about" },

@@ -186,7 +186,7 @@ export const Footer: React.FC = () => {
           {/* Nav Links */}
           <ul className="flex items-center justify-center flex-wrap gap-5 sm:gap-8 text-xs font-space font-extrabold tracking-widest uppercase text-white/70">
             <li>
-              <Link href="/#work" className="hover:text-[#ffe600] transition-colors">
+              <Link href="/work" className="hover:text-[#ffe600] transition-colors">
                 WORK
               </Link>
             </li>
