@@ -388,6 +388,8 @@ export const CircularTestimonials = ({
           margin-bottom: 0.5rem;
         }
         .quote {
+          font-family: var(--font-playfair), "Playfair Display", Georgia, serif;
+          font-style: italic;
           line-height: 1.75;
         }
         .arrow-buttons {

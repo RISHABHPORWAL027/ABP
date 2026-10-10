@@ -120,7 +120,7 @@ export const MenuVertical: React.FC<MenuVerticalProps> = ({
                               : "bg-white/5 active:bg-white/15 border-white/10 text-white"
                           }`}
                         >
-                          <span className={`font-syne font-extrabold text-3xl tracking-tight ${isPathActive ? "text-[#ffe600]" : "text-white"}`}>
+                          <span className={`font-sans font-extrabold text-3xl tracking-tight ${isPathActive ? "text-[#ffe600]" : "text-white"}`}>
                             {item.name}
                           </span>
 

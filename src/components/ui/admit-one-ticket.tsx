@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Check, Disc, Ticket } from "lucide-react";
+import { ArrowUpRight, Check, Disc, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface ServiceTicketData {
@@ -12,6 +12,8 @@ export interface ServiceTicketData {
   badgeBg: string;
   badgeText: string;
   title: string;
+  stubTitle?: string;
+  stubSubtitle?: string;
   p1: string;
   p2?: string;
   highlights: string[];
@@ -57,6 +59,9 @@ export const AdmitOneTicketCard: React.FC<AdmitOneTicketProps> = ({
     setGlarePos((prev) => ({ ...prev, opacity: 0 }));
   };
 
+  const stubTitle = service.stubTitle || "CAMPAIGN SPEC";
+  const stubSubtitle = service.stubSubtitle || "FULL EXECUTION & ROLLOUT";
+
   return (
     <div
       ref={cardRef}
@@ -70,7 +75,7 @@ export const AdmitOneTicketCard: React.FC<AdmitOneTicketProps> = ({
         transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
       }}
     >
-      {/* Ticket Outer Wrapper */}
+      {/* Ticket / Spec Card Outer Wrapper */}
       <div
         className={cn(
           "relative w-full rounded-3xl overflow-hidden shadow-2xl border border-black/15 flex flex-col lg:flex-row transition-all duration-300",
@@ -94,7 +99,7 @@ export const AdmitOneTicketCard: React.FC<AdmitOneTicketProps> = ({
           }}
         />
 
-        {/* --- MAIN TICKET SECTION (LEFT / BODY) --- */}
+        {/* --- MAIN SPEC SECTION (LEFT / BODY) --- */}
         <div className="relative z-10 flex-1 p-8 sm:p-10 md:p-12 flex flex-col justify-between">
           {/* Header Bar */}
           <div>
@@ -114,14 +119,14 @@ export const AdmitOneTicketCard: React.FC<AdmitOneTicketProps> = ({
                 </span>
               </div>
 
-              <div className="flex items-center gap-1.5 opacity-60 font-space font-bold text-xs tracking-wider uppercase">
-                <Ticket className="w-4 h-4" />
-                <span>ADMIT ONE</span>
+              <div className="flex items-center gap-1.5 opacity-70 font-space font-bold text-xs tracking-wider uppercase">
+                <Sparkles className="w-3.5 h-3.5 text-[#ffe600]" />
+                <span>CAMPAIGN SPEC</span>
               </div>
             </div>
 
             {/* Title */}
-            <h3 className="font-outfit font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.08] mb-6">
+            <h3 className="font-sans font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.08] mb-6">
               {service.title}
             </h3>
 
@@ -155,12 +160,12 @@ export const AdmitOneTicketCard: React.FC<AdmitOneTicketProps> = ({
             </Link>
 
             <span className="font-space font-extrabold text-xs tracking-widest opacity-60 uppercase hidden sm:inline-block">
-              ALL BY PLAY / 2026 PASS
+              ALL BY PLAY / ARTIST & LABEL SERVICES
             </span>
           </div>
         </div>
 
-        {/* --- PERFORATED DIVIDER LINE & SEMICIRCLE NOTCHES --- */}
+        {/* --- PERFORATED DIVIDER LINE & NOTCHES --- */}
         <div className="relative flex lg:flex-col items-center justify-between z-20">
           {/* Top Notch Cutout */}
           <div className="hidden lg:block absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-[#FFFFFF] shadow-inner z-30" />
@@ -178,26 +183,26 @@ export const AdmitOneTicketCard: React.FC<AdmitOneTicketProps> = ({
           <div className="lg:hidden absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#FFFFFF] shadow-inner z-30" />
         </div>
 
-        {/* --- TICKET STUB (RIGHT SECTION) --- */}
+        {/* --- CAMPAIGN SCOPE STUB (RIGHT SECTION) --- */}
         <div className="relative z-10 w-full lg:w-[280px] p-8 lg:p-10 flex flex-col justify-between items-center lg:items-start bg-black/10 backdrop-blur-sm border-t lg:border-t-0 lg:border-l border-current/10">
           <div className="w-full flex flex-col items-center lg:items-start text-center lg:text-left">
             <div className="inline-flex items-center gap-2 mb-6">
               <Disc className="w-5 h-5 animate-spin-slow opacity-80" />
               <span className="font-space font-extrabold text-xs tracking-[3px] uppercase opacity-90">
-                STUB #{service.num}
+                SPEC #{service.num}
               </span>
             </div>
 
-            {/* Vertical / Big Ticket Stub Label */}
-            <div className="font-outfit font-extrabold text-2xl lg:text-3xl uppercase tracking-wider mb-2">
-              ADMIT ONE
+            {/* Dynamic Specific Campaign Deliverable Header */}
+            <div className="font-sans font-extrabold text-2xl lg:text-3xl uppercase tracking-wider mb-2">
+              {stubTitle}
             </div>
-            <p className="font-sans font-medium text-xs opacity-75 mb-6">
-              ACCESS PASS / VIP ENTRY
+            <p className="font-sans font-semibold text-xs opacity-80 mb-6 uppercase tracking-wider">
+              {stubSubtitle}
             </p>
 
             {/* Barcode Graphic */}
-            <div className="w-full bg-white/90 p-4 rounded-xl shadow-md flex flex-col items-center justify-center gap-1 text-black my-4">
+            <div className="w-full bg-white/95 p-4 rounded-xl shadow-md flex flex-col items-center justify-center gap-1 text-black my-4">
               {/* Programmatic Barcode Lines */}
               <div className="w-full h-12 flex items-center justify-between gap-[2px] px-1">
                 {[
@@ -211,14 +216,14 @@ export const AdmitOneTicketCard: React.FC<AdmitOneTicketProps> = ({
                 ))}
               </div>
               <span className="font-mono text-[10px] tracking-[4px] uppercase font-bold text-black/70">
-                ABP-2026-{service.num}
+                ABP-SPEC-2026-{service.num}
               </span>
             </div>
           </div>
 
           <div className="w-full pt-4 border-t border-current/20 flex items-center justify-between text-[11px] font-space font-bold opacity-75 uppercase">
             <span>SERIES 2026</span>
-            <span>VALID PASS</span>
+            <span>ACTIVE ROLLOUT</span>
           </div>
         </div>
       </div>

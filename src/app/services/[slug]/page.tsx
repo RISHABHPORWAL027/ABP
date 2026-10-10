@@ -60,7 +60,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
             </div>
 
             {/* Main Service Title */}
-            <h1 className="font-syne font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.08] text-white mb-6 max-w-5xl">
+            <h1 className="font-sans font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.08] text-white mb-6 max-w-5xl">
               {service.title} <span className="text-[#ffe600]">.</span>
             </h1>
 
@@ -235,7 +235,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
                   START YOUR CAMPAIGN
                 </span>
               </div>
-              <h2 className="font-syne font-extrabold text-3xl sm:text-5xl text-white mb-6 tracking-tight">
+              <h2 className="font-sans font-extrabold text-3xl sm:text-5xl text-white mb-6 tracking-tight">
                 Ready to take your music further <span className="text-[#ffe600]">?</span>
               </h2>
               <p className="font-sans font-medium text-white/75 text-lg mb-8 leading-relaxed">

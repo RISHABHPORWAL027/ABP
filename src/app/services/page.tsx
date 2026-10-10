@@ -25,6 +25,8 @@ export default function ServicesOverviewPage() {
       badgeBg: "#FFE600",
       badgeText: "#000000",
       title: "Branding & Marketing",
+      stubTitle: "BRAND IDENTITY",
+      stubSubtitle: "VISUAL & CREATIVE DIRECTION",
       p1: "A strong artist brand makes everything else easier. We help shape the visual identity, design language, and overall online presence so the artist or label feels consistent across every touchpoint.",
       p2: "From social media to campaign creatives, we build a look and feel that fits the music and stands out in a crowded space.",
       highlights: [
@@ -41,6 +43,8 @@ export default function ServicesOverviewPage() {
       badgeBg: "#5B3BE8",
       badgeText: "#FFFFFF",
       title: "Release-based Campaigns",
+      stubTitle: "RELEASE SUITE",
+      stubSubtitle: "PRE & POST LAUNCH ROLLOUT",
       p1: "A release should feel planned, not rushed. We build pre-release and post-release campaigns that support the music across the full rollout, from the first push to the follow-through after launch.",
       p2: "The strategy is shaped around the timeline, the goals, and what the song or project needs to land better.",
       highlights: [
@@ -57,6 +61,8 @@ export default function ServicesOverviewPage() {
       badgeBg: "#FFE600",
       badgeText: "#000000",
       title: "PR Activation",
+      stubTitle: "MEDIA & PR",
+      stubSubtitle: "EDITORIAL & BROADCAST REACH",
       p1: "When a story is strong, PR helps it travel further. We build PR activations that go beyond one channel and instead look at the full mix — social, print, digital, radio, television, podcasts, and music platforms.",
       p2: "The goal is to place the artist and the release in spaces where the story actually connects with people.",
       highlights: [
@@ -73,6 +79,8 @@ export default function ServicesOverviewPage() {
       badgeBg: "#FFE600",
       badgeText: "#000000",
       title: "Instagram-centric Campaigns",
+      stubTitle: "VIRAL REELS",
+      stubSubtitle: "CREATOR & INFLUENCER PUSH",
       p1: "Instagram is one of the main places where music gets noticed, shared, and talked about. We build campaigns that use content plans, creatives, edit-page pushes, review-led support, and creator collaborations to give a song more reach.",
       p2: "This includes thinking about the artist's profile as a whole, not just one release at a time.",
       highlights: [
@@ -90,6 +98,8 @@ export default function ServicesOverviewPage() {
       badgeBg: "#FFE600",
       badgeText: "#000000",
       title: "Spotify-focussed Campaigns",
+      stubTitle: "DSP STREAMING",
+      stubSubtitle: "ALGORITHMIC & PLAYLIST DATA",
       p1: "Spotify growth needs more than just hoping for streams. We use research, data, playlist strategy, and campaign planning to help artists build a stronger presence on the platform.",
       p2: "We look at search keywords, stream sources, artist profile visits, and algorithmic streams so the campaign is guided by actual performance, not guesswork.",
       highlights: [
@@ -107,6 +117,8 @@ export default function ServicesOverviewPage() {
       badgeBg: "#FFE600",
       badgeText: "#000000",
       title: "Ads Marketing",
+      stubTitle: "PAID MEDIA",
+      stubSubtitle: "TARGETED ADS & RETARGETING",
       p1: "Our music-focused ad campaigns build around the data we already have on the project and the audience. That means the work is guided by context, not just by running ads for the sake of it.",
       p2: "Campaigns can include Instagram awareness and conversion ads, YouTube in-feed and in-stream ads, lead generation, and redirection campaigns.",
       highlights: [
@@ -123,6 +135,8 @@ export default function ServicesOverviewPage() {
       badgeBg: "#FFE600",
       badgeText: "#000000",
       title: "Content & Social Media Management",
+      stubTitle: "CONTENT OPS",
+      stubSubtitle: "DAILY STRATEGY & ARTIST PERSONA",
       p1: "Keeping a music project active online takes more than posting randomly. We help with content ideas, page planning, artist persona building, and day-to-day social direction so the brand feels consistent and alive.",
       p2: "This is especially useful when the artist or label needs a clearer rhythm for content around releases, events, and ongoing visibility.",
       highlights: [
@@ -218,7 +232,7 @@ export default function ServicesOverviewPage() {
           <div className="max-w-[1380px] mx-auto px-6 md:px-12">
             <div className="max-w-4xl">
               <ScrollReveal direction="up">
-                <h2 className="font-outfit font-extrabold text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.05] text-[#000000] mb-8">
+                <h2 className="font-sans font-extrabold text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.05] text-[#000000] mb-8">
                   <TypewriterText
                     words={[
                       "What we help with",
@@ -232,7 +246,7 @@ export default function ServicesOverviewPage() {
               </ScrollReveal>
 
               <ScrollReveal direction="up" delay={100}>
-                <p className="font-outfit font-bold text-xl sm:text-3xl lg:text-[34px] text-[#111111] leading-snug tracking-tight mb-8 max-w-4xl">
+                <p className="font-sans font-bold text-xl sm:text-3xl lg:text-[34px] text-[#111111] leading-snug tracking-tight mb-8 max-w-4xl">
                   Every artist and project needs something a little different. Some need a stronger rollout. Some need more visibility. Some need a better content rhythm.
                 </p>
               </ScrollReveal>
@@ -251,7 +265,7 @@ export default function ServicesOverviewPage() {
           <div className="max-w-[1380px] mx-auto px-6 md:px-12">
             <div className="max-w-4xl">
               <ScrollReveal direction="up">
-                <h2 className="font-outfit font-extrabold text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.05] text-white mb-8">
+                <h2 className="font-sans font-extrabold text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.05] text-white mb-8">
                   <TypewriterText
                     words={[
                       "Built for different parts of the music world",

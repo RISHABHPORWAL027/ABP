@@ -13,6 +13,7 @@ import { Play, X, ExternalLink, Sparkles, Disc, Flame, ArrowUpRight } from "luci
 
 import { SpotifyCard, SpotifyTrack } from "@/components/ui/spotify-card";
 import { LiquidGlassCarousel } from "@/components/ui/liquid-glass-carousel";
+import DiagonalMarqueeCarousel, { CardItem } from "@/components/ui/great-ui-diagonal-marquee-carousel";
 
 export default function WorkPage() {
   const [selectedVideo, setSelectedVideo] = useState<{
@@ -23,6 +24,50 @@ export default function WorkPage() {
   } | null>(null);
 
   const [activeFilter, setActiveFilter] = useState<string>("ALL");
+
+  // Movie Campaigns Data from public/movie
+  const movieCampaignCards: CardItem[] = [
+    {
+      id: "movie-1",
+      url: "/movie/MV5BNDM3N2UzM2UtMjEwMC00NGUzLThmMmQtNGMyM2VmMDA0ZWEwXkEyXkFqcGc@._V1_.jpg",
+      title: "Pushpa 2: The Rule",
+    },
+    {
+      id: "movie-2",
+      url: "/movie/MV5BOTVlYmVjMTItOGMxYS00NmQyLWJlZTYtNWVkZGZhZmFiYTJkXkEyXkFqcGc@._V1_.jpg",
+      title: "Dharma Productions",
+    },
+    {
+      id: "movie-3",
+      url: "/movie/MV5BY2VkZjk5ZjMtM2ExOS00ZDA1LTg1ZDEtYTliNGZiYTc4ZWZiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+      title: "Kantara: Legend",
+    },
+    {
+      id: "movie-4",
+      url: "/movie/MV5BYjBhNDMyYWItMmYyMC00ZjMwLWE3MmUtZGMwZWM0ZWExYjVkXkEyXkFqcGc@._V1_.jpg",
+      title: "Maddock Films",
+    },
+    {
+      id: "movie-5",
+      url: "/movie/ab67616d00001e02adb1a15b21a4b9728285ca94.jpeg",
+      title: "Cocktail 2",
+    },
+    {
+      id: "movie-6",
+      url: "/movie/images%20(1).jpeg",
+      title: "Dhoom Dhaam",
+    },
+    {
+      id: "movie-7",
+      url: "/movie/images%20(3).jpeg",
+      title: "Jio Studios & Maddock",
+    },
+    {
+      id: "movie-8",
+      url: "/movie/images.jpeg",
+      title: "Singham Again",
+    },
+  ];
 
   // Spotify Target Songs Data
   const spotifyCampaignTracks: SpotifyTrack[] = [
@@ -262,7 +307,7 @@ export default function WorkPage() {
 
       <main className="flex-1">
         {/* INTERACTIVE PARTICLE HERO TITLE SECTION */}
-        <section className="relative w-full pt-4 pb-2 bg-[#000000]">
+        <section className="relative w-full pt-12 sm:pt-16 pb-12 sm:pb-16 bg-[#000000]">
           <ParticleTextAnimation
             text="OUR WORK"
             subtitle="VIRAL REELS · MUSIC VIDEOS · STREAMING CAMPAIGNS"
@@ -270,10 +315,11 @@ export default function WorkPage() {
         </section>
 
         {/* 3D DISC CASCADE CAROUSEL CONTAINER */}
-        <section className="relative w-full py-4 bg-gradient-to-b from-[#000000] via-[#09090b] to-[#000000] overflow-hidden border-t border-b border-white/10">
+        <section className="relative w-full my-8 sm:my-14 py-8 sm:py-14 bg-gradient-to-b from-[#000000] via-[#09090b] to-[#000000] overflow-hidden border-t border-b border-white/10">
           <DiscCascadeCarousel
             items={campaignWorkItems}
-            height="80vh"
+            height="clamp(720px, 92vh, 980px)"
+            discSize="clamp(220px, min(50vmin, 40vw), 460px)"
             brand="ALL BY PLAY"
             indexLabel="Select Campaign"
             onSelect={handleSelectDisc}
@@ -283,7 +329,7 @@ export default function WorkPage() {
         </section>
 
         {/* SPOTIFY FEATURED RELEASES SECTION */}
-        <section className="py-20 px-6 md:px-12 max-w-[1380px] mx-auto border-t border-white/10">
+        <section className="py-28 sm:py-36 px-6 md:px-12 max-w-[1380px] mx-auto border-t border-white/10">
           <ScrollReveal direction="up">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-white/10 pb-8">
               <div>
@@ -302,6 +348,42 @@ export default function WorkPage() {
 
           {/* Liquid Glass Refraction Carousel for Spotify Cards */}
           <LiquidGlassCarousel tracks={spotifyCampaignTracks} />
+        </section>
+
+        {/* RECENT TOP CAMPAIGNS - MOVIES SECTION */}
+        <section className="py-24 sm:py-32 relative bg-[#000000] border-t border-white/10 overflow-hidden">
+          <div className="px-6 md:px-12 max-w-[1380px] mx-auto mb-10 sm:mb-14">
+            <ScrollReveal direction="up">
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8">
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF0043] animate-pulse" />
+                    <span className="text-[#FF0043] font-space text-xs font-extrabold tracking-widest uppercase block">
+                      FEATURE FILMS & OTT RELEASES
+                    </span>
+                  </div>
+                  <h2 className="font-sans font-black text-3xl sm:text-5xl uppercase tracking-tight text-white">
+                    Our recent top campaigns MOVIES <span className="text-[#FF0043]">.</span>
+                  </h2>
+                </div>
+                <p className="text-gray-400 max-w-md text-xs sm:text-sm font-sans leading-relaxed">
+                  High-voltage theatrical rollouts, streaming blockbuster promotions, and viral social pushes for Indian cinema&apos;s biggest releases.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* Diagonal Marquee Carousel Container */}
+          <div className="relative w-full h-[620px] sm:h-[720px] md:h-[820px] overflow-hidden">
+            <DiagonalMarqueeCarousel
+              cards={movieCampaignCards}
+              angle={-14}
+              baseSpeed={90}
+              className="h-full w-full"
+              cardClassName="h-[280px] w-[200px] sm:h-[340px] sm:w-[240px] md:h-[380px] md:w-[270px] rounded-2xl border border-white/15 shadow-[0_15px_35px_rgba(0,0,0,0.8)]"
+              fadeClassName="from-[#000000] via-[#000000]/70 to-transparent"
+            />
+          </div>
         </section>
 
       </main>

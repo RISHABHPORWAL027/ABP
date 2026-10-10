@@ -631,10 +631,11 @@ const CSS = `
 }
 .dcc-quote {
   margin: 0;
-  font-size: clamp(13px, 1.35cqw, 17px);
-  line-height: 1.1;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-family: var(--font-playfair), "Playfair Display", Georgia, serif !important;
+  font-style: italic;
+  font-size: clamp(14px, 1.4cqw, 18px);
+  line-height: 1.25;
+  font-weight: 600;
   text-wrap: balance;
   color: #ffffff;
 }

@@ -41,7 +41,7 @@ export const HowWeWorkSection: React.FC = () => {
           {/* Bottom Left Caption */}
           <div className="absolute bottom-8 left-8 right-8 z-10">
             <ScrollReveal direction="up">
-              <p className="font-serif italic font-normal text-2xl sm:text-3xl md:text-4xl text-white tracking-tight">
+              <p className="font-playfair italic font-normal text-2xl sm:text-3xl md:text-4xl text-white tracking-tight">
                 <TypewriterText
                   words={["Listen first. Build second.", "Strategy shaped around the music", "Built for long-term growth"]}
                   className="text-white"

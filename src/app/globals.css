@@ -5,8 +5,13 @@
   --color-brand-secondary: #1A1A1A;
   --color-brand-tertiary: #009082;
   --color-brand-black: #000000;
-  --font-space: var(--font-space), "Space Grotesk", sans-serif;
-  --font-sans: var(--font-sans), "Inter", sans-serif;
+  --font-satoshi: var(--font-satoshi), "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-playfair: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-satoshi), "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-space: var(--font-satoshi), "Satoshi", sans-serif;
+  --font-syne: var(--font-satoshi), "Satoshi", sans-serif;
+  --font-outfit: var(--font-satoshi), "Satoshi", sans-serif;
 }
 
 :root {
@@ -16,8 +21,13 @@
   --color-hero-bg: #FF0043;
   --color-black: #000000;
   --color-surface: #1A1A1A;
-  --font-sans: var(--font-sans), "Inter", sans-serif;
-  --font-space: var(--font-space), "Space Grotesk", sans-serif;
+  --font-satoshi: var(--font-satoshi), "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-playfair: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-satoshi), "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-space: var(--font-satoshi), "Satoshi", sans-serif;
+  --font-syne: var(--font-satoshi), "Satoshi", sans-serif;
+  --font-outfit: var(--font-satoshi), "Satoshi", sans-serif;
 }
 
 * {
@@ -25,7 +35,7 @@
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-satoshi), "Satoshi", sans-serif;
   background-color: #000000;
   color: #ffffff;
   -webkit-font-smoothing: antialiased;
@@ -34,20 +44,25 @@ body {
   overflow-x: hidden;
 }
 
-.font-space {
-  font-family: var(--font-space);
+/* Headings, subheadings, paragraphs default to consistent Satoshi */
+h1, h2, h3, h4, h5, h6, p, a, button, input, textarea {
+  font-family: var(--font-satoshi), "Satoshi", sans-serif;
 }
 
-.font-sans {
-  font-family: var(--font-sans);
+.font-satoshi {
+  font-family: var(--font-satoshi), "Satoshi", sans-serif;
 }
 
-.font-syne {
-  font-family: var(--font-syne), "Syne", sans-serif;
+.font-playfair,
+.font-serif {
+  font-family: var(--font-playfair), "Playfair Display", Georgia, serif;
 }
 
+.font-sans,
+.font-space,
+.font-syne,
 .font-outfit {
-  font-family: var(--font-outfit), "Outfit", sans-serif;
+  font-family: var(--font-satoshi), "Satoshi", sans-serif;
 }
 
 /* Animations */

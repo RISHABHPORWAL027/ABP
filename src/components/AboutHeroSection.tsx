@@ -34,7 +34,7 @@ export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({ className = 
                 About <br />
                 <TypewriterText
                   words={["All By Play", "Visual Strategy", "Music Campaigns"]}
-                  className="font-serif italic font-normal text-[#FF0043]"
+                  className="font-playfair italic font-normal text-[#FF0043]"
                   cursorColor="text-[#FF0043]"
                 />
               </h1>

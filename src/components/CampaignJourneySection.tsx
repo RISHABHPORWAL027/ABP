@@ -41,7 +41,7 @@ export const CampaignJourneySection: React.FC = () => {
       title: "Release campaigns",
       desc: "Pre- and post-release support built around your timeline, goals, and what the music actually needs.",
       tags: "STRATEGY / ROLLOUT / REPORTING",
-      youtubeId: "FzjBVeOJdug",
+      image: "/services/release_camp.png",
     },
     {
       num: "02",
@@ -49,7 +49,7 @@ export const CampaignJourneySection: React.FC = () => {
       title: "Instagram & content",
       desc: "Content plans, creative direction, edit-page pushes, and influencer support for stronger social reach.",
       tags: "CONTENT / CREATORS / CULTURE",
-      youtubeId: "vsHtDl4Wee4",
+      image: "/services/instagram_content.png",
     },
     {
       num: "03",
@@ -57,7 +57,7 @@ export const CampaignJourneySection: React.FC = () => {
       title: "Spotify growth",
       desc: "Data-led plans built around playlists, streams, profile visits, and real audience behaviour.",
       tags: "DISCOVERY / DATA / LISTENERS",
-      youtubeId: "NlvLxP9ehWE",
+      image: "/services/spotify_growth.png",
     },
     {
       num: "04",
@@ -65,7 +65,7 @@ export const CampaignJourneySection: React.FC = () => {
       title: "PR activation",
       desc: "Story-led placements across social, print, digital, radio, television, podcasts, and indie platforms.",
       tags: "NARRATIVE / PRESS / REACH",
-      youtubeId: "wo2-ldwHqyQ",
+      image: "/services/pr_Activation.png",
     },
     {
       num: "05",
@@ -73,7 +73,7 @@ export const CampaignJourneySection: React.FC = () => {
       title: "Ads marketing",
       desc: "Targeted campaigns across Instagram, YouTube, lead generation, and redirection channels.",
       tags: "TARGETING / MEDIA / RESULTS",
-      youtubeId: "i52TYO13Nyg",
+      image: "/services/ads_marketing.png",
     },
     {
       num: "06",
@@ -81,7 +81,7 @@ export const CampaignJourneySection: React.FC = () => {
       title: "Branding support",
       desc: "A clear identity and visual language that helps artists and labels show up consistently.",
       tags: "IDENTITY / DIRECTION / DESIGN",
-      youtubeId: "nwXAkF8OFCc",
+      image: "/services/branding_support.png",
     },
   ];
 
@@ -171,41 +171,53 @@ export const CampaignJourneySection: React.FC = () => {
               left: mousePosition.x,
               top: mousePosition.y,
             }}
-            initial={{ scale: 0.4, opacity: 0 }}
+            initial={{ scale: 0.5, opacity: 0 }}
             animate={{
               scale: 1,
               opacity: 1,
               x: "-50%",
               y: "-50%",
             }}
-            exit={{ scale: 0.4, opacity: 0 }}
+            exit={{ scale: 0.5, opacity: 0 }}
             transition={{ type: "spring", stiffness: 350, damping: 25 }}
-            className="fixed pointer-events-none z-50 overflow-hidden rounded-2xl w-[210px] sm:w-[320px] md:w-[380px] h-[140px] sm:h-[220px] md:h-[260px] bg-[#14121a] border-2 border-white/25 shadow-[0_25px_60px_rgba(0,0,0,0.85)] p-2 sm:p-2.5"
+            className="fixed pointer-events-none z-50 overflow-hidden rounded-2xl w-[260px] sm:w-[360px] md:w-[420px] aspect-[16/9] bg-[#14121a] border-2 border-white/25 shadow-[0_25px_60px_rgba(0,0,0,0.85)] p-2 sm:p-2.5"
           >
-            <div className="relative w-full h-full rounded-xl overflow-hidden bg-black">
-              {/* Live Preview Video */}
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${servicesList[modal.index].youtubeId}?autoplay=1&mute=1&loop=1&playlist=${servicesList[modal.index].youtubeId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
-                title={servicesList[modal.index].title}
-                className="w-[180%] h-[180%] -translate-x-[22%] -translate-y-[22%] object-cover pointer-events-none opacity-90 scale-110"
-              />
+            <div className="relative w-full h-full rounded-xl overflow-hidden bg-black/90">
+              {/* Service Preview Images with Preloading & Smooth Transition */}
+              {servicesList.map((service, idx) => (
+                <div
+                  key={idx}
+                  className={`absolute inset-0 transition-opacity duration-300 ease-out ${
+                    modal.index === idx ? "opacity-100" : "opacity-0 pointer-events-none"
+                  }`}
+                >
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    sizes="(max-width: 640px) 260px, (max-width: 768px) 360px, 420px"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              ))}
 
-              {/* Dark Overlay Vignette */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
+              {/* Dark Overlay Vignette for text/badge readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 pointer-events-none" />
 
               {/* Center Circular "View" Badge */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-14 h-14 rounded-full bg-[#FF0043] text-white font-space font-black text-xs tracking-widest uppercase flex items-center justify-center shadow-xl shadow-[#FF0043]/50 animate-pulse border border-white/20">
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#FF0043] text-white font-space font-black text-xs tracking-widest uppercase flex items-center justify-center shadow-xl shadow-[#FF0043]/50 border border-white/20">
                   VIEW
                 </div>
               </div>
 
               {/* Bottom Tag */}
-              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between font-space text-[10px] font-extrabold uppercase tracking-widest text-white/80">
-                <span className="bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/15">
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between font-space text-[10px] font-extrabold uppercase tracking-widest text-white/90 pointer-events-none">
+                <span className="bg-black/75 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/15">
                   {servicesList[modal.index].num} / 06
                 </span>
-                <span className="text-[#ffe600] bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/15">
+                <span className="text-[#ffe600] bg-black/75 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/15">
                   {servicesList[modal.index].title}
                 </span>
               </div>

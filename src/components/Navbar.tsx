@@ -23,19 +23,17 @@ export const Navbar: React.FC<NavbarProps> = ({ className = "" }) => {
     <header className={`w-full bg-transparent text-white py-6 md:py-8 font-sans relative z-50 ${className}`}>
       <div className="max-w-[1380px] mx-auto px-6 md:px-12 flex items-center justify-between relative z-50">
         {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-3.5 group">
-          <div className="relative w-10 h-10 flex items-center justify-center group-hover:scale-105 transition-transform">
+        <Link href="/" className="flex items-center group py-0.5" aria-label="All By Play Home">
+          <div className="relative h-11 sm:h-13 md:h-14 w-auto flex items-center group-hover:scale-105 transition-transform duration-300">
             <Image
-              src="/ABP_logo.png"
-              alt="All By Play Logo"
-              width={40}
-              height={40}
-              className="object-contain"
+              src="/abp_gradientwhite_opacity.png"
+              alt="All By Play"
+              width={150}
+              height={130}
+              className="h-11 sm:h-13 md:h-14 w-auto object-contain"
+              priority
             />
           </div>
-          <span className="font-sans font-black text-2xl md:text-3xl tracking-tight text-white lowercase">
-            allbyplay
-          </span>
         </Link>
 
         {/* Slide Tabs Navigation (Desktop) */}

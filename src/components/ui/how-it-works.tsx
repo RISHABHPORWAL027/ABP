@@ -140,7 +140,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
   const stepsData = steps || defaultStepsData;
 
   const defaultTitle = (
-    <h2 className="font-outfit font-extrabold text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white">
+    <h2 className="font-sans font-extrabold text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white">
       <TypewriterText
         words={[
           "A simple way to work together",
@@ -170,7 +170,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
         <div className="max-w-4xl mb-16 md:mb-20">
           {title !== undefined ? (
             typeof title === "string" ? (
-              <h2 className="font-outfit font-extrabold text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white">
+              <h2 className="font-sans font-extrabold text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white">
                 {title}
               </h2>
             ) : (

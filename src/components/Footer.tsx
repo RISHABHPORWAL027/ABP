@@ -165,15 +165,12 @@ export const Footer: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-2.5 sm:gap-4">
             <div className="flex items-center gap-2.5">
               <Image
-                src="/ABP_logo.png"
-                alt="ABP Logo"
-                width={26}
-                height={26}
-                className="object-contain"
+                src="/abp_gradientwhite_opacity.png"
+                alt="All By Play Logo"
+                width={38}
+                height={33}
+                className="h-8 w-auto object-contain"
               />
-              <span className="font-sans font-black text-base tracking-wider uppercase text-white">
-                allbyplay <span className="text-[#FF0043]">.</span>
-              </span>
             </div>
 
             <span className="hidden sm:inline-block text-white/20">•</span>

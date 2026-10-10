@@ -53,7 +53,7 @@ export const FounderSection: React.FC = () => {
                   />
 
                   {/* Distinct Colored Quote */}
-                  <blockquote className="font-serif font-normal text-2xl sm:text-3xl lg:text-[34px] leading-[1.25] text-[#FF0043] mb-8">
+                  <blockquote className="font-playfair italic font-normal text-2xl sm:text-3xl lg:text-[34px] leading-[1.25] text-[#FF0043] mb-8">
                     &ldquo;The campaign should understand the music before it asks people to care.&rdquo;
                   </blockquote>
 

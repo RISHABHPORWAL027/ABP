@@ -27,8 +27,8 @@ export const HeroSection: React.FC = () => {
             </span>
           </div>
 
-          {/* Main Headline with exact design specs: Syne 700, 100.84px, line-height 88.74px, letter-spacing -7.56px */}
-          <h1 className="font-syne font-bold text-4xl sm:text-6xl md:text-7xl lg:text-[88px] xl:text-[100.84px] tracking-[-2px] sm:tracking-[-4px] md:tracking-[-5px] lg:tracking-[-6.5px] xl:tracking-[-7.56px] leading-[0.95] md:leading-[0.9] xl:leading-[88.74px] text-white mb-6 sm:mb-8">
+          {/* Main Headline with Satoshi font */}
+          <h1 className="font-sans font-black text-4xl sm:text-6xl md:text-7xl lg:text-[88px] xl:text-[98px] tracking-tight leading-[0.96] md:leading-[0.92] text-white mb-6 sm:mb-8">
             Let&apos;s turn your <br />
             melodies into{" "}
             <TypewriterText
