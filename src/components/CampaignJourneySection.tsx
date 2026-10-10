@@ -123,7 +123,7 @@ export const CampaignJourneySection: React.FC = () => {
           {servicesList.map((service, idx) => (
             <ScrollReveal key={idx} direction="up" delay={idx * 100}>
               <Link
-                href={`/services/${service.slug}`}
+                href="/services"
                 onMouseEnter={() => setModal({ active: true, index: idx })}
                 onMouseLeave={() => setModal({ active: false, index: idx })}
                 className="group py-8 px-4 sm:px-6 -mx-4 sm:-mx-6 border-b border-white/15 cursor-pointer block transition-colors duration-300 hover:bg-white/[0.04] rounded-2xl"

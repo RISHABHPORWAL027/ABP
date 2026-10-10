@@ -10,6 +10,7 @@ import { HowItWorks } from "@/components/ui/how-it-works";
 import { AdmitOneTicketCard } from "@/components/ui/admit-one-ticket";
 import { AnimatedEqualizer } from "@/components/AnimatedEqualizer";
 import { TypewriterText } from "@/components/TypewriterText";
+import { AnimatedFolder } from "@/components/ui/3d-folder";
 
 export default function ServicesOverviewPage() {
   const [activeTab, setActiveTab] = useState("01");
@@ -228,34 +229,66 @@ export default function ServicesOverviewPage() {
         </section>
 
         {/* 2. WHAT WE HELP WITH SECTION */}
-        <section className="w-full bg-[#F5F4EE] text-[#000000] py-20 md:py-28 font-sans relative">
+        <section className="w-full bg-[#F5F4EE] text-[#000000] py-20 md:py-28 font-sans relative overflow-hidden">
           <div className="max-w-[1380px] mx-auto px-6 md:px-12">
-            <div className="max-w-4xl">
-              <ScrollReveal direction="up">
-                <h2 className="font-sans font-extrabold text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.05] text-[#000000] mb-8">
-                  <TypewriterText
-                    words={[
-                      "What we help with",
-                      "Full campaign strategy",
-                      "Digital & PR rollout",
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              {/* Left Column: Text Content */}
+              <div className="lg:col-span-7">
+                <ScrollReveal direction="up">
+                  <h2 className="font-sans font-extrabold text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.05] text-[#000000] mb-8">
+                    <TypewriterText
+                      words={[
+                        "What we help with",
+                        "Full campaign strategy",
+                        "Digital & PR rollout",
+                      ]}
+                      className="text-[#000000]"
+                      cursorColor="text-[#FF0043]"
+                    />
+                  </h2>
+                </ScrollReveal>
+
+                <ScrollReveal direction="up" delay={100}>
+                  <p className="font-sans font-bold text-xl sm:text-2xl lg:text-[30px] text-[#111111] leading-snug tracking-tight mb-8">
+                    Every artist and project needs something a little different. Some need a stronger rollout. Some need more visibility. Some need a better content rhythm.
+                  </p>
+                </ScrollReveal>
+
+                <ScrollReveal direction="up" delay={200}>
+                  <p className="font-sans font-medium text-black/70 text-base sm:text-lg leading-relaxed">
+                    And sometimes, the work is about building the full picture from scratch. That&apos;s why we don&apos;t work with a fixed template. We look at what the music needs, what the artist needs, and what the release actually deserves.
+                  </p>
+                </ScrollReveal>
+              </div>
+
+              {/* Right Column: 3D Folder Component */}
+              <div className="lg:col-span-5 flex justify-center lg:justify-end">
+                <ScrollReveal direction="left" delay={250}>
+                  <AnimatedFolder
+                    title="Campaign Toolkit"
+                    projects={[
+                      {
+                        id: "1",
+                        title: "Release Rollouts",
+                        tag: "Rollout & Strategy",
+                        image: "/services/release_camp.png",
+                      },
+                      {
+                        id: "2",
+                        title: "Spotify Growth",
+                        tag: "Streaming & Playlists",
+                        image: "/services/spotify_growth.png",
+                      },
+                      {
+                        id: "3",
+                        title: "PR Activation",
+                        tag: "Press & Cultural Reach",
+                        image: "/services/pr_Activation.png",
+                      },
                     ]}
-                    className="text-[#000000]"
-                    cursorColor="text-[#FF0043]"
                   />
-                </h2>
-              </ScrollReveal>
-
-              <ScrollReveal direction="up" delay={100}>
-                <p className="font-sans font-bold text-xl sm:text-3xl lg:text-[34px] text-[#111111] leading-snug tracking-tight mb-8 max-w-4xl">
-                  Every artist and project needs something a little different. Some need a stronger rollout. Some need more visibility. Some need a better content rhythm.
-                </p>
-              </ScrollReveal>
-
-              <ScrollReveal direction="up" delay={200}>
-                <p className="font-sans font-medium text-black/70 text-base sm:text-lg md:text-xl leading-relaxed max-w-3xl">
-                  And sometimes, the work is about building the full picture from scratch. That&apos;s why we don&apos;t work with a fixed template. We look at what the music needs, what the artist needs, and what the release actually deserves.
-                </p>
-              </ScrollReveal>
+                </ScrollReveal>
+              </div>
             </div>
           </div>
         </section>
