@@ -139,35 +139,29 @@ Every website should have at minimum:
 
 # 4. Typography System
 
-Typography must have a clear hierarchy.
+**Primary Font Family:** `"Montserrat", sans-serif` across the entire website.
 
-Use a consistent structure:
+### Unified Global Typography Scale
 
-```
-Display / Hero Heading
-↓
-H1
-↓
-H2
-↓
-H3
-↓
-H4
-↓
-Body
-↓
-Small / Caption
-```
+| Hierarchy Role | Tailwind Classes | Semantic Element | Used For |
+|---|---|---|---|
+| **Page Hero (H1)** | `font-sans font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[92px] tracking-tight leading-[0.95]` | `<h1>` | Landing Hero headlines (`/`, `/about`, `/services`) |
+| **Section Heading (H2)** | `font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05]` | `<h2>` | Major section titles across all pages |
+| **Section Eyebrow / Tag** | `font-space font-extrabold text-xs sm:text-sm tracking-[2px] uppercase` | `<span>` / `<div>` | Category badges, section labels, pill indicators |
+| **Lead Subtitle** | `font-sans font-bold text-lg sm:text-xl md:text-2xl leading-snug` | `<p>` | High-contrast highlight sentences beneath H2 |
+| **Body Paragraph** | `font-sans font-medium text-base sm:text-lg leading-relaxed` | `<p>` | Standard descriptive content paragraphs |
+| **Card / Item Title (H3)** | `font-sans font-extrabold text-2xl sm:text-3xl md:text-4xl tracking-tight leading-[1.1]` | `<h3>` | Carousel items, ticket specs, feature cards |
+| **Captions & Meta** | `font-sans text-xs sm:text-sm font-semibold tracking-wider uppercase` | `<span>` | Credits, dates, footnotes, secondary stats |
 
 ### Heading requirements
 
 All headings should:
 
 - Have a clear visual hierarchy.
-- Use consistent font weights.
-- Have appropriate line-height.
-- Use the global heading color.
-- Avoid excessive capitalization.
+- Use consistent font weights (`font-black` for H1/H2, `font-bold` for leads, `font-medium` for body).
+- Have appropriate line-height (`leading-[0.95]` for hero, `leading-[1.05]` for H2).
+- Use the global heading color and maintain high contrast.
+- Avoid excessive capitalization (prefer Title/Sentence Case; reserve uppercase for category tags).
 - Maintain consistent spacing above and below.
 - Look good at every responsive breakpoint.
 

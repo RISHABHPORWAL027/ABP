@@ -1,31 +1,12 @@
 import type { Metadata } from "next";
-import { Playfair_Display } from "next/font/google";
-import localFont from "next/font/local";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 
-const fontSatoshi = localFont({
-  src: [
-    {
-      path: "../../public/fonts/satoshi/Satoshi-Variable.woff2",
-      style: "normal",
-      weight: "300 900",
-    },
-    {
-      path: "../../public/fonts/satoshi/Satoshi-VariableItalic.woff2",
-      style: "italic",
-      weight: "300 900",
-    },
-  ],
-  variable: "--font-satoshi",
-  display: "swap",
-});
-
-const fontPlayfair = Playfair_Display({
-  variable: "--font-playfair",
+const fontMontserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
+  variable: "--font-montserrat",
   display: "swap",
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -93,7 +74,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontSatoshi.variable} ${fontPlayfair.variable} h-full antialiased scroll-smooth`}
+      className={`${fontMontserrat.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col font-sans bg-black text-white selection:bg-[#FF0043] selection:text-white">
         {children}

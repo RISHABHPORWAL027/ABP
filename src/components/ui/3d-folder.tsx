@@ -7,7 +7,8 @@ import { cn } from "@/lib/utils";
 
 export interface ProjectCardItem {
   id: string | number;
-  image: string;
+  image?: string;
+  logo?: string;
   title: string;
   tag?: string;
 }
@@ -22,21 +23,24 @@ export interface AnimatedFolderProps {
 const DEFAULT_PROJECTS: ProjectCardItem[] = [
   {
     id: "1",
-    title: "Release Rollouts",
-    tag: "Campaign Strategy",
-    image: "/services/release_camp.png",
+    title: "Instagram",
+    tag: "Social & Reels",
+    image: "/services/instagram_content.png",
+    logo: "/labels_logo/company_logo/instagram-logo.avif",
   },
   {
     id: "2",
-    title: "Spotify Growth",
-    tag: "Data & Streams",
+    title: "Spotify",
+    tag: "Streaming Growth",
     image: "/services/spotify_growth.png",
+    logo: "/labels_logo/company_logo/spotify-logo.png",
   },
   {
     id: "3",
-    title: "PR Activation",
-    tag: "Press & Culture",
-    image: "/services/pr_Activation.png",
+    title: "YouTube",
+    tag: "Video & Ads",
+    image: "/services/ads_marketing.png",
+    logo: "/labels_logo/company_logo/youtube-logo.png",
   },
 ];
 
@@ -49,6 +53,41 @@ export const AnimatedFolder: React.FC<AnimatedFolderProps> = ({
   const [isHovered, setIsHovered] = useState(false);
 
   const cardItems = projects.length > 0 ? projects.slice(0, 3) : DEFAULT_PROJECTS;
+
+  const renderCardContent = (item: ProjectCardItem) => (
+    <div className="relative w-full h-full flex flex-col items-center justify-between p-2 select-none overflow-hidden">
+      {item.image && (
+        <Image
+          src={item.image}
+          alt={item.title}
+          fill
+          className="object-cover"
+          sizes="90px"
+        />
+      )}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/30" />
+
+      {/* Prominent Logo Container Displayed On The Card */}
+      {item.logo && (
+        <div className="relative z-10 mt-2 w-9 h-9 rounded-xl bg-white shadow-xl flex items-center justify-center p-1.5 border border-white/90">
+          <Image
+            src={item.logo}
+            alt={`${item.title} logo`}
+            width={28}
+            height={28}
+            className="object-contain max-h-6 max-w-6"
+          />
+        </div>
+      )}
+
+      {/* Card Title */}
+      <div className="relative z-10 w-full text-center mt-auto pb-0.5">
+        <span className="text-[10px] font-black text-white tracking-wide uppercase drop-shadow block truncate">
+          {item.title}
+        </span>
+      </div>
+    </div>
+  );
 
   return (
     <div
@@ -106,19 +145,7 @@ export const AnimatedFolder: React.FC<AnimatedFolderProps> = ({
                 }}
                 className="absolute bottom-0 w-[78px] h-[108px] rounded-xl overflow-hidden shadow-xl border-[2px] border-white bg-neutral-900 pointer-events-auto"
               >
-                <div className="relative w-full h-full">
-                  <Image
-                    src={cardItems[0].image}
-                    alt={cardItems[0].title}
-                    fill
-                    className="object-cover"
-                    sizes="90px"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
-                  <span className="absolute bottom-1.5 left-2 text-[10px] font-bold text-white tracking-wide truncate max-w-[85%] drop-shadow">
-                    {cardItems[0].title}
-                  </span>
-                </div>
+                {renderCardContent(cardItems[0])}
               </motion.div>
             )}
 
@@ -153,19 +180,7 @@ export const AnimatedFolder: React.FC<AnimatedFolderProps> = ({
                 }}
                 className="absolute bottom-0 w-[78px] h-[108px] rounded-xl overflow-hidden shadow-2xl border-[2px] border-white bg-neutral-900 pointer-events-auto"
               >
-                <div className="relative w-full h-full">
-                  <Image
-                    src={cardItems[1].image}
-                    alt={cardItems[1].title}
-                    fill
-                    className="object-cover"
-                    sizes="90px"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
-                  <span className="absolute bottom-1.5 left-2 text-[10px] font-bold text-white tracking-wide truncate max-w-[85%] drop-shadow">
-                    {cardItems[1].title}
-                  </span>
-                </div>
+                {renderCardContent(cardItems[1])}
               </motion.div>
             )}
 
@@ -200,19 +215,7 @@ export const AnimatedFolder: React.FC<AnimatedFolderProps> = ({
                 }}
                 className="absolute bottom-0 w-[78px] h-[108px] rounded-xl overflow-hidden shadow-xl border-[2px] border-white bg-neutral-900 pointer-events-auto"
               >
-                <div className="relative w-full h-full">
-                  <Image
-                    src={cardItems[2].image}
-                    alt={cardItems[2].title}
-                    fill
-                    className="object-cover"
-                    sizes="90px"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
-                  <span className="absolute bottom-1.5 left-2 text-[10px] font-bold text-white tracking-wide truncate max-w-[85%] drop-shadow">
-                    {cardItems[2].title}
-                  </span>
-                </div>
+                {renderCardContent(cardItems[2])}
               </motion.div>
             )}
           </div>

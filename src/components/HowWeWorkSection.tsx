@@ -1,9 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { ScrollReveal } from "@/components/ScrollReveal";
-
 import { TypewriterText } from "@/components/TypewriterText";
 
 export const HowWeWorkSection: React.FC = () => {
@@ -25,23 +23,26 @@ export const HowWeWorkSection: React.FC = () => {
   return (
     <section className="w-full bg-white font-sans overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[85vh]">
-        {/* Left Column: Image with "Listen first. Build second." caption */}
-        <div className="lg:col-span-6 relative min-h-[400px] lg:min-h-full bg-[#1A1A1A] group overflow-hidden">
-          <Image
-            src="/about-studio-console.jpg"
-            alt="All By Play Music Recording Studio Desk"
-            fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover group-hover:scale-105 transition-transform duration-700"
-            priority
-          />
+        {/* Left Column: Video with "Listen first. Build second." caption */}
+        <div className="lg:col-span-6 relative min-h-[450px] lg:min-h-full bg-[#111111] group overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          >
+            <source src="/how-we-work.mp4" type="video/mp4" />
+            <source src="/how%20we%20work.mp4" type="video/mp4" />
+          </video>
+
           {/* Subtle Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
 
           {/* Bottom Left Caption */}
-          <div className="absolute bottom-8 left-8 right-8 z-10">
+          <div className="absolute bottom-8 left-8 right-8 z-10 pointer-events-none">
             <ScrollReveal direction="up">
-              <p className="font-playfair italic font-normal text-2xl sm:text-3xl md:text-4xl text-white tracking-tight">
+              <p className="font-sans italic font-medium text-xl sm:text-2xl md:text-3xl text-white tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                 <TypewriterText
                   words={["Listen first. Build second.", "Strategy shaped around the music", "Built for long-term growth"]}
                   className="text-white"
@@ -56,13 +57,13 @@ export const HowWeWorkSection: React.FC = () => {
         <div className="lg:col-span-6 bg-[#FF0043] text-white p-8 sm:p-12 md:p-16 lg:p-20 flex flex-col justify-center">
           <ScrollReveal direction="up">
             {/* Headline */}
-            <h2 className="font-sans font-black text-5xl sm:text-7xl lg:text-[84px] tracking-tight leading-[0.95] mb-8">
+            <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] mb-8">
               How we <br />
               work
             </h2>
 
             {/* Main Paragraph 1 */}
-            <p className="font-sans font-bold text-lg sm:text-2xl text-white leading-relaxed mb-6 max-w-xl">
+            <p className="font-sans font-bold text-lg sm:text-xl md:text-2xl text-white leading-relaxed mb-6 max-w-xl">
               We don&apos;t force every project into the same shape. Some need release support. Some need social energy. Some need Spotify focus. Some need all of it together.
             </p>
 

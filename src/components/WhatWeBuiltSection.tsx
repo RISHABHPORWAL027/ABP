@@ -37,7 +37,7 @@ export const WhatWeBuiltSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-16 md:mb-24">
           <div className="lg:col-span-6">
             <ScrollReveal direction="up">
-              <h2 className="font-sans font-black text-4xl sm:text-6xl lg:text-[76px] tracking-tight leading-[0.98] text-[#000000]">
+              <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-[#000000]">
                 What we&apos;ve <br />
                 <TypewriterText
                   words={["built so far", "achieved", "delivered"]}
@@ -50,7 +50,7 @@ export const WhatWeBuiltSection: React.FC = () => {
 
           <div className="lg:col-span-6 pt-2">
             <ScrollReveal direction="up" delay={100}>
-              <p className="font-sans font-medium text-base sm:text-lg lg:text-xl text-black/70 leading-relaxed max-w-xl">
+              <p className="font-sans font-medium text-base sm:text-lg text-black/70 leading-relaxed max-w-xl">
                 All By Play has grown through work across indie artists, labels, live shows, festivals, and profile-building campaigns. The team has worked on release rollouts, Instagram campaigns, PR, Spotify strategy, ads, and creative direction.
               </p>
             </ScrollReveal>

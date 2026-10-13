@@ -464,21 +464,21 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
         <div className="max-w-3xl mx-auto text-center mb-16 md:mb-24">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/10 mb-4 backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-[#FF0043] animate-pulse" />
-            <span className="font-space font-extrabold text-[11px] sm:text-xs tracking-[2px] uppercase text-white/90">
+            <span className="font-space font-extrabold text-xs sm:text-sm tracking-[2px] uppercase text-white/90">
               HOW WE WORK
             </span>
           </div>
 
           {title !== undefined ? (
             typeof title === "string" ? (
-              <h2 className="font-sans font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.08] mb-4">
+              <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-white leading-[1.05] mb-4">
                 {title}
               </h2>
             ) : (
               title
             )
           ) : (
-            <h2 className="font-sans font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.08] mb-4">
+            <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-white leading-[1.05] mb-4">
               A simple way to work together.
             </h2>
           )}

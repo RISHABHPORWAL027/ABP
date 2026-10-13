@@ -180,7 +180,7 @@ const CardItem: React.FC<TestimonialCardProps> = ({
         ))}
       </div>
 
-      {/* Review Quote Text in Accent Font: Playfair Display */}
+      {/* Review Quote Text in Montserrat */}
       <p className="font-playfair italic text-base sm:text-lg text-white/95 leading-relaxed mb-6 font-normal tracking-wide">
         &ldquo;{review}&rdquo;
       </p>

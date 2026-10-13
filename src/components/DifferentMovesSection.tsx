@@ -11,10 +11,10 @@ export const DifferentMovesSection: React.FC = () => {
   const campaignCards = [
     {
       num: "01",
-      category: "CAMPAIGN STRATEGY",
+      category: "RELEASE CAMPAIGNS",
       subtags: "RELEASE POSITIONING · CONTENT DIRECTION · ROLLOUT",
       title: "A release rollout with a reason to listen.",
-      footerText: "One connected campaign",
+      footerText: "Pre & post-release strategy",
       bgColor: "bg-purple-700",
       textColor: "text-white",
       accentColor: "border-white/40 text-white hover:bg-white hover:text-purple-700",
@@ -28,6 +28,23 @@ export const DifferentMovesSection: React.FC = () => {
     },
     {
       num: "02",
+      category: "INSTAGRAM & REELS",
+      subtags: "CREATIVE EDITS · CREATOR NETWORK · SOCIAL MOMENTUM",
+      title: "A social push designed for music culture.",
+      footerText: "Content people want to share",
+      bgColor: "bg-[#FF6B4A]",
+      textColor: "text-white",
+      accentColor: "border-white/40 text-white hover:bg-white hover:text-[#FF6B4A]",
+      backDetails: {
+        stat1: "14.2M",
+        stat1Label: "REELS IMPRESSIONS",
+        stat2: "350+",
+        stat2Label: "AUDIO USES",
+        description: "Short-form video assets, sound bite optimization, and high-impact creator network distribution.",
+      },
+    },
+    {
+      num: "03",
       category: "SPOTIFY GROWTH",
       subtags: "AUDIENCE DATA · PLAYLIST STRATEGY · PROFILE GROWTH",
       title: "Turning discovery into lasting listeners.",
@@ -44,20 +61,54 @@ export const DifferentMovesSection: React.FC = () => {
       },
     },
     {
-      num: "03",
-      category: "INSTAGRAM & REELS",
-      subtags: "CREATIVE EDITS · CREATOR NETWORK · SOCIAL MOMENTUM",
-      title: "A social push designed for music culture.",
-      footerText: "Content people want to share",
+      num: "04",
+      category: "PR ACTIVATION",
+      subtags: "EDITORIAL REACH · MEDIA OUTREACH · PRESS FEATURES",
+      title: "Story-led press that puts the music into culture.",
+      footerText: "Multi-channel media reach",
+      bgColor: "bg-[#FF0043]",
+      textColor: "text-white",
+      accentColor: "border-white/40 text-white hover:bg-white hover:text-[#FF0043]",
+      backDetails: {
+        stat1: "45+",
+        stat1Label: "EDITORIAL FEATURES",
+        stat2: "10M+",
+        stat2Label: "CULTURAL AUDIENCE",
+        description: "Story-led placements across national print, music blogs, digital publications, radio interviews, and podcasts.",
+      },
+    },
+    {
+      num: "05",
+      category: "ADS MARKETING",
+      subtags: "TARGETED MEDIA · CONVERSION FUNNELS · DSP REDIRECTION",
+      title: "High-precision ads that convert listeners into fans.",
+      footerText: "Data-guided ad spend",
+      bgColor: "bg-[#009082]",
+      textColor: "text-white",
+      accentColor: "border-white/40 text-white hover:bg-white hover:text-[#009082]",
+      backDetails: {
+        stat1: "3.8X",
+        stat1Label: "STREAMING CONVERSION",
+        stat2: "68%",
+        stat2Label: "LOWER COST-PER-SAVE",
+        description: "High-ROI Instagram conversion ads, YouTube video promos, and smart streaming redirection campaigns.",
+      },
+    },
+    {
+      num: "06",
+      category: "BRANDING SUPPORT",
+      subtags: "VISUAL IDENTITY · ARTIST PERSONA · CREATIVE DIRECTION",
+      title: "A visual identity that makes the music unforgettable.",
+      footerText: "Consistent across every touchpoint",
       bgColor: "bg-[#f5f5f0]",
       textColor: "text-[#000000]",
       accentColor: "border-black/30 text-black hover:bg-black hover:text-white",
       backDetails: {
-        stat1: "14.2M",
-        stat1Label: "REELS IMPRESSIONS",
-        stat2: "350+",
-        stat2Label: "AUDIO USES",
-        description: "Short-form video assets, sound bite optimization, and high-impact creator network distribution.",
+        stat1: "100%",
+        stat1Label: "BESPOKE VISUAL DIRECTION",
+        stat2: "360°",
+        stat2Label: "ACROSS ALL PLATFORMS",
+        description: "Custom cover art direction, typography guidelines, stage persona building, and unified social media asset design.",
       },
     },
   ];
@@ -81,12 +132,12 @@ export const DifferentMovesSection: React.FC = () => {
           <ScrollReveal direction="up">
             <div className="flex items-center gap-2 mb-4">
               <span className="w-2.5 h-2.5 rounded-full bg-[#FF0043] inline-block animate-pulse" />
-              <span className="font-space font-extrabold text-xs tracking-[2px] uppercase text-[#FF0043]">
+              <span className="font-space font-extrabold text-xs sm:text-sm tracking-[2px] uppercase text-[#FF0043]">
                 CAMPAIGNS
               </span>
             </div>
 
-            <h2 className="font-sans font-extrabold text-2xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-white mb-6 min-h-[1.1em]">
+            <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white mb-6 min-h-[1.1em]">
               <TypewriterText
                 words={["Different music. Different moves."]}
                 loop={false}

@@ -17,6 +17,7 @@ export interface DiagonalMarqueeCarouselProps {
   className?: string;
   cardClassName?: string;
   fadeClassName?: string;
+  onCardClick?: (card: CardItem) => void;
 }
 
 const DEFAULT_CARDS: CardItem[] = [
@@ -52,9 +53,18 @@ const DEFAULT_CARDS: CardItem[] = [
   },
 ];
 
-const Card = ({ card, className }: { card: CardItem; className?: string }) => {
+const Card = ({
+  card,
+  className,
+  onClick,
+}: {
+  card: CardItem;
+  className?: string;
+  onClick?: () => void;
+}) => {
   return (
     <div
+      onClick={onClick}
       className={cn(
         "group relative h-[300px] w-[400px] shrink-0 cursor-pointer overflow-hidden rounded-xl shadow-2xl transition-all duration-300",
         className,
@@ -66,14 +76,19 @@ const Card = ({ card, className }: { card: CardItem; className?: string }) => {
         loading="lazy"
         className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent transition-opacity group-hover:opacity-60" />
-      {card.title && (
-        <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
-          <span className="font-sans font-extrabold text-xs sm:text-sm text-white drop-shadow-md truncate tracking-tight">
-            {card.title}
-          </span>
-        </div>
-      )}
+      {/* Subtle hover gradient and title indicator */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+        {card.title && (
+          <div className="flex items-center justify-between w-full">
+            <span className="font-sans font-extrabold text-xs sm:text-sm text-white drop-shadow-md truncate tracking-tight">
+              {card.title}
+            </span>
+            <span className="text-[10px] uppercase font-space font-extrabold tracking-widest text-[#FF0043] bg-white/10 px-2 py-0.5 rounded backdrop-blur-sm">
+              View
+            </span>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
@@ -83,11 +98,13 @@ const MarqueeRow = ({
   speed,
   direction,
   cardClassName,
+  onCardClick,
 }: {
   cards: CardItem[];
   speed: number;
   direction: 1 | -1;
   cardClassName?: string;
+  onCardClick?: (card: CardItem) => void;
 }) => {
   const animationClass =
     direction === -1 ? "animate-marquee-left" : "animate-marquee-right";
@@ -104,14 +121,22 @@ const MarqueeRow = ({
         <div className="flex shrink-0">
           {cards.map((card, idx) => (
             <div key={`${card.id}-${idx}`} className="shrink-0 pr-6 sm:pr-8">
-              <Card card={card} className={cardClassName} />
+              <Card
+                card={card}
+                className={cardClassName}
+                onClick={() => onCardClick?.(card)}
+              />
             </div>
           ))}
         </div>
         <div className="flex shrink-0">
           {cards.map((card, idx) => (
             <div key={`${card.id}-${idx}-copy`} className="shrink-0 pr-6 sm:pr-8">
-              <Card card={card} className={cardClassName} />
+              <Card
+                card={card}
+                className={cardClassName}
+                onClick={() => onCardClick?.(card)}
+              />
             </div>
           ))}
         </div>
@@ -128,6 +153,7 @@ export default function DiagonalMarqueeCarousel({
   className = "",
   cardClassName = "",
   fadeClassName = "",
+  onCardClick,
 }: DiagonalMarqueeCarouselProps) {
   const rotationStyle = {
     transform: `rotate(${angle}deg)`,
@@ -172,30 +198,35 @@ export default function DiagonalMarqueeCarousel({
           speed={baseSpeed}
           direction={-1}
           cardClassName={cardClassName}
+          onCardClick={onCardClick}
         />
         <MarqueeRow
           cards={rowCardsReverse}
           speed={baseSpeed - 15 > 20 ? baseSpeed - 15 : 30}
           direction={alternateDirections ? 1 : -1}
           cardClassName={cardClassName}
+          onCardClick={onCardClick}
         />
         <MarqueeRow
           cards={rowCards}
           speed={baseSpeed + 15}
           direction={-1}
           cardClassName={cardClassName}
+          onCardClick={onCardClick}
         />
         <MarqueeRow
           cards={rowCardsReverse}
           speed={baseSpeed - 6 > 20 ? baseSpeed - 6 : 35}
           direction={alternateDirections ? 1 : -1}
           cardClassName={cardClassName}
+          onCardClick={onCardClick}
         />
         <MarqueeRow
           cards={rowCards}
           speed={baseSpeed + 24}
           direction={-1}
           cardClassName={cardClassName}
+          onCardClick={onCardClick}
         />
       </div>
 

@@ -631,7 +631,7 @@ const CSS = `
 }
 .dcc-quote {
   margin: 0;
-  font-family: var(--font-playfair), "Playfair Display", Georgia, serif !important;
+  font-family: var(--font-montserrat), "Montserrat", sans-serif !important;
   font-style: italic;
   font-size: clamp(14px, 1.4cqw, 18px);
   line-height: 1.25;

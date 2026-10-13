@@ -7,6 +7,7 @@ import { AboutHeroSection } from "@/components/AboutHeroSection";
 import { FounderSection } from "@/components/FounderSection";
 import { HowWeWorkSection } from "@/components/HowWeWorkSection";
 import { WhatWeBuiltSection } from "@/components/WhatWeBuiltSection";
+import { JourneyMorphSliderSection } from "@/components/JourneyMorphSliderSection";
 
 export default function AboutPage() {
   return (
@@ -30,6 +31,9 @@ export default function AboutPage() {
 
         {/* 4. WHAT WE'VE BUILT SO FAR SECTION (BELOW HOW WE WORK) */}
         <WhatWeBuiltSection />
+
+        {/* 5. JOURNEY STEPPED MORPH SLIDER (BELOW WHAT WE'VE BUILT) */}
+        <JourneyMorphSliderSection />
       </main>
 
       {/* Footer */}

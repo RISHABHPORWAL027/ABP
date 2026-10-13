@@ -1,11 +1,10 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { ArrowDown } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { TypewriterText } from "@/components/TypewriterText";
-import { WovenLightBackground } from "@/components/ui/woven-light-background";
+import { AboutPhoneReel } from "@/components/AboutPhoneReel";
 
 interface AboutHeroSectionProps {
   className?: string;
@@ -14,9 +13,6 @@ interface AboutHeroSectionProps {
 export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({ className = "" }) => {
   return (
     <section id="about" className={`w-full bg-[#FFFFFF] text-[#000000] py-16 md:py-24 font-sans relative overflow-hidden ${className}`}>
-      {/* 3D Woven Light Interactive Particle Background (Light Mode) */}
-      <WovenLightBackground particleCount={14000} theme="light" />
-
       <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Text Content */}
@@ -24,23 +20,23 @@ export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({ className = 
             <ScrollReveal direction="up">
               {/* Red Sub-headline / Badge */}
               <div className="mb-4 sm:mb-6">
-                <span className="font-space font-extrabold text-xs sm:text-sm tracking-[2.5px] uppercase text-[#FF0043]">
+                <span className="font-space font-extrabold text-xs sm:text-sm tracking-[2px] uppercase text-[#FF0043]">
                   INDEPENDENT MUSIC MARKETING · INDIA
                 </span>
               </div>
 
               {/* Main Headline */}
-              <h1 className="font-sans font-black text-5xl sm:text-7xl md:text-8xl lg:text-[96px] tracking-tight leading-[0.95] text-[#000000] mb-8">
+              <h1 className="font-sans font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[92px] tracking-tight leading-[0.95] text-[#000000] mb-8">
                 About <br />
                 <TypewriterText
                   words={["All By Play", "Visual Strategy", "Music Campaigns"]}
-                  className="font-playfair italic font-normal text-[#FF0043]"
+                  className="font-black text-[#FF0043]"
                   cursorColor="text-[#FF0043]"
                 />
               </h1>
 
               {/* Paragraph */}
-              <p className="font-sans font-medium text-lg sm:text-xl md:text-2xl text-black/80 max-w-2xl leading-relaxed mb-10">
+              <p className="font-sans font-medium text-base sm:text-xl md:text-2xl text-black/80 max-w-2xl leading-relaxed mb-10">
                 All By Play is a music marketing company built for artists, labels, and festivals that want more than generic promotion. We help music move with better strategy, sharper storytelling, and campaigns that actually fit the artist.
               </p>
 
@@ -57,20 +53,10 @@ export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({ className = 
             </ScrollReveal>
           </div>
 
-          {/* Right Media Image Card */}
-          <div className="lg:col-span-5 w-full flex justify-center">
-            <ScrollReveal direction="left" delay={150} className="w-full">
-              <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl bg-[#1A1A1A] border border-black/10 group">
-                <Image
-                  src="/about-studio-console.jpg"
-                  alt="All By Play Music Studio Console"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 45vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-50" />
-              </div>
+          {/* Right Column: Smartphone Mockup with Instagram Reel Video */}
+          <div className="lg:col-span-5 w-full flex items-center justify-center lg:justify-end relative py-6 sm:py-10">
+            <ScrollReveal direction="left" delay={150} className="w-full flex justify-center lg:justify-end">
+              <AboutPhoneReel />
             </ScrollReveal>
           </div>
         </div>

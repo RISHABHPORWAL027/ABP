@@ -98,12 +98,12 @@ export const CampaignJourneySection: React.FC = () => {
           <ScrollReveal direction="up">
             <div className="flex items-center gap-2 mb-4">
               <span className="w-2.5 h-2.5 rounded-full bg-[#FF0043] inline-block animate-pulse" />
-              <span className="font-space font-extrabold text-xs tracking-[2px] uppercase text-[#FF0043]">
+              <span className="font-space font-extrabold text-xs sm:text-sm tracking-[2px] uppercase text-[#FF0043]">
                 SERVICES
               </span>
             </div>
 
-            <h2 className="font-sans font-extrabold text-4xl sm:text-6xl tracking-tight leading-[1.05] text-white mb-6 min-h-[1.1em]">
+            <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white mb-6 min-h-[1.1em]">
               <TypewriterText
                 words={["The full campaign journey."]}
                 loop={false}

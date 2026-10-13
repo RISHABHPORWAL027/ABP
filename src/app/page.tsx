@@ -10,8 +10,6 @@ import { MagneticButton } from "@/components/MagneticButton";
 import { MarqueeBanner } from "@/components/MarqueeBanner";
 import { Curved3DCardCarousel } from "@/components/Curved3DCardCarousel";
 import { DifferentMovesSection } from "@/components/DifferentMovesSection";
-import { WhatWeDoSection } from "@/components/WhatWeDoSection";
-import { CampaignJourneySection } from "@/components/CampaignJourneySection";
 import { AbpJourneySection } from "@/components/AbpJourneySection";
 import { TestimonialsWithVerticalMarquee } from "@/components/ui/testimonials-with-verticalmarquee";
 import { LogoCloudMarquee } from "@/components/ui/logo-cloud-marquee";
@@ -51,9 +49,6 @@ export default function Home() {
       />
 
       <main className="flex-1">
-        {/* WHAT WE DO SECTION */}
-        <WhatWeDoSection />
-
         {/* DIFFERENT MUSIC. DIFFERENT MOVES SECTION */}
         <DifferentMovesSection />
 
@@ -61,12 +56,12 @@ export default function Home() {
         <div id="work" className="pt-16 bg-[#000000] text-white">
           <div className="max-w-[1380px] mx-auto px-6 md:px-12 text-center mb-8">
             <ScrollReveal direction="up">
-              <span className="text-[#009082] font-space text-xs font-extrabold tracking-widest uppercase">
+              <span className="text-[#009082] font-space text-xs sm:text-sm font-extrabold tracking-[2px] uppercase">
                 CAMPAIGNS & SHOWCASES
               </span>
-              <h3 className="font-sans font-extrabold text-2xl sm:text-5xl uppercase tracking-tight mt-2 text-white">
-                FEATURED REELS & RESULTS
-              </h3>
+              <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] mt-4 text-white">
+                Featured reels & results
+              </h2>
             </ScrollReveal>
           </div>
 
@@ -75,9 +70,6 @@ export default function Home() {
             <Curved3DCardCarousel cards={showcaseCards} speed={1.2} />
           </div>
         </div>
-
-        {/* THE FULL CAMPAIGN JOURNEY SECTION */}
-        <CampaignJourneySection />
 
         {/* THE ABP JOURNEY SECTION */}
         <AbpJourneySection />

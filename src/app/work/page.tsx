@@ -7,13 +7,14 @@ import { Footer } from "@/components/Footer";
 import DiscCascadeCarousel, {
   DiscCascadeItem,
 } from "@/components/ui/disc-cascade-carousel";
-import { ParticleTextAnimation } from "@/components/ui/particle-text-animation";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { TypewriterText } from "@/components/TypewriterText";
 import { Play, X, ExternalLink, Sparkles, Disc, Flame, ArrowUpRight } from "lucide-react";
 
 import { SpotifyCard, SpotifyTrack } from "@/components/ui/spotify-card";
 import { LiquidGlassCarousel } from "@/components/ui/liquid-glass-carousel";
 import DiagonalMarqueeCarousel, { CardItem } from "@/components/ui/great-ui-diagonal-marquee-carousel";
+import { WorkHeroBackgroundVideo } from "@/components/WorkHeroBackgroundVideo";
 
 export default function WorkPage() {
   const [selectedVideo, setSelectedVideo] = useState<{
@@ -23,49 +24,49 @@ export default function WorkPage() {
     category: string;
   } | null>(null);
 
-  const [activeFilter, setActiveFilter] = useState<string>("ALL");
+  const [selectedCaseStudy, setSelectedCaseStudy] = useState<CardItem | null>(null);
 
-  // Movie Campaigns Data from public/movie
-  const movieCampaignCards: CardItem[] = [
+  // Case Studies & Artist Campaigns Data from public/artist sign
+  const caseStudyCards: CardItem[] = [
     {
-      id: "movie-1",
-      url: "/movie/MV5BNDM3N2UzM2UtMjEwMC00NGUzLThmMmQtNGMyM2VmMDA0ZWEwXkEyXkFqcGc@._V1_.jpg",
-      title: "Pushpa 2: The Rule",
+      id: "cs-darshan",
+      url: "/artist%20sign/ScreenShot%20Tool%20-20261013214100.webp",
+      title: "Darshan Raval — Nafrat",
     },
     {
-      id: "movie-2",
-      url: "/movie/MV5BOTVlYmVjMTItOGMxYS00NmQyLWJlZTYtNWVkZGZhZmFiYTJkXkEyXkFqcGc@._V1_.jpg",
-      title: "Dharma Productions",
+      id: "cs-prateeksha",
+      url: "/artist%20sign/ScreenShot%20Tool%20-20261013214119.webp",
+      title: "Prateeksha Srivastava — Sajna Ve",
     },
     {
-      id: "movie-3",
-      url: "/movie/MV5BY2VkZjk5ZjMtM2ExOS00ZDA1LTg1ZDEtYTliNGZiYTc4ZWZiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
-      title: "Kantara: Legend",
+      id: "cs-kalp",
+      url: "/artist%20sign/ScreenShot%20Tool%20-20261013214155.webp",
+      title: "Kalp — Na Ho Tum",
     },
     {
-      id: "movie-4",
-      url: "/movie/MV5BYjBhNDMyYWItMmYyMC00ZjMwLWE3MmUtZGMwZWM0ZWExYjVkXkEyXkFqcGc@._V1_.jpg",
-      title: "Maddock Films",
+      id: "cs-troyboi",
+      url: "/artist%20sign/ScreenShot%20Tool%20-20261013214220.webp",
+      title: "TroyBoi — Beggin",
     },
     {
-      id: "movie-5",
-      url: "/movie/ab67616d00001e02adb1a15b21a4b9728285ca94.jpeg",
-      title: "Cocktail 2",
+      id: "cs-malkit",
+      url: "/artist%20sign/ScreenShot%20Tool%20-20261013214238.webp",
+      title: "Malkit Singh — Jind Mahi",
     },
     {
-      id: "movie-6",
-      url: "/movie/images%20(1).jpeg",
-      title: "Dhoom Dhaam",
+      id: "cs-jacqueline",
+      url: "/artist%20sign/ScreenShot%20Tool%20-20261013214256.webp",
+      title: "Jacqueline Fernandez — Stormrider",
     },
     {
-      id: "movie-7",
-      url: "/movie/images%20(3).jpeg",
-      title: "Jio Studios & Maddock",
+      id: "cs-yuvan",
+      url: "/artist%20sign/ScreenShot%20Tool%20-20261013214323.webp",
+      title: "Yuvan — Dil Namurad",
     },
     {
-      id: "movie-8",
-      url: "/movie/images.jpeg",
-      title: "Singham Again",
+      id: "cs-raja-kumari",
+      url: "/artist%20sign/ScreenShot%20Tool%20-20261013214424.webp",
+      title: "Raja Kumari — Kashi To Kailash",
     },
   ];
 
@@ -277,14 +278,6 @@ export default function WorkPage() {
     },
   ];
 
-  const categories = ["ALL", "MUSIC VIDEO", "VIRAL REEL", "SINGLE RELEASE", "OFFICIAL RELEASE"];
-
-  const filteredItems =
-    activeFilter === "ALL"
-      ? campaignWorkItems
-      : campaignWorkItems.filter((item) =>
-          item.category.toUpperCase().includes(activeFilter.toUpperCase())
-        );
 
   const handleSelectDisc = (item: DiscCascadeItem) => {
     const found = campaignWorkItems.find((w) => w.title === item.title);
@@ -306,16 +299,49 @@ export default function WorkPage() {
       </div>
 
       <main className="flex-1">
-        {/* INTERACTIVE PARTICLE HERO TITLE SECTION */}
-        <section className="relative w-full pt-12 sm:pt-16 pb-12 sm:pb-16 bg-[#000000]">
-          <ParticleTextAnimation
-            text="OUR WORK"
-            subtitle="VIRAL REELS · MUSIC VIDEOS · STREAMING CAMPAIGNS"
-          />
+        {/* HERO SECTION - REDESIGNED TO ALIGN WITH CURRENT ABP DESIGN SYSTEM */}
+        <section className="relative w-full pt-16 sm:pt-20 md:pt-24 pb-14 sm:pb-20 bg-[#000000] overflow-hidden">
+          {/* Background YouTube Video (20s to 35s loop, bright visibility) */}
+          <WorkHeroBackgroundVideo />
+
+          <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10">
+            <ScrollReveal direction="up">
+              {/* Category Tag Badge */}
+              <div className="flex items-center gap-2.5 mb-6 sm:mb-8">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#FF0043] inline-block animate-pulse shadow-md shadow-[#FF0043]/50" />
+                <span className="font-space font-extrabold text-xs sm:text-sm tracking-[2px] uppercase text-[#FF0043] bg-black/50 px-3 py-1 rounded-full border border-[#FF0043]/30 backdrop-blur-md">
+                  CAMPAIGNS & SHOWCASES
+                </span>
+              </div>
+
+              {/* Main Headline */}
+              <div className="max-w-5xl mb-6 sm:mb-8">
+                <h1 className="font-sans font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[92px] tracking-tight leading-[0.95] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
+                  Work that turns <br />
+                  tracks into{" "}
+                  <TypewriterText
+                    words={[
+                      "viral movements.",
+                      "chart anthems.",
+                      "cultural moments.",
+                      "diehard fanbases.",
+                    ]}
+                    className="text-[#FF0043]"
+                    cursorColor="text-[#ffe600]"
+                  />
+                </h1>
+              </div>
+
+              {/* Subtitle */}
+              <p className="font-sans font-semibold text-base sm:text-xl md:text-2xl text-white/95 max-w-3xl leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
+                A curated collection of our release rollouts, viral short-form creator trends, and Spotify growth campaigns across indie, label, and Bollywood music.
+              </p>
+            </ScrollReveal>
+          </div>
         </section>
 
         {/* 3D DISC CASCADE CAROUSEL CONTAINER */}
-        <section className="relative w-full my-8 sm:my-14 py-8 sm:py-14 bg-gradient-to-b from-[#000000] via-[#09090b] to-[#000000] overflow-hidden border-t border-b border-white/10">
+        <section className="relative w-full my-6 sm:my-10 py-8 sm:py-14 bg-gradient-to-b from-[#000000] via-[#09090b] to-[#000000] overflow-hidden border-t border-b border-white/10">
           <DiscCascadeCarousel
             items={campaignWorkItems}
             height="clamp(720px, 92vh, 980px)"
@@ -333,14 +359,14 @@ export default function WorkPage() {
           <ScrollReveal direction="up">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-white/10 pb-8">
               <div>
-                <span className="text-[#1ED760] font-space text-xs font-extrabold tracking-widest uppercase block mb-2">
+                <span className="text-[#1ED760] font-space text-xs sm:text-sm font-extrabold tracking-[2px] uppercase block mb-3">
                   SPOTIFY CAMPAIGNS & STREAMING DRIVES
                 </span>
-                <h2 className="font-sans font-black text-3xl sm:text-5xl uppercase tracking-tight text-white">
-                  SPOTIFY FEATURED TRACKS <span className="text-[#1ED760]">.</span>
+                <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white">
+                  Spotify featured tracks <span className="text-[#1ED760]">.</span>
                 </h2>
               </div>
-              <p className="text-gray-400 max-w-md text-xs sm:text-sm font-sans">
+              <p className="text-white/75 max-w-md text-base sm:text-lg font-sans leading-relaxed">
                 Explore our top Spotify-focused campaigns, DSP chartbusters, and viral indie releases built for long-term algorithmic growth.
               </p>
             </div>
@@ -350,24 +376,24 @@ export default function WorkPage() {
           <LiquidGlassCarousel tracks={spotifyCampaignTracks} />
         </section>
 
-        {/* RECENT TOP CAMPAIGNS - MOVIES SECTION */}
+        {/* RECENT TOP CAMPAIGNS - CASE STUDIES SECTION */}
         <section className="py-24 sm:py-32 relative bg-[#000000] border-t border-white/10 overflow-hidden">
           <div className="px-6 md:px-12 max-w-[1380px] mx-auto mb-10 sm:mb-14">
             <ScrollReveal direction="up">
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8">
                 <div>
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex items-center gap-2 mb-3">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#FF0043] animate-pulse" />
-                    <span className="text-[#FF0043] font-space text-xs font-extrabold tracking-widest uppercase block">
-                      FEATURE FILMS & OTT RELEASES
+                    <span className="text-[#FF0043] font-space text-xs sm:text-sm font-extrabold tracking-[2px] uppercase block">
+                      CASE STUDIES & ARTIST CAMPAIGNS
                     </span>
                   </div>
-                  <h2 className="font-sans font-black text-3xl sm:text-5xl uppercase tracking-tight text-white">
-                    Our recent top campaigns MOVIES <span className="text-[#FF0043]">.</span>
+                  <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white">
+                    Our recent top campaigns & case studies <span className="text-[#FF0043]">.</span>
                   </h2>
                 </div>
-                <p className="text-gray-400 max-w-md text-xs sm:text-sm font-sans leading-relaxed">
-                  High-voltage theatrical rollouts, streaming blockbuster promotions, and viral social pushes for Indian cinema&apos;s biggest releases.
+                <p className="text-white/75 max-w-md text-base sm:text-lg font-sans leading-relaxed">
+                  Deep-dive breakdowns of viral momentum, artist rollouts, and chart-topping digital strategies for standout music campaigns.
                 </p>
               </div>
             </ScrollReveal>
@@ -376,11 +402,12 @@ export default function WorkPage() {
           {/* Diagonal Marquee Carousel Container */}
           <div className="relative w-full h-[620px] sm:h-[720px] md:h-[820px] overflow-hidden">
             <DiagonalMarqueeCarousel
-              cards={movieCampaignCards}
+              cards={caseStudyCards}
               angle={-14}
               baseSpeed={90}
+              onCardClick={(card) => setSelectedCaseStudy(card)}
               className="h-full w-full"
-              cardClassName="h-[280px] w-[200px] sm:h-[340px] sm:w-[240px] md:h-[380px] md:w-[270px] rounded-2xl border border-white/15 shadow-[0_15px_35px_rgba(0,0,0,0.8)]"
+              cardClassName="h-[300px] w-[240px] sm:h-[360px] sm:w-[290px] md:h-[420px] md:w-[340px] rounded-2xl border border-white/15 shadow-[0_15px_35px_rgba(0,0,0,0.8)]"
               fadeClassName="from-[#000000] via-[#000000]/70 to-transparent"
             />
           </div>
@@ -423,6 +450,48 @@ export default function WorkPage() {
                 className="w-full h-full border-0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* CASE STUDY PREVIEW MODAL */}
+      {selectedCaseStudy && (
+        <div
+          onClick={() => setSelectedCaseStudy(null)}
+          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 animate-fadeIn cursor-pointer"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative max-w-lg w-full bg-[#111111] border border-white/20 rounded-2xl overflow-hidden shadow-2xl cursor-default"
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#18181b]">
+              <div>
+                <span className="text-[10px] font-extrabold tracking-widest text-[#FF0043] uppercase block font-space">
+                  CASE STUDY
+                </span>
+                <h3 className="text-base sm:text-lg font-extrabold text-white tracking-tight">
+                  {selectedCaseStudy.title}
+                </h3>
+              </div>
+
+              <button
+                onClick={() => setSelectedCaseStudy(null)}
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#FF0043] text-white flex items-center justify-center transition-colors cursor-pointer"
+                aria-label="Close modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Poster Image */}
+            <div className="relative w-full max-h-[75vh] flex items-center justify-center bg-black p-4 overflow-hidden">
+              <img
+                src={selectedCaseStudy.url}
+                alt={selectedCaseStudy.title}
+                className="max-h-[70vh] w-auto object-contain rounded-xl shadow-2xl"
               />
             </div>
           </div>

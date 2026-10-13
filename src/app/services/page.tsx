@@ -7,13 +7,21 @@ import { Footer } from "@/components/Footer";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { ArrowUpRight } from "lucide-react";
 import { HowItWorks } from "@/components/ui/how-it-works";
-import { AdmitOneTicketCard } from "@/components/ui/admit-one-ticket";
+import { AdmitOneTicketCard, ServiceTicketData } from "@/components/ui/admit-one-ticket";
 import { AnimatedEqualizer } from "@/components/AnimatedEqualizer";
 import { TypewriterText } from "@/components/TypewriterText";
 import { AnimatedFolder } from "@/components/ui/3d-folder";
+import { ServiceBookingModal } from "@/components/ServiceBookingModal";
 
 export default function ServicesOverviewPage() {
   const [activeTab, setActiveTab] = useState("01");
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const [selectedBookingService, setSelectedBookingService] = useState<ServiceTicketData | null>(null);
+
+  const handleOpenBookingModal = (service: ServiceTicketData) => {
+    setSelectedBookingService(service);
+    setBookingModalOpen(true);
+  };
 
 
 
@@ -188,7 +196,7 @@ export default function ServicesOverviewPage() {
         <section className="w-full bg-[#000000] text-white pt-6 pb-0 sm:pt-10 md:pt-14 relative font-sans overflow-hidden min-h-[85vh] flex flex-col justify-between">
           <div className="max-w-[1380px] mx-auto px-6 md:px-12 w-full pt-4 md:pt-8 relative z-10 flex-1 flex flex-col justify-center">
             <div className="max-w-5xl">
-              <h1 className="font-outfit font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-[82px] tracking-tight leading-[1.04] text-white mb-6 md:mb-8">
+              <h1 className="font-sans font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[92px] tracking-tight leading-[0.95] text-white mb-6 md:mb-8">
                 Music marketing that feels{" "}
                 <TypewriterText
                   words={[
@@ -201,7 +209,7 @@ export default function ServicesOverviewPage() {
                 />
               </h1>
 
-              <p className="font-sans font-normal text-white/75 text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl leading-relaxed mb-8 md:mb-10">
+              <p className="font-sans font-medium text-base sm:text-xl md:text-2xl text-white/95 max-w-3xl leading-relaxed mb-8 md:mb-10">
                 All By Play helps artists, labels, managers, and festivals grow through music marketing that actually makes sense. From release campaigns and PR to Instagram, Spotify, ads, and branding, we build strategies shaped around the music, the goals, and the audience.
               </p>
 
@@ -235,7 +243,7 @@ export default function ServicesOverviewPage() {
               {/* Left Column: Text Content */}
               <div className="lg:col-span-7">
                 <ScrollReveal direction="up">
-                  <h2 className="font-sans font-extrabold text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.05] text-[#000000] mb-8">
+                  <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-[#000000] mb-8">
                     <TypewriterText
                       words={[
                         "What we help with",
@@ -249,13 +257,13 @@ export default function ServicesOverviewPage() {
                 </ScrollReveal>
 
                 <ScrollReveal direction="up" delay={100}>
-                  <p className="font-sans font-bold text-xl sm:text-2xl lg:text-[30px] text-[#111111] leading-snug tracking-tight mb-8">
+                  <p className="font-sans font-bold text-lg sm:text-xl md:text-2xl text-[#111111] leading-snug tracking-tight mb-8">
                     Every artist and project needs something a little different. Some need a stronger rollout. Some need more visibility. Some need a better content rhythm.
                   </p>
                 </ScrollReveal>
 
                 <ScrollReveal direction="up" delay={200}>
-                  <p className="font-sans font-medium text-black/70 text-base sm:text-lg leading-relaxed">
+                  <p className="font-sans font-medium text-base sm:text-lg text-black/70 leading-relaxed">
                     And sometimes, the work is about building the full picture from scratch. That&apos;s why we don&apos;t work with a fixed template. We look at what the music needs, what the artist needs, and what the release actually deserves.
                   </p>
                 </ScrollReveal>
@@ -269,21 +277,24 @@ export default function ServicesOverviewPage() {
                     projects={[
                       {
                         id: "1",
-                        title: "Release Rollouts",
-                        tag: "Rollout & Strategy",
-                        image: "/services/release_camp.png",
+                        title: "Instagram",
+                        tag: "Social & Reels",
+                        image: "/services/instagram_content.png",
+                        logo: "/labels_logo/company_logo/instagram-logo.avif",
                       },
                       {
                         id: "2",
-                        title: "Spotify Growth",
-                        tag: "Streaming & Playlists",
+                        title: "Spotify",
+                        tag: "Streaming Growth",
                         image: "/services/spotify_growth.png",
+                        logo: "/labels_logo/company_logo/spotify-logo.png",
                       },
                       {
                         id: "3",
-                        title: "PR Activation",
-                        tag: "Press & Cultural Reach",
-                        image: "/services/pr_Activation.png",
+                        title: "YouTube",
+                        tag: "Video & Ads",
+                        image: "/services/ads_marketing.png",
+                        logo: "/labels_logo/company_logo/youtube-logo.png",
                       },
                     ]}
                   />
@@ -298,7 +309,7 @@ export default function ServicesOverviewPage() {
           <div className="max-w-[1380px] mx-auto px-6 md:px-12">
             <div className="max-w-4xl">
               <ScrollReveal direction="up">
-                <h2 className="font-sans font-extrabold text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.05] text-white mb-8">
+                <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white mb-8">
                   <TypewriterText
                     words={[
                       "Built for different parts of the music world",
@@ -312,13 +323,13 @@ export default function ServicesOverviewPage() {
               </ScrollReveal>
 
               <ScrollReveal direction="up" delay={100}>
-                <p className="font-sans font-semibold text-lg sm:text-2xl lg:text-[28px] text-white leading-relaxed mb-6 max-w-4xl">
+                <p className="font-sans font-bold text-lg sm:text-xl md:text-2xl text-white leading-relaxed mb-6 max-w-4xl">
                   We work with indie artists, labels, managers, festival teams, and music projects that need a more thoughtful approach to marketing.
                 </p>
               </ScrollReveal>
 
               <ScrollReveal direction="up" delay={200}>
-                <p className="font-sans font-medium text-white/90 text-base sm:text-lg md:text-xl leading-relaxed mb-10 max-w-3xl">
+                <p className="font-sans font-medium text-base sm:text-lg text-white/90 leading-relaxed mb-10 max-w-3xl">
                   Whether the goal is release growth, audience reach, profile building, or stronger brand visibility, we shape the work around the brief.
                 </p>
               </ScrollReveal>
@@ -379,7 +390,7 @@ export default function ServicesOverviewPage() {
         <section className="w-full bg-[#FFFFFF] text-[#000000] py-20 md:py-28 font-sans relative">
           <div className="max-w-[1380px] mx-auto px-6 md:px-12">
             <ScrollReveal direction="up">
-              <h2 className="font-outfit font-extrabold text-4xl sm:text-6xl lg:text-7xl text-black tracking-tight leading-[1.05] mb-16 md:mb-20">
+              <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-black tracking-tight leading-[1.05] mb-16 md:mb-20">
                 One connected campaign toolkit.
               </h2>
             </ScrollReveal>
@@ -393,13 +404,24 @@ export default function ServicesOverviewPage() {
                   className="scroll-mt-28"
                 >
                   <ScrollReveal direction="up">
-                    <AdmitOneTicketCard service={service} />
+                    <AdmitOneTicketCard
+                      service={service}
+                      onBookClick={handleOpenBookingModal}
+                    />
                   </ScrollReveal>
                 </div>
               ))}
             </div>
           </div>
         </section>
+
+        {/* Interactive Booking Ticket Modal matching Admit One Ticket card design */}
+        <ServiceBookingModal
+          isOpen={bookingModalOpen}
+          onClose={() => setBookingModalOpen(false)}
+          selectedService={selectedBookingService}
+          allServices={toolkitServices}
+        />
 
         {/* 6. A SIMPLE WAY TO WORK TOGETHER SECTION */}
         <HowItWorks />

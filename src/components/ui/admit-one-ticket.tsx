@@ -22,11 +22,13 @@ export interface ServiceTicketData {
 interface AdmitOneTicketProps {
   service: ServiceTicketData;
   className?: string;
+  onBookClick?: (service: ServiceTicketData) => void;
 }
 
 export const AdmitOneTicketCard: React.FC<AdmitOneTicketProps> = ({
   service,
   className,
+  onBookClick,
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [rotateX, setRotateX] = useState(0);
@@ -151,13 +153,27 @@ export const AdmitOneTicketCard: React.FC<AdmitOneTicketProps> = ({
 
           {/* Action Row */}
           <div className="flex items-center justify-between pt-2">
-            <Link
-              href="/#connect"
-              className="inline-flex items-center gap-2.5 font-sans font-extrabold text-base px-6 py-3.5 rounded-full bg-black/90 text-white hover:bg-white hover:text-black transition-all duration-300 shadow-xl group/btn cursor-pointer"
-            >
-              <span>Book this service</span>
-              <ArrowUpRight className="w-5 h-5 stroke-[2.5] transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-            </Link>
+            {onBookClick ? (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onBookClick(service);
+                }}
+                className="inline-flex items-center gap-2.5 font-sans font-extrabold text-base px-6 py-3.5 rounded-full bg-black/90 text-white hover:bg-white hover:text-black transition-all duration-300 shadow-xl group/btn cursor-pointer"
+              >
+                <span>Book this service</span>
+                <ArrowUpRight className="w-5 h-5 stroke-[2.5] transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+              </button>
+            ) : (
+              <Link
+                href="/#connect"
+                className="inline-flex items-center gap-2.5 font-sans font-extrabold text-base px-6 py-3.5 rounded-full bg-black/90 text-white hover:bg-white hover:text-black transition-all duration-300 shadow-xl group/btn cursor-pointer"
+              >
+                <span>Book this service</span>
+                <ArrowUpRight className="w-5 h-5 stroke-[2.5] transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+              </Link>
+            )}
 
             <span className="font-space font-extrabold text-xs tracking-widest opacity-60 uppercase hidden sm:inline-block">
               ALL BY PLAY / ARTIST & LABEL SERVICES
