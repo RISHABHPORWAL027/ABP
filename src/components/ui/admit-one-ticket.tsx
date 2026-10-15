@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 
 export interface ServiceTicketData {
   num: string;
+  slug?: string;
   badge: string;
   bg: string;
   badgeBg: string;
@@ -17,6 +18,8 @@ export interface ServiceTicketData {
   p1: string;
   p2?: string;
   highlights: string[];
+  caseStudyNote?: string;
+  isFeaturedCaseStudy?: boolean;
 }
 
 interface AdmitOneTicketProps {
@@ -63,6 +66,9 @@ export const AdmitOneTicketCard: React.FC<AdmitOneTicketProps> = ({
 
   const stubTitle = service.stubTitle || "CAMPAIGN SPEC";
   const stubSubtitle = service.stubSubtitle || "FULL EXECUTION & ROLLOUT";
+  const targetSlug = service.slug || (service.num === "05" ? "spotify" : `service-${service.num}`);
+  const targetUrl = `/services/${targetSlug}`;
+  const isSpotify = service.num === "05" || service.slug === "spotify";
 
   return (
     <div
@@ -105,7 +111,7 @@ export const AdmitOneTicketCard: React.FC<AdmitOneTicketProps> = ({
         <div className="relative z-10 flex-1 p-8 sm:p-10 md:p-12 flex flex-col justify-between">
           {/* Header Bar */}
           <div>
-            <div className="flex items-center justify-between gap-4 mb-6">
+            <div className="flex items-center justify-between gap-4 mb-4">
               <div className="flex items-center gap-3">
                 <span className="font-space font-extrabold text-xs tracking-widest uppercase opacity-80 px-3 py-1 rounded-full border border-current/20">
                   SERVICE {service.num}
@@ -127,10 +133,26 @@ export const AdmitOneTicketCard: React.FC<AdmitOneTicketProps> = ({
               </div>
             </div>
 
-            {/* Title */}
-            <h3 className="font-sans font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.08] mb-6">
-              {service.title}
-            </h3>
+            {/* Featured Case Study Badge for Spotify */}
+            {isSpotify && (
+              <div className="mb-5">
+                <Link
+                  href={targetUrl}
+                  className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-black/90 text-[#ffe600] hover:bg-black font-space font-extrabold text-xs tracking-wider border border-[#ffe600]/40 shadow-lg group/badge transition-transform hover:scale-[1.02]"
+                >
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#1DB954] animate-pulse" />
+                  <span>🔥 FEATURED CASE STUDY: ALFAAZ (#2 SPOTIFY INDIA)</span>
+                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover/badge:translate-x-0.5 group-hover/badge:-translate-y-0.5" />
+                </Link>
+              </div>
+            )}
+
+            {/* Title with link to service page */}
+            <Link href={targetUrl} className="group/title block">
+              <h3 className="font-sans font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.08] mb-6 group-hover/title:underline decoration-current/40 underline-offset-8 transition-all">
+                {service.title}
+              </h3>
+            </Link>
 
             {/* Description Paragraphs */}
             <div className="space-y-4 font-sans text-base sm:text-lg opacity-90 leading-relaxed max-w-3xl mb-8">
@@ -152,28 +174,36 @@ export const AdmitOneTicketCard: React.FC<AdmitOneTicketProps> = ({
           </div>
 
           {/* Action Row */}
-          <div className="flex items-center justify-between pt-2">
-            {onBookClick ? (
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onBookClick(service);
-                }}
-                className="inline-flex items-center gap-2.5 font-sans font-extrabold text-base px-6 py-3.5 rounded-full bg-black/90 text-white hover:bg-white hover:text-black transition-all duration-300 shadow-xl group/btn cursor-pointer"
-              >
-                <span>Book this service</span>
-                <ArrowUpRight className="w-5 h-5 stroke-[2.5] transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-              </button>
-            ) : (
+          <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
+            <div className="flex flex-wrap items-center gap-3">
               <Link
-                href="/#connect"
-                className="inline-flex items-center gap-2.5 font-sans font-extrabold text-base px-6 py-3.5 rounded-full bg-black/90 text-white hover:bg-white hover:text-black transition-all duration-300 shadow-xl group/btn cursor-pointer"
+                href={targetUrl}
+                className="inline-flex items-center gap-2.5 font-sans font-extrabold text-sm sm:text-base px-6 py-3.5 rounded-full bg-black text-white hover:bg-white hover:text-black transition-all duration-300 shadow-xl group/exp cursor-pointer"
               >
-                <span>Book this service</span>
-                <ArrowUpRight className="w-5 h-5 stroke-[2.5] transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                <span>{isSpotify ? "View Case Study & Details" : "Explore Service Page"}</span>
+                <ArrowUpRight className="w-5 h-5 stroke-[2.5] transition-transform group-hover/exp:translate-x-0.5 group-hover/exp:-translate-y-0.5" />
               </Link>
-            )}
+
+              {onBookClick ? (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onBookClick(service);
+                  }}
+                  className="inline-flex items-center gap-2 font-sans font-extrabold text-sm sm:text-base px-6 py-3.5 rounded-full bg-black/15 hover:bg-black hover:text-white transition-all duration-300 shadow-md group/btn cursor-pointer border border-current/25"
+                >
+                  <span>Book this service</span>
+                </button>
+              ) : (
+                <Link
+                  href="/#connect"
+                  className="inline-flex items-center gap-2 font-sans font-extrabold text-sm sm:text-base px-6 py-3.5 rounded-full bg-black/15 hover:bg-black hover:text-white transition-all duration-300 shadow-md group/btn cursor-pointer border border-current/25"
+                >
+                  <span>Book this service</span>
+                </Link>
+              )}
+            </div>
 
             <span className="font-space font-extrabold text-xs tracking-widest opacity-60 uppercase hidden sm:inline-block">
               ALL BY PLAY / ARTIST & LABEL SERVICES
@@ -235,6 +265,14 @@ export const AdmitOneTicketCard: React.FC<AdmitOneTicketProps> = ({
                 ABP-SPEC-2026-{service.num}
               </span>
             </div>
+
+            <Link
+              href={targetUrl}
+              className="w-full mt-2 py-2 px-3 rounded-xl bg-black/80 hover:bg-black text-white font-space font-extrabold text-xs tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-1.5 shadow-md group/stub"
+            >
+              <span>{isSpotify ? "View Case Study" : "Open Spec"}</span>
+              <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/stub:translate-x-0.5 group-hover/stub:-translate-y-0.5" />
+            </Link>
           </div>
 
           <div className="w-full pt-4 border-t border-current/20 flex items-center justify-between text-[11px] font-space font-bold opacity-75 uppercase">

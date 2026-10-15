@@ -308,7 +308,6 @@ export default function WorkPage() {
             <ScrollReveal direction="up">
               {/* Category Tag Badge */}
               <div className="flex items-center gap-2.5 mb-6 sm:mb-8">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#FF0043] inline-block animate-pulse shadow-md shadow-[#FF0043]/50" />
                 <span className="font-space font-extrabold text-xs sm:text-sm tracking-[2px] uppercase text-[#FF0043] bg-black/50 px-3 py-1 rounded-full border border-[#FF0043]/30 backdrop-blur-md">
                   CAMPAIGNS & SHOWCASES
                 </span>

@@ -2,16 +2,158 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { ArrowUpRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { HowItWorks } from "@/components/ui/how-it-works";
-import { AdmitOneTicketCard, ServiceTicketData } from "@/components/ui/admit-one-ticket";
+import { ServiceTicketData } from "@/components/ui/admit-one-ticket";
 import { AnimatedEqualizer } from "@/components/AnimatedEqualizer";
 import { TypewriterText } from "@/components/TypewriterText";
 import { AnimatedFolder } from "@/components/ui/3d-folder";
 import { ServiceBookingModal } from "@/components/ServiceBookingModal";
+
+interface ServiceCardBannerProps {
+  images: string[];
+  alt: string;
+  priority?: boolean;
+}
+
+const ServiceCardBanner: React.FC<ServiceCardBannerProps> = ({
+  images,
+  alt,
+  priority = false,
+}) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (images.length <= 1 || isHovered) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 3800);
+
+    return () => clearInterval(interval);
+  }, [images.length, isHovered]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+
+    if (diff > 45) {
+      // Swiped left -> next
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    } else if (diff < -45) {
+      // Swiped right -> prev
+      setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+    }
+    setTouchStartX(null);
+  };
+
+  if (images.length === 0) return null;
+
+  if (images.length === 1) {
+    return (
+      <Image
+        src={images[0]}
+        alt={alt}
+        width={1400}
+        height={584}
+        className="w-full h-auto block object-cover"
+        priority={priority}
+      />
+    );
+  }
+
+  return (
+    <div
+      className="relative w-full overflow-hidden group/carousel select-none"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      {/* Slides Container */}
+      <div className="relative w-full aspect-[1400/584] overflow-hidden">
+        {images.map((img, idx) => (
+          <div
+            key={idx}
+            className={cn(
+              "absolute inset-0 transition-opacity duration-700 ease-in-out",
+              idx === currentIndex
+                ? "opacity-100 z-10"
+                : "opacity-0 z-0 pointer-events-none"
+            )}
+          >
+            <Image
+              src={img}
+              alt={`${alt} frame ${idx + 1}`}
+              fill
+              className="object-cover"
+              priority={priority && idx === 0}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Navigation Arrow - Left */}
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+        }}
+        className="absolute left-3.5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center opacity-70 sm:opacity-0 sm:group-hover/carousel:opacity-100 transition-opacity duration-300 backdrop-blur-sm shadow-xl cursor-pointer"
+        aria-label="Previous slide"
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+
+      {/* Navigation Arrow - Right */}
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          setCurrentIndex((prev) => (prev + 1) % images.length);
+        }}
+        className="absolute right-3.5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center opacity-70 sm:opacity-0 sm:group-hover/carousel:opacity-100 transition-opacity duration-300 backdrop-blur-sm shadow-xl cursor-pointer"
+        aria-label="Next slide"
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
+
+      {/* Pagination Dot Indicators */}
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/10 shadow-lg">
+        {images.map((_, dotIdx) => (
+          <button
+            key={dotIdx}
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setCurrentIndex(dotIdx);
+            }}
+            className={cn(
+              "h-2 rounded-full transition-all duration-300 cursor-pointer",
+              dotIdx === currentIndex
+                ? "w-6 bg-[#FF0043]"
+                : "w-2 bg-white/40 hover:bg-white"
+            )}
+            aria-label={`Go to slide ${dotIdx + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default function ServicesOverviewPage() {
   const [activeTab, setActiveTab] = useState("01");
@@ -25,11 +167,37 @@ export default function ServicesOverviewPage() {
 
 
 
+  interface ToolkitServiceItem {
+    num: string;
+    slug: string;
+    badge: string;
+    categoryTag: string;
+    framesCount: string;
+    cardImage: string;
+    cardImages?: string[];
+    bg: string;
+    badgeBg: string;
+    badgeText: string;
+    title: string;
+    stubTitle: string;
+    stubSubtitle: string;
+    p1: string;
+    p2: string;
+    highlights: string[];
+    campaignExamples?: string[];
+    isFeaturedCaseStudy?: boolean;
+    caseStudyNote?: string;
+  }
+
   // 7 Connected Toolkit Services matching the provided reference layout
-  const toolkitServices = [
+  const toolkitServices: ToolkitServiceItem[] = [
     {
       num: "01",
+      slug: "branding",
       badge: "BRAND",
+      categoryTag: "BRAND",
+      framesCount: "03",
+      cardImage: "/services/cards/card-01@2x.png",
       bg: "bg-[#5B3BE8] text-white",
       badgeBg: "#FFE600",
       badgeText: "#000000",
@@ -47,7 +215,11 @@ export default function ServicesOverviewPage() {
     },
     {
       num: "02",
+      slug: "release-campaigns",
       badge: "RELEASE",
+      categoryTag: "RELEASE",
+      framesCount: "02",
+      cardImage: "/services/cards/card-02-release@2x.png",
       bg: "bg-[#FFC72C] text-black",
       badgeBg: "#5B3BE8",
       badgeText: "#FFFFFF",
@@ -65,7 +237,11 @@ export default function ServicesOverviewPage() {
     },
     {
       num: "03",
+      slug: "pr-activation",
       badge: "PR",
+      categoryTag: "PRESS",
+      framesCount: "02",
+      cardImage: "/services/cards/card-03-press-bar@2x.png",
       bg: "bg-[#1E1E28] text-white",
       badgeBg: "#FFE600",
       badgeText: "#000000",
@@ -76,14 +252,18 @@ export default function ServicesOverviewPage() {
       p2: "The goal is to place the artist and the release in spaces where the story actually connects with people.",
       highlights: [
         "Media outreach",
-        "Heavy text placements",
+        "Story-led placements",
         "Press features",
         "Broadcast and podcast visibility",
       ],
     },
     {
       num: "04",
+      slug: "instagram",
       badge: "SOCIAL",
+      categoryTag: "SOCIAL",
+      framesCount: "04",
+      cardImage: "/services/cards/card-04@2x.png",
       bg: "bg-[#FF6B4A] text-white",
       badgeBg: "#FFE600",
       badgeText: "#000000",
@@ -94,21 +274,35 @@ export default function ServicesOverviewPage() {
       p2: "This includes thinking about the artist's profile as a whole, not just one release at a time.",
       highlights: [
         "Content planning",
-        "Edit page campaigns",
-        "Reel campaigns",
+        "Edit-page campaigns",
+        "Review campaigns",
         "Influencer campaigns",
         "Profile growth support",
+      ],
+      campaignExamples: [
+        "Ananya Birla — Caught Up with L.A.X edit pages campaign",
+        "Independence Day music influencer review campaign",
       ],
     },
     {
       num: "05",
+      slug: "spotify",
       badge: "STREAM",
+      categoryTag: "STREAM",
+      framesCount: "02",
+      cardImage: "/services/cards/spotify-slide-01.png",
+      cardImages: [
+        "/services/cards/spotify-slide-01.png",
+        "/services/cards/spotify-slide-02.png",
+      ],
       bg: "bg-[#7CFF6B] text-black",
       badgeBg: "#FFE600",
       badgeText: "#000000",
       title: "Spotify-focussed Campaigns",
       stubTitle: "DSP STREAMING",
       stubSubtitle: "ALGORITHMIC & PLAYLIST DATA",
+      isFeaturedCaseStudy: true,
+      caseStudyNote: "Featured Case Study: Alfaaz by Hamza Malik & Zain Zohaib reached #2 on Spotify Top Songs India Charts",
       p1: "Spotify growth needs more than just hoping for streams. We use research, data, playlist strategy, and campaign planning to help artists build a stronger presence on the platform.",
       p2: "We look at search keywords, stream sources, artist profile visits, and algorithmic streams so the campaign is guided by actual performance, not guesswork.",
       highlights: [
@@ -121,7 +315,11 @@ export default function ServicesOverviewPage() {
     },
     {
       num: "06",
+      slug: "ads",
       badge: "ADS",
+      categoryTag: "ADS",
+      framesCount: "03",
+      cardImage: "/services/cards/card-06@2x.png",
       bg: "bg-[#2563EB] text-white",
       badgeBg: "#FFE600",
       badgeText: "#000000",
@@ -139,7 +337,11 @@ export default function ServicesOverviewPage() {
     },
     {
       num: "07",
+      slug: "content",
       badge: "CONTENT",
+      categoryTag: "CONTENT",
+      framesCount: "03",
+      cardImage: "/services/cards/card-07@2x.png",
       bg: "bg-[#E8E6DF] text-black",
       badgeBg: "#FFE600",
       badgeText: "#000000",
@@ -387,27 +589,117 @@ export default function ServicesOverviewPage() {
         </div>
 
         {/* 5. ONE CONNECTED CAMPAIGN TOOLKIT (WHITE BACKGROUND SECTION) */}
-        <section className="w-full bg-[#FFFFFF] text-[#000000] py-20 md:py-28 font-sans relative">
+        <section className="w-full bg-[#FFFFFF] text-[#000000] py-16 md:py-24 font-sans relative">
           <div className="max-w-[1380px] mx-auto px-6 md:px-12">
             <ScrollReveal direction="up">
-              <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-black tracking-tight leading-[1.05] mb-16 md:mb-20">
-                One connected campaign toolkit.
-              </h2>
+              <div className="mb-14 md:mb-20">
+                <h2 className="font-sans font-black text-4xl sm:text-6xl md:text-7xl lg:text-[76px] text-black tracking-tight leading-[1.0] max-w-4xl">
+                  One connected<br className="hidden sm:inline" /> campaign toolkit.
+                </h2>
+                <div className="w-full border-b border-black/15 mt-8 md:mt-12" />
+              </div>
             </ScrollReveal>
 
-            {/* List of 7 Services styled as Admit One Ticket cards */}
+            {/* List of 7 Services styled with editorial layout & Visual Notes cards at the end */}
             <div className="space-y-16 md:space-y-24">
-              {toolkitServices.map((service) => (
+              {toolkitServices.map((service, index) => (
                 <div
                   key={service.num}
                   id={`service-${service.num}`}
                   className="scroll-mt-28"
                 >
                   <ScrollReveal direction="up">
-                    <AdmitOneTicketCard
-                      service={service}
-                      onBookClick={handleOpenBookingModal}
-                    />
+                    {/* Top Row: Service Header + Content Grid */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-8 md:mb-10">
+                      {/* Left Column: Number tag & Title */}
+                      <div className="lg:col-span-5">
+                        <span className="font-mono font-bold text-xs sm:text-[13px] tracking-[0.16em] uppercase text-[#5B3BE8] block mb-3">
+                          SERVICE {service.num}
+                        </span>
+                        <h3 className="font-sans font-black text-3xl sm:text-4xl md:text-[44px] text-black tracking-tight leading-[1.08]">
+                          {service.title}
+                        </h3>
+                      </div>
+
+                      {/* Right Column: Descriptions, Features, Examples, Discuss link */}
+                      <div className="lg:col-span-7 flex flex-col justify-between">
+                        <p className="font-sans font-medium text-base sm:text-lg text-black/85 leading-relaxed mb-4">
+                          {service.p1}
+                        </p>
+                        {service.p2 && (
+                          <p className="font-sans font-normal text-sm sm:text-base text-black/65 leading-relaxed mb-5">
+                            {service.p2}
+                          </p>
+                        )}
+
+                        {/* Checklist with + icon & subtle dividing borders */}
+                        <div className="border-y border-black/10 py-3 sm:py-4 my-2">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
+                            {service.highlights.map((highlight, idx) => (
+                              <div key={idx} className="flex items-center gap-2.5">
+                                <span className="text-[#5B3BE8] font-bold text-base leading-none select-none">+</span>
+                                <span className="font-sans font-medium text-xs sm:text-sm text-black/80">
+                                  {highlight}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Campaign Examples (e.g. Service 04) */}
+                        {service.campaignExamples && service.campaignExamples.length > 0 && (
+                          <div className="border-l-2 border-[#5B3BE8] pl-3 py-1 my-4 bg-black/[0.02] rounded-r-md">
+                            <span className="block font-mono font-bold text-[10px] sm:text-[11px] tracking-widest uppercase text-[#5B3BE8] mb-1">
+                              CAMPAIGN EXAMPLES
+                            </span>
+                            <div className="space-y-1">
+                              {service.campaignExamples.map((ex, exIdx) => (
+                                <p key={exIdx} className="font-sans font-semibold text-xs sm:text-[13px] text-black">
+                                  {ex}
+                                </p>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Discuss this service link */}
+                        <div className="pt-2">
+                          <button
+                            type="button"
+                            onClick={() => handleOpenBookingModal(service as any)}
+                            className="group inline-flex items-center gap-1.5 font-sans font-semibold text-xs sm:text-sm text-black underline underline-offset-4 decoration-black/35 hover:decoration-black transition-colors cursor-pointer"
+                          >
+                            <span>Discuss this service</span>
+                            <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Visual Notes Card at end of service */}
+                    <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-black/10 bg-black">
+                      <ServiceCardBanner
+                        images={
+                          service.cardImages && service.cardImages.length > 0
+                            ? service.cardImages
+                            : [service.cardImage]
+                        }
+                        alt={`${service.title} Visual Notes`}
+                        priority={index < 2}
+                      />
+                    </div>
+
+                    {/* Huge Stylized Number at Bottom-Right */}
+                    <div className="flex justify-end pt-3 sm:pt-4 pb-2">
+                      <span className="font-sans font-black text-4xl sm:text-5xl md:text-6xl tracking-wider text-[#D4CFC4] select-none scale-y-90">
+                        {service.num}
+                      </span>
+                    </div>
+
+                    {/* Divider Line between services */}
+                    {index < toolkitServices.length - 1 && (
+                      <div className="w-full border-b border-black/15 mt-10 md:mt-14" />
+                    )}
                   </ScrollReveal>
                 </div>
               ))}
