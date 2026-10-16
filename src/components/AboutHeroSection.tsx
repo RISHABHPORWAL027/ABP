@@ -26,7 +26,7 @@ export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({ className = 
               </div>
 
               {/* Main Headline */}
-              <h1 className="font-sans font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[92px] tracking-tight leading-[0.95] text-[#000000] mb-8">
+              <h1 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-[56px] xl:text-[72px] 2xl:text-[90px] tracking-tight leading-[1.02] md:leading-[1.0] lg:leading-[0.98] xl:leading-[0.95] text-[#000000] mb-8">
                 About <br />
                 <TypewriterText
                   words={["All By Play", "Visual Strategy", "Music Campaigns"]}

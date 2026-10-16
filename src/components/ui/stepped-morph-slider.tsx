@@ -303,10 +303,9 @@ export function SteppedMorphSlider({
   }, [])
 
   // painted stand-ins for slides without an image (client-only)
-  const [painted, setPainted] = React.useState([] as string[])
   const paintKey = slides.map((s, i) => (s.image ? "img" : (s.palette ?? "dawn") + (s.seed ?? i))).join("|")
-  React.useEffect(() => {
-    setPainted(slides.map((s, i) => (s.image ? "" : paintLandscape(s.seed ?? i + 1, s.palette ?? "dawn"))))
+  const painted = React.useMemo(() => {
+    return slides.map((s, i) => (s.image ? "" : paintLandscape(s.seed ?? i + 1, s.palette ?? "dawn")))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [paintKey])
   const src = (i: number) => slides[wrap(i, n)]?.image || painted[wrap(i, n)] || ""
@@ -340,7 +339,9 @@ export function SteppedMorphSlider({
   const next = () => go(indexRef.current + 1)
   const back = () => go(indexRef.current - 1)
   const nextRef = React.useRef(next)
-  nextRef.current = next
+  React.useEffect(() => {
+    nextRef.current = next
+  })
 
   // the morph clock
   React.useEffect(() => {

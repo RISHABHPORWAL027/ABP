@@ -5,7 +5,11 @@ import { ArrowUpRight } from "lucide-react";
 import { RotatingDVD } from "@/components/RotatingDVD";
 import { TypewriterText } from "@/components/TypewriterText";
 
-export const HeroSection: React.FC = () => {
+interface HeroSectionProps {
+  className?: string;
+}
+
+export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
   const typewriterWords = [
     "movements.",
     "cultural moments.",
@@ -14,7 +18,7 @@ export const HeroSection: React.FC = () => {
   ];
 
   return (
-    <section className="w-full bg-[#FF0043] text-white pt-2 md:pt-4 pb-24 overflow-hidden font-sans relative">
+    <section className={`w-full bg-transparent text-white pt-2 md:pt-4 pb-24 overflow-hidden font-sans relative ${className}`}>
 
       <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10">
         {/* Top Text Content */}
@@ -28,7 +32,7 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Main Headline with Montserrat font */}
-          <h1 className="font-sans font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[92px] tracking-tight leading-[0.95] text-white mb-6 sm:mb-8">
+          <h1 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-[56px] xl:text-[72px] 2xl:text-[90px] tracking-tight leading-[1.02] md:leading-[1.0] lg:leading-[0.98] xl:leading-[0.95] text-white mb-6 sm:mb-8">
             Let&apos;s turn your <br />
             melodies into{" "}
             <TypewriterText

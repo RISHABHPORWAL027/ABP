@@ -14,16 +14,24 @@ import { AnimatedEqualizer } from "@/components/AnimatedEqualizer";
 import { TypewriterText } from "@/components/TypewriterText";
 import { AnimatedFolder } from "@/components/ui/3d-folder";
 import { ServiceBookingModal } from "@/components/ServiceBookingModal";
+import DiagonalMarqueeCarousel from "@/components/ui/great-ui-diagonal-marquee-carousel";
+import { spotifySongCards } from "@/lib/spotify-songs-data";
+import { BrandingShowcaseBanner } from "@/components/BrandingShowcaseBanner";
+import { InstagramReelsShowcase } from "@/components/InstagramReelsShowcase";
 
 interface ServiceCardBannerProps {
   images: string[];
   alt: string;
+  categoryTag?: string;
+  framesCount?: string;
   priority?: boolean;
 }
 
 const ServiceCardBanner: React.FC<ServiceCardBannerProps> = ({
   images,
   alt,
+  categoryTag = "BRAND",
+  framesCount,
   priority = false,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -61,96 +69,113 @@ const ServiceCardBanner: React.FC<ServiceCardBannerProps> = ({
 
   if (images.length === 0) return null;
 
-  if (images.length === 1) {
-    return (
-      <Image
-        src={images[0]}
-        alt={alt}
-        width={1400}
-        height={584}
-        className="w-full h-auto block object-cover"
-        priority={priority}
-      />
-    );
-  }
+  const displayFrames = framesCount
+    ? `${framesCount} FRAMES`
+    : images.length > 1
+    ? `0${images.length} FRAMES`
+    : "01 FRAMES";
 
   return (
     <div
-      className="relative w-full overflow-hidden group/carousel select-none"
+      className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-black/15 bg-black select-none group/carousel"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Slides Container */}
-      <div className="relative w-full aspect-[1400/584] overflow-hidden">
-        {images.map((img, idx) => (
-          <div
-            key={idx}
-            className={cn(
-              "absolute inset-0 transition-opacity duration-700 ease-in-out",
-              idx === currentIndex
-                ? "opacity-100 z-10"
-                : "opacity-0 z-0 pointer-events-none"
-            )}
-          >
-            <Image
-              src={img}
-              alt={`${alt} frame ${idx + 1}`}
-              fill
-              className="object-cover"
-              priority={priority && idx === 0}
-            />
-          </div>
-        ))}
+      {/* 1. SIGNATURE TOP RED HEADER BAR (#FF0043) */}
+      <div className="w-full bg-[#FF0043] px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between border-b border-black/20 text-black">
+        <span className="font-mono font-black text-xs sm:text-sm tracking-wider uppercase">
+          {categoryTag} / VISUAL NOTES
+        </span>
+        <span className="font-mono font-black text-xs sm:text-sm tracking-widest uppercase">
+          {displayFrames}
+        </span>
       </div>
 
-      {/* Navigation Arrow - Left */}
-      <button
-        type="button"
-        onClick={(e) => {
-          e.stopPropagation();
-          setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-        }}
-        className="absolute left-3.5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center opacity-70 sm:opacity-0 sm:group-hover/carousel:opacity-100 transition-opacity duration-300 backdrop-blur-sm shadow-xl cursor-pointer"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="w-5 h-5" />
-      </button>
+      {/* 2. MEDIA / IMAGE CONTENT */}
+      {images.length === 1 ? (
+        <div className="relative w-full bg-black overflow-hidden flex items-center justify-center">
+          <Image
+            src={images[0]}
+            alt={alt}
+            width={1400}
+            height={584}
+            className="w-full h-auto block object-cover"
+            priority={priority}
+          />
+        </div>
+      ) : (
+        <div className="relative w-full aspect-[1400/584] overflow-hidden bg-black">
+          {images.map((img, idx) => (
+            <div
+              key={idx}
+              className={cn(
+                "absolute inset-0 transition-opacity duration-700 ease-in-out",
+                idx === currentIndex
+                  ? "opacity-100 z-10"
+                  : "opacity-0 z-0 pointer-events-none"
+              )}
+            >
+              <Image
+                src={img}
+                alt={`${alt} frame ${idx + 1}`}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1200px"
+                className="object-cover"
+                priority={priority && idx === 0}
+              />
+            </div>
+          ))}
 
-      {/* Navigation Arrow - Right */}
-      <button
-        type="button"
-        onClick={(e) => {
-          e.stopPropagation();
-          setCurrentIndex((prev) => (prev + 1) % images.length);
-        }}
-        className="absolute right-3.5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center opacity-70 sm:opacity-0 sm:group-hover/carousel:opacity-100 transition-opacity duration-300 backdrop-blur-sm shadow-xl cursor-pointer"
-        aria-label="Next slide"
-      >
-        <ChevronRight className="w-5 h-5" />
-      </button>
-
-      {/* Pagination Dot Indicators */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/10 shadow-lg">
-        {images.map((_, dotIdx) => (
+          {/* Navigation Arrow - Left */}
           <button
-            key={dotIdx}
             type="button"
             onClick={(e) => {
               e.stopPropagation();
-              setCurrentIndex(dotIdx);
+              setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
             }}
-            className={cn(
-              "h-2 rounded-full transition-all duration-300 cursor-pointer",
-              dotIdx === currentIndex
-                ? "w-6 bg-[#FF0043]"
-                : "w-2 bg-white/40 hover:bg-white"
-            )}
-            aria-label={`Go to slide ${dotIdx + 1}`}
-          />
-        ))}
-      </div>
+            className="absolute left-3.5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center opacity-70 sm:opacity-0 sm:group-hover/carousel:opacity-100 transition-opacity duration-300 backdrop-blur-sm shadow-xl cursor-pointer"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          {/* Navigation Arrow - Right */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setCurrentIndex((prev) => (prev + 1) % images.length);
+            }}
+            className="absolute right-3.5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center opacity-70 sm:opacity-0 sm:group-hover/carousel:opacity-100 transition-opacity duration-300 backdrop-blur-sm shadow-xl cursor-pointer"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          {/* Pagination Dot Indicators */}
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/10 shadow-lg">
+            {images.map((_, dotIdx) => (
+              <button
+                key={dotIdx}
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentIndex(dotIdx);
+                }}
+                className={cn(
+                  "h-2 rounded-full transition-all duration-300 cursor-pointer",
+                  dotIdx === currentIndex
+                    ? "w-6 bg-[#FF0043]"
+                    : "w-2 bg-white/40 hover:bg-white"
+                )}
+                aria-label={`Go to slide ${dotIdx + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -167,26 +192,11 @@ export default function ServicesOverviewPage() {
 
 
 
-  interface ToolkitServiceItem {
-    num: string;
-    slug: string;
-    badge: string;
+  interface ToolkitServiceItem extends ServiceTicketData {
     categoryTag: string;
     framesCount: string;
     cardImage: string;
     cardImages?: string[];
-    bg: string;
-    badgeBg: string;
-    badgeText: string;
-    title: string;
-    stubTitle: string;
-    stubSubtitle: string;
-    p1: string;
-    p2: string;
-    highlights: string[];
-    campaignExamples?: string[];
-    isFeaturedCaseStudy?: boolean;
-    caseStudyNote?: string;
   }
 
   // 7 Connected Toolkit Services matching the provided reference layout
@@ -196,8 +206,12 @@ export default function ServicesOverviewPage() {
       slug: "branding",
       badge: "BRAND",
       categoryTag: "BRAND",
-      framesCount: "03",
-      cardImage: "/services/cards/card-01@2x.png",
+      framesCount: "02",
+      cardImage: "/services/cards/card-01-shreya-spread@2x.png",
+      cardImages: [
+        "/Services page/branding and marketing/shrreya1.png",
+        "/Services page/branding and marketing/shreya2.png",
+      ],
       bg: "bg-[#5B3BE8] text-white",
       badgeBg: "#FFE600",
       badgeText: "#000000",
@@ -219,7 +233,10 @@ export default function ServicesOverviewPage() {
       badge: "RELEASE",
       categoryTag: "RELEASE",
       framesCount: "02",
-      cardImage: "/services/cards/card-02-release@2x.png",
+      cardImage: "/services/cards/released-based-camp.webp",
+      cardImages: [
+        "/services/cards/released-based-camp.webp",
+      ],
       bg: "bg-[#FFC72C] text-black",
       badgeBg: "#5B3BE8",
       badgeText: "#FFFFFF",
@@ -241,7 +258,10 @@ export default function ServicesOverviewPage() {
       badge: "PR",
       categoryTag: "PRESS",
       framesCount: "02",
-      cardImage: "/services/cards/card-03-press-bar@2x.png",
+      cardImage: "/services/cards/card-03-clean@2x.png",
+      cardImages: [
+        "/services/cards/card-03-clean@2x.png",
+      ],
       bg: "bg-[#1E1E28] text-white",
       badgeBg: "#FFE600",
       badgeText: "#000000",
@@ -263,7 +283,10 @@ export default function ServicesOverviewPage() {
       badge: "SOCIAL",
       categoryTag: "SOCIAL",
       framesCount: "04",
-      cardImage: "/services/cards/card-04@2x.png",
+      cardImage: "/services/cards/card-04-clean@2x.png",
+      cardImages: [
+        "/services/cards/card-04-clean@2x.png",
+      ],
       bg: "bg-[#FF6B4A] text-white",
       badgeBg: "#FFE600",
       badgeText: "#000000",
@@ -279,21 +302,16 @@ export default function ServicesOverviewPage() {
         "Influencer campaigns",
         "Profile growth support",
       ],
-      campaignExamples: [
-        "Ananya Birla — Caught Up with L.A.X edit pages campaign",
-        "Independence Day music influencer review campaign",
-      ],
     },
     {
       num: "05",
       slug: "spotify",
       badge: "STREAM",
       categoryTag: "STREAM",
-      framesCount: "02",
-      cardImage: "/services/cards/spotify-slide-01.png",
+      framesCount: "24",
+      cardImage: "/services/spotify/spotify_songs/Rectangle%20(1).svg",
       cardImages: [
-        "/services/cards/spotify-slide-01.png",
-        "/services/cards/spotify-slide-02.png",
+        "/services/spotify/spotify_songs/Rectangle%20(1).svg",
       ],
       bg: "bg-[#7CFF6B] text-black",
       badgeBg: "#FFE600",
@@ -318,8 +336,11 @@ export default function ServicesOverviewPage() {
       slug: "ads",
       badge: "ADS",
       categoryTag: "ADS",
-      framesCount: "03",
-      cardImage: "/services/cards/card-06@2x.png",
+      framesCount: "02",
+      cardImage: "/services/cards/card-06-clean@2x.png",
+      cardImages: [
+        "/services/cards/card-06-clean@2x.png",
+      ],
       bg: "bg-[#2563EB] text-white",
       badgeBg: "#FFE600",
       badgeText: "#000000",
@@ -341,7 +362,10 @@ export default function ServicesOverviewPage() {
       badge: "CONTENT",
       categoryTag: "CONTENT",
       framesCount: "03",
-      cardImage: "/services/cards/card-07@2x.png",
+      cardImage: "/services/cards/card-07-clean@2x.png",
+      cardImages: [
+        "/services/cards/card-07-clean@2x.png",
+      ],
       bg: "bg-[#E8E6DF] text-black",
       badgeBg: "#FFE600",
       badgeText: "#000000",
@@ -362,13 +386,51 @@ export default function ServicesOverviewPage() {
 
   const scrollToService = (num: string) => {
     setActiveTab(num);
-    const element = document.getElementById(`service-${num}`);
+    const element =
+      document.getElementById(`service-${num}`) ||
+      document.getElementById(num);
     if (element) {
-      const yOffset = -80;
+      const yOffset = -90;
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
+
+  useEffect(() => {
+    const handleHashScroll = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (!hash) return;
+
+      let targetNum = "";
+      if (hash.startsWith("service-")) {
+        targetNum = hash.replace("service-", "");
+      } else {
+        const found = toolkitServices.find(
+          (s) => s.num === hash || s.slug === hash
+        );
+        if (found) {
+          targetNum = found.num;
+        }
+      }
+
+      if (targetNum) {
+        scrollToService(targetNum);
+        const t1 = setTimeout(() => scrollToService(targetNum), 150);
+        const t2 = setTimeout(() => scrollToService(targetNum), 500);
+        return () => {
+          clearTimeout(t1);
+          clearTimeout(t2);
+        };
+      }
+    };
+
+    const cleanup = handleHashScroll();
+    window.addEventListener("hashchange", handleHashScroll);
+    return () => {
+      if (cleanup) cleanup();
+      window.removeEventListener("hashchange", handleHashScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -398,8 +460,8 @@ export default function ServicesOverviewPage() {
         <section className="w-full bg-[#000000] text-white pt-6 pb-0 sm:pt-10 md:pt-14 relative font-sans overflow-hidden min-h-[85vh] flex flex-col justify-between">
           <div className="max-w-[1380px] mx-auto px-6 md:px-12 w-full pt-4 md:pt-8 relative z-10 flex-1 flex flex-col justify-center">
             <div className="max-w-5xl">
-              <h1 className="font-sans font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[92px] tracking-tight leading-[0.95] text-white mb-6 md:mb-8">
-                Music marketing that feels{" "}
+              <h1 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-[56px] xl:text-[72px] 2xl:text-[90px] tracking-tight leading-[1.02] md:leading-[1.0] lg:leading-[0.98] xl:leading-[0.95] text-white mb-6 md:mb-8">
+                <span className="block sm:whitespace-nowrap">Music marketing that feels</span>
                 <TypewriterText
                   words={[
                     "clear, creative, and built around the release.",
@@ -445,7 +507,7 @@ export default function ServicesOverviewPage() {
               {/* Left Column: Text Content */}
               <div className="lg:col-span-7">
                 <ScrollReveal direction="up">
-                  <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-[#000000] mb-8">
+                  <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-[#000000] mb-8">
                     <TypewriterText
                       words={[
                         "What we help with",
@@ -511,7 +573,7 @@ export default function ServicesOverviewPage() {
           <div className="max-w-[1380px] mx-auto px-6 md:px-12">
             <div className="max-w-4xl">
               <ScrollReveal direction="up">
-                <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white mb-8">
+                <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white mb-8">
                   <TypewriterText
                     words={[
                       "Built for different parts of the music world",
@@ -593,7 +655,7 @@ export default function ServicesOverviewPage() {
           <div className="max-w-[1380px] mx-auto px-6 md:px-12">
             <ScrollReveal direction="up">
               <div className="mb-14 md:mb-20">
-                <h2 className="font-sans font-black text-4xl sm:text-6xl md:text-7xl lg:text-[76px] text-black tracking-tight leading-[1.0] max-w-4xl">
+                <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[48px] xl:text-[60px] 2xl:text-[76px] text-black tracking-tight leading-[1.04] max-w-4xl">
                   One connected<br className="hidden sm:inline" /> campaign toolkit.
                 </h2>
                 <div className="w-full border-b border-black/15 mt-8 md:mt-12" />
@@ -606,8 +668,14 @@ export default function ServicesOverviewPage() {
                 <div
                   key={service.num}
                   id={`service-${service.num}`}
-                  className="scroll-mt-28"
+                  data-service-num={service.num}
+                  data-service-slug={service.slug}
+                  className="scroll-mt-32 relative"
                 >
+                  <span
+                    id={service.slug}
+                    className="scroll-mt-32 invisible pointer-events-none absolute -top-32"
+                  />
                   <ScrollReveal direction="up">
                     {/* Top Row: Service Header + Content Grid */}
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-8 md:mb-10">
@@ -646,27 +714,11 @@ export default function ServicesOverviewPage() {
                           </div>
                         </div>
 
-                        {/* Campaign Examples (e.g. Service 04) */}
-                        {service.campaignExamples && service.campaignExamples.length > 0 && (
-                          <div className="border-l-2 border-[#5B3BE8] pl-3 py-1 my-4 bg-black/[0.02] rounded-r-md">
-                            <span className="block font-mono font-bold text-[10px] sm:text-[11px] tracking-widest uppercase text-[#5B3BE8] mb-1">
-                              CAMPAIGN EXAMPLES
-                            </span>
-                            <div className="space-y-1">
-                              {service.campaignExamples.map((ex, exIdx) => (
-                                <p key={exIdx} className="font-sans font-semibold text-xs sm:text-[13px] text-black">
-                                  {ex}
-                                </p>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-
                         {/* Discuss this service link */}
                         <div className="pt-2">
                           <button
                             type="button"
-                            onClick={() => handleOpenBookingModal(service as any)}
+                            onClick={() => handleOpenBookingModal(service)}
                             className="group inline-flex items-center gap-1.5 font-sans font-semibold text-xs sm:text-sm text-black underline underline-offset-4 decoration-black/35 hover:decoration-black transition-colors cursor-pointer"
                           >
                             <span>Discuss this service</span>
@@ -677,7 +729,37 @@ export default function ServicesOverviewPage() {
                     </div>
 
                     {/* Visual Notes Card at end of service */}
-                    <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-black/10 bg-black">
+                    {service.num === "01" ? (
+                      <BrandingShowcaseBanner priority={index === 0} />
+                    ) : service.num === "04" ? (
+                      <InstagramReelsShowcase />
+                    ) : service.num === "05" ? (
+                      <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-black/15 bg-[#000000] select-none">
+                        {/* 1. SIGNATURE TOP RED HEADER BAR (#FF0043) */}
+                        <div className="w-full bg-[#FF0043] px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between border-b border-black/20 text-black">
+                          <span className="font-mono font-black text-xs sm:text-sm tracking-wider uppercase">
+                            {service.categoryTag || "STREAM"} / VISUAL NOTES
+                          </span>
+                          <span className="font-mono font-black text-xs sm:text-sm tracking-widest uppercase">
+                            {service.framesCount ? `${service.framesCount} FRAMES` : "24 FRAMES"}
+                          </span>
+                        </div>
+
+                        {/* Diagonal Marquee Carousel Slider */}
+                        <div className="relative w-full h-[480px] sm:h-[580px] md:h-[650px] overflow-hidden bg-[#000000]">
+                          <DiagonalMarqueeCarousel
+                            cards={spotifySongCards}
+                            angle={-12}
+                            baseSpeed={85}
+                            disableHover={true}
+                            pauseOnHover={false}
+                            className="h-full w-full"
+                            cardClassName="h-[270px] w-[152px] sm:h-[330px] sm:w-[185px] md:h-[380px] md:w-[214px] rounded-xl border border-white/10 shadow-[0_12px_30px_rgba(0,0,0,0.85)] bg-[#07070A]"
+                            fadeClassName="from-[#000000] via-[#000000]/60 to-transparent"
+                          />
+                        </div>
+                      </div>
+                    ) : (
                       <ServiceCardBanner
                         images={
                           service.cardImages && service.cardImages.length > 0
@@ -685,9 +767,11 @@ export default function ServicesOverviewPage() {
                             : [service.cardImage]
                         }
                         alt={`${service.title} Visual Notes`}
+                        categoryTag={service.categoryTag}
+                        framesCount={service.framesCount}
                         priority={index < 2}
                       />
-                    </div>
+                    )}
 
                     {/* Huge Stylized Number at Bottom-Right */}
                     <div className="flex justify-end pt-3 sm:pt-4 pb-2">
@@ -718,10 +802,10 @@ export default function ServicesOverviewPage() {
         {/* 6. A SIMPLE WAY TO WORK TOGETHER SECTION */}
         <HowItWorks />
 
-
       </main>
 
       <Footer />
+
     </div>
   );
 }

@@ -15,7 +15,6 @@ export const LiquidGlassCarousel: React.FC<LiquidGlassCarouselProps> = ({
   className = "",
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
   const touchStartX = useRef<number | null>(null);
 
   const total = tracks.length;
@@ -48,8 +47,8 @@ export const LiquidGlassCarousel: React.FC<LiquidGlassCarouselProps> = ({
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight") handleNext();
-      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowRight") setCurrentIndex((prev) => (prev + 1) % total);
+      if (e.key === "ArrowLeft") setCurrentIndex((prev) => (prev - 1 + total) % total);
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);

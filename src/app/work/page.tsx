@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
+import React, { useState, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import DiscCascadeCarousel, {
@@ -9,12 +8,13 @@ import DiscCascadeCarousel, {
 } from "@/components/ui/disc-cascade-carousel";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { TypewriterText } from "@/components/TypewriterText";
-import { Play, X, ExternalLink, Sparkles, Disc, Flame, ArrowUpRight } from "lucide-react";
+import { X } from "lucide-react";
 
-import { SpotifyCard, SpotifyTrack } from "@/components/ui/spotify-card";
+import { type SpotifyTrack } from "@/components/ui/spotify-card";
 import { LiquidGlassCarousel } from "@/components/ui/liquid-glass-carousel";
 import DiagonalMarqueeCarousel, { CardItem } from "@/components/ui/great-ui-diagonal-marquee-carousel";
 import { WorkHeroBackgroundVideo } from "@/components/WorkHeroBackgroundVideo";
+import { STATIC_ARTIST_SIGNS } from "@/lib/artist-signs-data";
 
 export default function WorkPage() {
   const [selectedVideo, setSelectedVideo] = useState<{
@@ -26,49 +26,31 @@ export default function WorkPage() {
 
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<CardItem | null>(null);
 
-  // Case Studies & Artist Campaigns Data from public/artist sign
-  const caseStudyCards: CardItem[] = [
-    {
-      id: "cs-darshan",
-      url: "/artist%20sign/ScreenShot%20Tool%20-20261013214100.webp",
-      title: "Darshan Raval — Nafrat",
-    },
-    {
-      id: "cs-prateeksha",
-      url: "/artist%20sign/ScreenShot%20Tool%20-20261013214119.webp",
-      title: "Prateeksha Srivastava — Sajna Ve",
-    },
-    {
-      id: "cs-kalp",
-      url: "/artist%20sign/ScreenShot%20Tool%20-20261013214155.webp",
-      title: "Kalp — Na Ho Tum",
-    },
-    {
-      id: "cs-troyboi",
-      url: "/artist%20sign/ScreenShot%20Tool%20-20261013214220.webp",
-      title: "TroyBoi — Beggin",
-    },
-    {
-      id: "cs-malkit",
-      url: "/artist%20sign/ScreenShot%20Tool%20-20261013214238.webp",
-      title: "Malkit Singh — Jind Mahi",
-    },
-    {
-      id: "cs-jacqueline",
-      url: "/artist%20sign/ScreenShot%20Tool%20-20261013214256.webp",
-      title: "Jacqueline Fernandez — Stormrider",
-    },
-    {
-      id: "cs-yuvan",
-      url: "/artist%20sign/ScreenShot%20Tool%20-20261013214323.webp",
-      title: "Yuvan — Dil Namurad",
-    },
-    {
-      id: "cs-raja-kumari",
-      url: "/artist%20sign/ScreenShot%20Tool%20-20261013214424.webp",
-      title: "Raja Kumari — Kashi To Kailash",
-    },
-  ];
+  // Dynamic Case Studies & Artist Campaigns Data from public/artist sign
+  const [caseStudyCards, setCaseStudyCards] = useState<CardItem[]>(STATIC_ARTIST_SIGNS);
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchCards = async () => {
+      try {
+        const res = await fetch("/api/artist-signs");
+        if (!res.ok) return;
+        const data = await res.json();
+        if (isMounted && Array.isArray(data?.images) && data.images.length > 0) {
+          setCaseStudyCards(data.images);
+        }
+      } catch {
+        // Fallback silently
+      }
+    };
+
+    fetchCards();
+    window.addEventListener("focus", fetchCards);
+    return () => {
+      isMounted = false;
+      window.removeEventListener("focus", fetchCards);
+    };
+  }, []);
 
   // Spotify Target Songs Data
   const spotifyCampaignTracks: SpotifyTrack[] = [
@@ -306,16 +288,9 @@ export default function WorkPage() {
 
           <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10">
             <ScrollReveal direction="up">
-              {/* Category Tag Badge */}
-              <div className="flex items-center gap-2.5 mb-6 sm:mb-8">
-                <span className="font-space font-extrabold text-xs sm:text-sm tracking-[2px] uppercase text-[#FF0043] bg-black/50 px-3 py-1 rounded-full border border-[#FF0043]/30 backdrop-blur-md">
-                  CAMPAIGNS & SHOWCASES
-                </span>
-              </div>
-
               {/* Main Headline */}
               <div className="max-w-5xl mb-6 sm:mb-8">
-                <h1 className="font-sans font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[92px] tracking-tight leading-[0.95] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
+                <h1 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-[56px] xl:text-[72px] 2xl:text-[90px] tracking-tight leading-[1.02] md:leading-[1.0] lg:leading-[0.98] xl:leading-[0.95] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
                   Work that turns <br />
                   tracks into{" "}
                   <TypewriterText
@@ -361,7 +336,7 @@ export default function WorkPage() {
                 <span className="text-[#1ED760] font-space text-xs sm:text-sm font-extrabold tracking-[2px] uppercase block mb-3">
                   SPOTIFY CAMPAIGNS & STREAMING DRIVES
                 </span>
-                <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white">
+                <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white">
                   Spotify featured tracks <span className="text-[#1ED760]">.</span>
                 </h2>
               </div>
@@ -387,7 +362,7 @@ export default function WorkPage() {
                       CASE STUDIES & ARTIST CAMPAIGNS
                     </span>
                   </div>
-                  <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white">
+                  <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white">
                     Our recent top campaigns & case studies <span className="text-[#FF0043]">.</span>
                   </h2>
                 </div>

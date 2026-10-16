@@ -117,7 +117,7 @@ export const AbpJourneySection: React.FC = () => {
             </div>
 
             {/* Main Headline */}
-            <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-[#111111] mb-6 min-h-[1.1em]">
+            <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-[#111111] mb-6 min-h-[1.1em]">
               <TypewriterText
                 words={["Built to move music forward."]}
                 loop={false}

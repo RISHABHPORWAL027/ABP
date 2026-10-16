@@ -53,7 +53,7 @@ export const JourneyMorphSliderSection: React.FC = () => {
             </span>
           </div>
 
-          <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-white leading-[1.05] mb-4">
+          <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white mb-4">
             A Story Of Growth
           </h2>
 

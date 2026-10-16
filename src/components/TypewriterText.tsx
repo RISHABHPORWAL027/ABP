@@ -24,7 +24,6 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isFinished, setIsFinished] = useState(false);
 
   // Find longest phrase to reserve container space & eliminate flickering
   const longestText =
@@ -32,21 +31,21 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
       ? words.reduce((a, b) => (a.length > b.length ? a : b), words[0])
       : "";
 
+  const fullText = words && words.length > 0 ? words[currentWordIndex] : "";
+  const isFinished = !loop && words.length === 1 && currentText.length === fullText.length;
+
   useEffect(() => {
     if (!words || words.length === 0) return;
 
-    const fullText = words[currentWordIndex];
     let timer: NodeJS.Timeout;
 
     if (!isDeleting) {
       if (currentText.length < fullText.length) {
-        setIsFinished(false);
         timer = setTimeout(() => {
           setCurrentText(fullText.slice(0, currentText.length + 1));
         }, typingSpeed);
       } else {
         if (!loop && words.length === 1) {
-          setIsFinished(true);
           return;
         }
         timer = setTimeout(() => {
@@ -55,18 +54,19 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
       }
     } else {
       if (currentText.length > 0) {
-        setIsFinished(false);
         timer = setTimeout(() => {
           setCurrentText(fullText.slice(0, currentText.length - 1));
         }, deletingSpeed);
       } else {
-        setIsDeleting(false);
-        setCurrentWordIndex((prev) => (prev + 1) % words.length);
+        timer = setTimeout(() => {
+          setIsDeleting(false);
+          setCurrentWordIndex((prev) => (prev + 1) % words.length);
+        }, 200);
       }
     }
 
     return () => clearTimeout(timer);
-  }, [currentText, isDeleting, currentWordIndex, words, typingSpeed, deletingSpeed, pauseDuration, loop]);
+  }, [currentText, isDeleting, currentWordIndex, words, fullText, typingSpeed, deletingSpeed, pauseDuration, loop]);
 
   return (
     <span className={`inline-grid grid-cols-1 grid-rows-1 align-top whitespace-normal ${className}`}>

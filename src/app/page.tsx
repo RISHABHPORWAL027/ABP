@@ -1,38 +1,47 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
 import { Footer } from "@/components/Footer";
 import { ScrollReveal } from "@/components/ScrollReveal";
-import { MagneticButton } from "@/components/MagneticButton";
 import { MarqueeBanner } from "@/components/MarqueeBanner";
-import { Curved3DCardCarousel } from "@/components/Curved3DCardCarousel";
+import { ArtistsWorkedWithSection } from "@/components/ArtistsWorkedWithSection";
 import { DifferentMovesSection } from "@/components/DifferentMovesSection";
 import { AbpJourneySection } from "@/components/AbpJourneySection";
 import { TestimonialsWithVerticalMarquee } from "@/components/ui/testimonials-with-verticalmarquee";
 import { LogoCloudMarquee } from "@/components/ui/logo-cloud-marquee";
 import { CountUpNumber } from "@/components/CountUpNumber";
-import { TypewriterText } from "@/components/TypewriterText";
-import { ArrowUpRight } from "lucide-react";
+import { getArtistSignImagesFromDisk } from "@/lib/artist-signs-server";
 
 export default function Home() {
-  const showcaseCards = [
-    { title: "Sajna Ve", subtitle: "Prateeksha Srivastava ft. Arjun Deswal", category: "MUSIC VIDEO", youtubeId: "FzjBVeOJdug" },
-    { title: "Bairan", subtitle: "Silver Strings Music", category: "SINGLE", youtubeId: "vsHtDl4Wee4" },
-    { title: "SHEESHA", subtitle: "Mitta Ror ft. Swara Verma", category: "VIRAL REEL", youtubeId: "i52TYO13Nyg" },
-    { title: "KASHISH", subtitle: "Ashish Bhatia & Kashish Ratnani", category: "MUSIC VIDEO", youtubeId: "nwXAkF8OFCc" },
-    { title: "bargad", subtitle: "sufr ft. Arpit Bala & Toorjo Dey", category: "LYRIC VIDEO", youtubeId: "NlvLxP9ehWE" },
-    { title: "Aarzu", subtitle: "Noor, Khan, Madhurxo", category: "OFFICIAL RELEASE", youtubeId: "M5OCLifZK1w" },
-    { title: "OOPS", subtitle: "KING ft. Zahrah S Khan", category: "CHAMPAGNE TALK", youtubeId: "wo2-ldwHqyQ" },
-  ];
+  const artistImages = getArtistSignImagesFromDisk();
 
   return (
     <div className="min-h-screen flex flex-col bg-[#000000] text-white selection:bg-[#FF0043] selection:text-white font-sans overflow-x-hidden">
-      {/* Unified Hero Header Container */}
-      <div className="bg-[#FF0043]">
-        <Navbar className="bg-[#FF0043]" />
+      {/* Unified Hero Header Container with Dark Crimson Radial Gradient */}
+      <div className="relative w-full overflow-hidden bg-[#0c0104]">
+        {/* Background Image Layer & Radial Vignette */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <Image
+            src="/hero-gradient-bg-hd.webp"
+            alt="Hero Background Gradient"
+            fill
+            priority
+            sizes="100vw"
+            quality={100}
+            className="object-cover object-top"
+          />
+          {/* Subtle radial blend overlay to ensure deep velvety transition at edges */}
+          <div
+            className="absolute inset-0 pointer-events-none mix-blend-screen opacity-30"
+            style={{
+              background:
+                "radial-gradient(ellipse 70% 50% at 50% 16%, #781023 0%, rgba(96, 14, 28, 0.4) 45%, transparent 75%)",
+            }}
+          />
+        </div>
+
+        <Navbar className="bg-transparent relative z-20" />
         <HeroSection />
       </div>
 
@@ -52,24 +61,8 @@ export default function Home() {
         {/* DIFFERENT MUSIC. DIFFERENT MOVES SECTION */}
         <DifferentMovesSection />
 
-        {/* SHOWCASE CAROUSEL SECTION */}
-        <div id="work" className="pt-16 bg-[#000000] text-white">
-          <div className="max-w-[1380px] mx-auto px-6 md:px-12 text-center mb-8">
-            <ScrollReveal direction="up">
-              <span className="text-[#009082] font-space text-xs sm:text-sm font-extrabold tracking-[2px] uppercase">
-                CAMPAIGNS & SHOWCASES
-              </span>
-              <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] mt-4 text-white">
-                Featured reels & results
-              </h2>
-            </ScrollReveal>
-          </div>
-
-          {/* Carousel Container */}
-          <div className="w-full pb-12">
-            <Curved3DCardCarousel cards={showcaseCards} speed={1.2} />
-          </div>
-        </div>
+        {/* ARTIST WE HAVE WORKED WITH INFINITE SCROLL SECTION */}
+        <ArtistsWorkedWithSection initialImages={artistImages} />
 
         {/* THE ABP JOURNEY SECTION */}
         <AbpJourneySection />
@@ -86,7 +79,7 @@ export default function Home() {
               ].map((stat, idx) => (
                 <ScrollReveal key={idx} direction="up" delay={idx * 100}>
                   <div>
-                    <div className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#FF0043] tracking-tighter mb-2 font-space">
+                    <div className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-6xl font-extrabold text-[#FF0043] tracking-tighter mb-2 font-space">
                       <CountUpNumber end={stat.end} suffix={stat.suffix} duration={2200} />
                     </div>
                     <div className="text-xs sm:text-sm font-bold tracking-widest uppercase text-[#000000]/75">

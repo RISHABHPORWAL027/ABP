@@ -109,7 +109,7 @@ export const TestimonialsWithVerticalMarquee: React.FC = () => {
           </span>
         </div>
 
-        <h2 className="font-sans font-extrabold text-2xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-white mb-6 uppercase min-h-[1.1em] text-center w-full flex justify-center">
+        <h2 className="font-sans font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-5xl 2xl:text-6xl tracking-tight leading-[1.1] text-white mb-6 uppercase min-h-[1.1em] text-center w-full flex justify-center">
           <TypewriterText
             words={["WHAT ARTISTS & LABELS SAY ."]}
             loop={false}
@@ -189,7 +189,7 @@ const CardItem: React.FC<TestimonialCardProps> = ({
     {/* User Avatar & Info */}
     <div className="flex items-center gap-3.5 pt-4 border-t border-white/10">
       <div className="w-10 h-10 rounded-full overflow-hidden relative border border-white/20 shrink-0">
-        <Image src={avatar} alt={name} fill className="object-cover" />
+        <Image src={avatar} alt={name} fill sizes="40px" className="object-cover" />
       </div>
       <div>
         <h4 className="font-sans font-extrabold text-sm text-white uppercase tracking-wide">

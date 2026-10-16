@@ -18,6 +18,8 @@ export interface DiagonalMarqueeCarouselProps {
   cardClassName?: string;
   fadeClassName?: string;
   onCardClick?: (card: CardItem) => void;
+  disableHover?: boolean;
+  pauseOnHover?: boolean;
 }
 
 const DEFAULT_CARDS: CardItem[] = [
@@ -57,16 +59,21 @@ const Card = ({
   card,
   className,
   onClick,
+  disableHover = false,
 }: {
   card: CardItem;
   className?: string;
   onClick?: () => void;
+  disableHover?: boolean;
 }) => {
+  const isInteractive = Boolean(onClick);
+
   return (
     <div
       onClick={onClick}
       className={cn(
-        "group relative h-[300px] w-[400px] shrink-0 cursor-pointer overflow-hidden rounded-xl shadow-2xl transition-all duration-300",
+        "group relative h-[300px] w-[400px] shrink-0 overflow-hidden rounded-xl shadow-2xl transition-all duration-300",
+        isInteractive && !disableHover ? "cursor-pointer" : "cursor-default",
         className,
       )}
     >
@@ -74,21 +81,26 @@ const Card = ({
         src={card.url}
         alt={card.title}
         loading="lazy"
-        className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+        className={cn(
+          "h-full w-full object-cover transition-transform duration-500 ease-out",
+          !disableHover && "group-hover:scale-105",
+        )}
       />
       {/* Subtle hover gradient and title indicator */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-        {card.title && (
-          <div className="flex items-center justify-between w-full">
-            <span className="font-sans font-extrabold text-xs sm:text-sm text-white drop-shadow-md truncate tracking-tight">
-              {card.title}
-            </span>
-            <span className="text-[10px] uppercase font-space font-extrabold tracking-widest text-[#FF0043] bg-white/10 px-2 py-0.5 rounded backdrop-blur-sm">
-              View
-            </span>
-          </div>
-        )}
-      </div>
+      {!disableHover && (
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+          {card.title && (
+            <div className="flex items-center justify-between w-full">
+              <span className="font-sans font-extrabold text-xs sm:text-sm text-white drop-shadow-md truncate tracking-tight">
+                {card.title}
+              </span>
+              <span className="text-[10px] uppercase font-space font-extrabold tracking-widest text-[#FF0043] bg-white/10 px-2 py-0.5 rounded backdrop-blur-sm">
+                View
+              </span>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
@@ -99,21 +111,28 @@ const MarqueeRow = ({
   direction,
   cardClassName,
   onCardClick,
+  disableHover = false,
+  pauseOnHover = true,
 }: {
   cards: CardItem[];
   speed: number;
   direction: 1 | -1;
   cardClassName?: string;
   onCardClick?: (card: CardItem) => void;
+  disableHover?: boolean;
+  pauseOnHover?: boolean;
 }) => {
   const animationClass =
     direction === -1 ? "animate-marquee-left" : "animate-marquee-right";
+  const shouldPauseOnHover = pauseOnHover && !disableHover;
 
   return (
-    <div className="flex w-full overflow-hidden">
+    <div className="flex w-full overflow-hidden select-none">
       <div
         className={cn(
-          "flex shrink-0 cursor-pointer hover:[animation-play-state:paused]",
+          "flex shrink-0",
+          onCardClick && !disableHover ? "cursor-pointer" : "cursor-default",
+          shouldPauseOnHover && "hover:[animation-play-state:paused]",
           animationClass,
         )}
         style={{ "--speed": `${speed}s` } as React.CSSProperties}
@@ -124,7 +143,8 @@ const MarqueeRow = ({
               <Card
                 card={card}
                 className={cardClassName}
-                onClick={() => onCardClick?.(card)}
+                onClick={onCardClick && !disableHover ? () => onCardClick(card) : undefined}
+                disableHover={disableHover}
               />
             </div>
           ))}
@@ -135,7 +155,8 @@ const MarqueeRow = ({
               <Card
                 card={card}
                 className={cardClassName}
-                onClick={() => onCardClick?.(card)}
+                onClick={onCardClick && !disableHover ? () => onCardClick(card) : undefined}
+                disableHover={disableHover}
               />
             </div>
           ))}
@@ -154,6 +175,8 @@ export default function DiagonalMarqueeCarousel({
   cardClassName = "",
   fadeClassName = "",
   onCardClick,
+  disableHover = false,
+  pauseOnHover = true,
 }: DiagonalMarqueeCarouselProps) {
   const rotationStyle = {
     transform: `rotate(${angle}deg)`,
@@ -199,6 +222,8 @@ export default function DiagonalMarqueeCarousel({
           direction={-1}
           cardClassName={cardClassName}
           onCardClick={onCardClick}
+          disableHover={disableHover}
+          pauseOnHover={pauseOnHover}
         />
         <MarqueeRow
           cards={rowCardsReverse}
@@ -206,6 +231,8 @@ export default function DiagonalMarqueeCarousel({
           direction={alternateDirections ? 1 : -1}
           cardClassName={cardClassName}
           onCardClick={onCardClick}
+          disableHover={disableHover}
+          pauseOnHover={pauseOnHover}
         />
         <MarqueeRow
           cards={rowCards}
@@ -213,6 +240,8 @@ export default function DiagonalMarqueeCarousel({
           direction={-1}
           cardClassName={cardClassName}
           onCardClick={onCardClick}
+          disableHover={disableHover}
+          pauseOnHover={pauseOnHover}
         />
         <MarqueeRow
           cards={rowCardsReverse}
@@ -220,6 +249,8 @@ export default function DiagonalMarqueeCarousel({
           direction={alternateDirections ? 1 : -1}
           cardClassName={cardClassName}
           onCardClick={onCardClick}
+          disableHover={disableHover}
+          pauseOnHover={pauseOnHover}
         />
         <MarqueeRow
           cards={rowCards}
@@ -227,6 +258,8 @@ export default function DiagonalMarqueeCarousel({
           direction={-1}
           cardClassName={cardClassName}
           onCardClick={onCardClick}
+          disableHover={disableHover}
+          pauseOnHover={pauseOnHover}
         />
       </div>
 

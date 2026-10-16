@@ -18,6 +18,8 @@ export const DifferentMovesSection: React.FC = () => {
       bgColor: "bg-purple-700",
       textColor: "text-white",
       accentColor: "border-white/40 text-white hover:bg-white hover:text-purple-700",
+      serviceLink: "/services#service-02",
+      serviceButtonText: "View Service",
       backDetails: {
         stat1: "+240%",
         stat1Label: "FIRST-WEEK STREAMS",
@@ -35,6 +37,8 @@ export const DifferentMovesSection: React.FC = () => {
       bgColor: "bg-[#FF6B4A]",
       textColor: "text-white",
       accentColor: "border-white/40 text-white hover:bg-white hover:text-[#FF6B4A]",
+      serviceLink: "/services#service-04",
+      serviceButtonText: "View Service",
       backDetails: {
         stat1: "14.2M",
         stat1Label: "REELS IMPRESSIONS",
@@ -52,6 +56,8 @@ export const DifferentMovesSection: React.FC = () => {
       bgColor: "bg-[#ffe600]",
       textColor: "text-[#000000]",
       accentColor: "border-black/30 text-black hover:bg-black hover:text-white",
+      serviceLink: "/services#service-05",
+      serviceButtonText: "View Service",
       backDetails: {
         stat1: "185K",
         stat1Label: "NEW SAVES & LIKES",
@@ -69,6 +75,8 @@ export const DifferentMovesSection: React.FC = () => {
       bgColor: "bg-[#FF0043]",
       textColor: "text-white",
       accentColor: "border-white/40 text-white hover:bg-white hover:text-[#FF0043]",
+      serviceLink: "/services#service-03",
+      serviceButtonText: "View Service",
       backDetails: {
         stat1: "45+",
         stat1Label: "EDITORIAL FEATURES",
@@ -86,6 +94,8 @@ export const DifferentMovesSection: React.FC = () => {
       bgColor: "bg-[#009082]",
       textColor: "text-white",
       accentColor: "border-white/40 text-white hover:bg-white hover:text-[#009082]",
+      serviceLink: "/services#service-06",
+      serviceButtonText: "View Service",
       backDetails: {
         stat1: "3.8X",
         stat1Label: "STREAMING CONVERSION",
@@ -103,6 +113,8 @@ export const DifferentMovesSection: React.FC = () => {
       bgColor: "bg-[#f5f5f0]",
       textColor: "text-[#000000]",
       accentColor: "border-black/30 text-black hover:bg-black hover:text-white",
+      serviceLink: "/services#service-01",
+      serviceButtonText: "View Service",
       backDetails: {
         stat1: "100%",
         stat1Label: "BESPOKE VISUAL DIRECTION",
@@ -121,6 +133,7 @@ export const DifferentMovesSection: React.FC = () => {
           src="/black.png"
           alt="Campaigns Background"
           fill
+          sizes="100vw"
           className="object-cover object-center opacity-45 mix-blend-screen"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0c] via-transparent to-[#000000]" />
@@ -137,7 +150,7 @@ export const DifferentMovesSection: React.FC = () => {
               </span>
             </div>
 
-            <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white mb-6 min-h-[1.1em]">
+            <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white mb-6 min-h-[1.1em]">
               <TypewriterText
                 words={["Different music. Different moves."]}
                 loop={false}

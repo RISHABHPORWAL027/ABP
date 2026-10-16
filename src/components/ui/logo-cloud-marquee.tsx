@@ -10,31 +10,43 @@ interface LabelLogo {
 const labelsList: LabelLogo[] = [
   {
     name: "WARNER MUSIC GROUP",
-    src: "/labels_logo/images.png",
+    src: "/labels_logo/Rectangle.svg",
   },
   {
     name: "SAREGAMA",
-    src: "/labels_logo/Saregama_logo.png",
+    src: "/labels_logo/I.svg",
   },
   {
     name: "SONY MUSIC",
-    src: "/labels_logo/images.jpeg",
+    src: "/labels_logo/H.svg",
+  },
+  {
+    name: "ZEE MUSIC CO.",
+    src: "/labels_logo/I (1).svg",
   },
   {
     name: "UNIVERSAL MUSIC GROUP",
     src: "/labels_logo/images (1).jpeg",
   },
   {
-    name: "ZEE MUSIC CO.",
-    src: "/labels_logo/Zee_Music_Company.svg.webp",
-  },
-  {
     name: "TIPS MUSIC",
-    src: "/labels_logo/images (1).png",
+    src: "/labels_logo/Rectangle (1).svg",
   },
   {
     name: "TIMES MUSIC",
-    src: "/labels_logo/Times-Music-logo.webp",
+    src: "/labels_logo/I (2).svg",
+  },
+  {
+    name: "AZAADI RECORDS",
+    src: "/labels_logo/I (4).svg",
+  },
+  {
+    name: "55 RECORDS",
+    src: "/labels_logo/I (5).svg",
+  },
+  {
+    name: "TM MUSIC",
+    src: "/labels_logo/I (3).svg",
   },
   {
     name: "VYRL ORIGINALS",
@@ -44,15 +56,19 @@ const labelsList: LabelLogo[] = [
     name: "MASS APPEAL",
     src: "/labels_logo/images (2).png",
   },
+  {
+    name: "PLAY DMF",
+    src: "/labels_logo/playdmf.jpeg",
+  },
 ];
 
 export const LogoCloudMarquee: React.FC = () => {
   // Two complementary sets for multi-directional motion
   const row1 = labelsList;
-  const row2 = [...labelsList.slice(4), ...labelsList.slice(0, 4)];
+  const row2 = [...labelsList.slice(6), ...labelsList.slice(0, 6)];
 
-  const repeatedRow1 = [...row1, ...row1, ...row1, ...row1];
-  const repeatedRow2 = [...row2, ...row2, ...row2, ...row2];
+  const repeatedRow1 = [...row1, ...row1, ...row1];
+  const repeatedRow2 = [...row2, ...row2, ...row2];
 
   return (
     <section className="w-full bg-[#000000] text-white py-24 font-sans relative overflow-hidden border-t border-white/10">
@@ -61,14 +77,7 @@ export const LogoCloudMarquee: React.FC = () => {
 
       {/* Header Container */}
       <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10 mb-14 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-md mb-4">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#FF0043] animate-pulse" />
-          <span className="font-space font-extrabold text-xs tracking-[2.5px] uppercase text-[#FF0043]">
-            TRUSTED BY LABELS
-          </span>
-        </div>
-
-        <h2 className="font-sans font-extrabold text-2xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-white uppercase mb-4">
+        <h2 className="font-sans font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-5xl 2xl:text-6xl tracking-tight leading-[1.1] text-white uppercase mb-4">
           INDUSTRY PARTNERS & LABELS <span className="text-[#FF0043]">.</span>
         </h2>
 

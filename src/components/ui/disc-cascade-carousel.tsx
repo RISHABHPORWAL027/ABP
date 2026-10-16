@@ -995,7 +995,7 @@ export default function DiscCascadeCarousel({
   const menuRef = React.useRef<HTMLDivElement | null>(null);
   const slideRefs = React.useRef<(HTMLButtonElement | null)[]>([]);
 
-  const E = React.useRef({
+  const ERef = React.useRef({
     a: start,
     va: 0,
     b: start,
@@ -1016,16 +1016,20 @@ export default function DiscCascadeCarousel({
     wheel: 0,
     wheelAt: 0,
     stepAt: 0,
-  }).current;
+  });
+  // eslint-disable-next-line react-hooks/refs
+  const E = ERef.current;
 
   const cfg = React.useRef({ n, loop, spacing, rise, depth, yaw, fan, tilt, roll, bounce, duration });
-  cfg.current = { n, loop, spacing, rise, depth, yaw, fan, tilt, roll, bounce, duration };
-
   const cb = React.useRef({ onIndexChange, active });
-  cb.current = { onIndexChange, active };
+
+  React.useEffect(() => {
+    cfg.current = { n, loop, spacing, rise, depth, yaw, fan, tilt, roll, bounce, duration };
+    cb.current = { onIndexChange, active };
+  });
 
   const styleFor = (i: number, a: number, b: number) => {
-    const c = cfg.current;
+    const c = { n, loop, spacing, rise, depth, yaw, fan, tilt, roll, bounce, duration };
     const p = poseOf(offsetOf(i, a, c.n, c.loop), offsetOf(i, b, c.n, c.loop), c);
     return {
       transform:
@@ -1434,7 +1438,7 @@ export default function DiscCascadeCarousel({
       {/* 3D Stage Discs */}
       <div ref={stageRef} className="dcc-stage">
         {items.map((item, i) => {
-          const t = styleFor(i, E.a, E.b);
+          const t = styleFor(i, start, start);
           const isActive = i === active;
           const pal = item.palette ?? PALETTES[i % PALETTES.length];
           const ink = item.ink ?? (item.src ? "#ffffff" : inkFor(pal[0]));

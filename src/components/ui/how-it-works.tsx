@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React from "react";
 import { cn } from "@/lib/utils";
 
 // Individual step item interface
@@ -227,7 +227,7 @@ interface PinnedCardProps {
   step: HowItWorksStep;
   index: number;
   theme: ThemeConfig;
-  cardRef: (el: HTMLDivElement | null) => void;
+  cardRef?: (el: HTMLDivElement | null) => void;
 }
 
 const PinnedCard: React.FC<PinnedCardProps> = ({
@@ -322,9 +322,6 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
   steps,
   title,
   subtitle,
-  showStepNumbers = true,
-  baseText,
-  revealText,
   ...props
 }) => {
   const defaultStepsData: HowItWorksStep[] = [
@@ -368,102 +365,24 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
 
   const stepsData = steps || defaultStepsData;
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const [lines, setLines] = useState<
-    Array<{ x1: number; y1: number; x2: number; y2: number }>
-  >([]);
-
-  // Function to calculate exact dashed lines in horizontal zig-zag and vertical fallback
-  const updateLines = useCallback(() => {
-    if (!containerRef.current) return;
-    const containerRect = containerRef.current.getBoundingClientRect();
-    const calculated: Array<{ x1: number; y1: number; x2: number; y2: number }> = [];
-
-    for (let i = 0; i < stepsData.length - 1; i++) {
-      const cardA = cardRefs.current[i];
-      const cardB = cardRefs.current[i + 1];
-      if (!cardA || !cardB) continue;
-
-      const rectA = cardA.getBoundingClientRect();
-      const rectB = cardB.getBoundingClientRect();
-
-      const isDesktop = window.innerWidth >= 768;
-
-      if (isDesktop) {
-        // Horizontal Zig-Zag: Connect right edge of Card A to left edge of Card B
-        const x1 = rectA.right - containerRect.left;
-        const y1 = rectA.top + rectA.height * 0.45 - containerRect.top;
-
-        const x2 = rectB.left - containerRect.left;
-        const y2 = rectB.top + rectB.height * 0.45 - containerRect.top;
-
-        calculated.push({ x1, y1, x2, y2 });
-      } else {
-        // Mobile vertical stack: Connect bottom center of Card A to top pin of Card B
-        const x1 = rectA.left + rectA.width * 0.5 - containerRect.left;
-        const y1 = rectA.bottom - containerRect.top;
-        const x2 = rectB.left + rectB.width * 0.5 - containerRect.left;
-        const y2 = rectB.top - containerRect.top;
-
-        calculated.push({ x1, y1, x2, y2 });
-      }
-    }
-
-    setLines(calculated);
-  }, [stepsData.length]);
-
-  useEffect(() => {
-    updateLines();
-
-    const handleResize = () => {
-      updateLines();
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    const observer = new ResizeObserver(() => {
-      updateLines();
-    });
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      observer.disconnect();
-    };
-  }, [updateLines]);
 
   return (
     <section
       id="how-it-works"
       className={cn(
-        "w-full text-white py-24 md:py-32 lg:py-36 font-sans relative overflow-hidden border-y border-white/10",
+        "w-full bg-[#000000] text-white py-24 md:py-32 lg:py-36 font-sans relative overflow-hidden border-y border-white/10",
         className
       )}
-      style={{
-        backgroundColor: "#0B0A10",
-        backgroundImage: `repeating-linear-gradient(
-          to bottom,
-          transparent,
-          transparent 27px,
-          rgba(255, 255, 255, 0.035) 27px,
-          rgba(255, 255, 255, 0.035) 28px
-        )`,
-      }}
       {...props}
     >
-      {/* Subtle radial ambient background glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(255,0,67,0.1),rgba(255,255,255,0))] pointer-events-none" />
+      {/* Background Glow Gradient with Primary & Tertiary Accents (matching footer) */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120vw] h-[600px] bg-gradient-to-t from-[#FF0043]/20 via-[#009082]/15 to-transparent pointer-events-none z-0" />
 
       <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16 md:mb-24">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/10 mb-4 backdrop-blur-md">
-            <span className="w-2 h-2 rounded-full bg-[#FF0043] animate-pulse" />
+          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/[0.06] border border-white/10 mb-4 backdrop-blur-md">
             <span className="font-space font-extrabold text-xs sm:text-sm tracking-[2px] uppercase text-white/90">
               HOW WE WORK
             </span>
@@ -471,14 +390,14 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
 
           {title !== undefined ? (
             typeof title === "string" ? (
-              <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-white leading-[1.05] mb-4">
+              <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white mb-4">
                 {title}
               </h2>
             ) : (
               title
             )
           ) : (
-            <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-white leading-[1.05] mb-4">
+            <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white mb-4">
               A simple way to work together.
             </h2>
           )}
@@ -498,32 +417,8 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
           )}
         </div>
 
-        {/* Horizontal Zig-zag Cards Layout with Connecting Dashed Lines */}
-        <div
-          ref={containerRef}
-          className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 pb-20 md:pb-32 lg:pb-36"
-        >
-          {/* SVG Connector Layer */}
-          <svg
-            className="absolute inset-0 w-full h-full pointer-events-none z-0"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {lines.map((l, idx) => (
-              <line
-                key={idx}
-                x1={l.x1}
-                y1={l.y1}
-                x2={l.x2}
-                y2={l.y2}
-                stroke="#FFFFFF"
-                strokeWidth="2"
-                strokeDasharray="6 6"
-                strokeLinecap="round"
-                strokeOpacity="0.25"
-              />
-            ))}
-          </svg>
-
+        {/* Horizontal Zig-zag Cards Layout */}
+        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 pb-20 md:pb-32 lg:pb-36">
           {/* Cards Grid: 3 columns horizontally with center card staggered down for the zig-zag */}
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-14 md:gap-10 lg:gap-14 xl:gap-20 items-start">
             {stepsData.map((step, idx) => {
@@ -535,9 +430,6 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
                     step={step}
                     index={idx}
                     theme={theme}
-                    cardRef={(el) => {
-                      cardRefs.current[idx] = el;
-                    }}
                   />
                 </div>
               );

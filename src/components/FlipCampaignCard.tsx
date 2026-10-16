@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { ArrowUpRight, RotateCw, CheckCircle, Zap } from "lucide-react";
 
 interface FlipCampaignCardProps {
@@ -19,6 +20,8 @@ interface FlipCampaignCardProps {
     stat2Label: string;
     description: string;
   };
+  serviceLink?: string;
+  serviceButtonText?: string;
 }
 
 export const FlipCampaignCard: React.FC<FlipCampaignCardProps> = ({
@@ -31,21 +34,47 @@ export const FlipCampaignCard: React.FC<FlipCampaignCardProps> = ({
   textColor,
   accentColor,
   backDetails,
+  serviceLink,
+  serviceButtonText = "View Service",
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
     <div
-      className="w-full h-[360px] sm:h-[400px] md:h-[430px] cursor-pointer group"
+      className="w-full h-[360px] sm:h-[400px] md:h-[430px] cursor-pointer group relative"
       style={{ perspective: "1800px" }}
       onMouseEnter={() => setIsFlipped(true)}
-      onMouseLeave={() => setIsFlipped(false)}
-      onClick={() => setIsFlipped(!isFlipped)}
+      onMouseMove={() => {
+        if (!isFlipped) setIsFlipped(true);
+      }}
+      onMouseLeave={(e) => {
+        // Prevent false unflip during 3D rotation: only unflip if mouse genuinely left the rectangular boundary
+        const rect = e.currentTarget.getBoundingClientRect();
+        const buffer = 4; // 4px margin of safety
+        if (
+          e.clientX >= rect.left - buffer &&
+          e.clientX <= rect.right + buffer &&
+          e.clientY >= rect.top - buffer &&
+          e.clientY <= rect.bottom + buffer
+        ) {
+          return;
+        }
+        setIsFlipped(false);
+      }}
+      onClick={(e) => {
+        // Prevent flipping if user clicked on or inside an interactive link/button
+        const target = e.target as HTMLElement;
+        if (target.closest("a, button, [data-no-flip='true']")) {
+          return;
+        }
+        setIsFlipped((prev) => !prev);
+      }}
     >
       <div
-        className="relative w-full h-full rounded-[24px] sm:rounded-[28px] shadow-2xl transition-transform duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]"
+        className="relative w-full h-full rounded-[24px] sm:rounded-[28px] shadow-2xl transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
         style={{
           transformStyle: "preserve-3d",
+          WebkitTransformStyle: "preserve-3d",
           transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
           willChange: "transform",
         }}
@@ -56,9 +85,7 @@ export const FlipCampaignCard: React.FC<FlipCampaignCardProps> = ({
           style={{
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
-            opacity: isFlipped ? 0 : 1,
             pointerEvents: isFlipped ? "none" : "auto",
-            transition: "opacity 0.3s ease",
           }}
         >
           {/* Subtle Concentric Rings SVG Background */}
@@ -113,9 +140,7 @@ export const FlipCampaignCard: React.FC<FlipCampaignCardProps> = ({
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
-            opacity: isFlipped ? 1 : 0,
             pointerEvents: isFlipped ? "auto" : "none",
-            transition: "opacity 0.3s ease",
           }}
         >
           {/* Header */}
@@ -151,13 +176,35 @@ export const FlipCampaignCard: React.FC<FlipCampaignCardProps> = ({
           </div>
 
           {/* Description & Action */}
-          <div className="border-t border-white/10 pt-3 sm:pt-4 flex items-center justify-between">
-            <p className="font-sans text-[11px] sm:text-sm text-white/80 max-w-md font-medium leading-relaxed line-clamp-2 sm:line-clamp-none">
+          <div className="border-t border-white/10 pt-3 sm:pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+            <p className="font-sans text-[11px] sm:text-sm text-white/80 max-w-sm sm:max-w-md md:max-w-lg font-medium leading-relaxed line-clamp-2 sm:line-clamp-none">
               {backDetails.description}
             </p>
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#FF0043] text-white flex items-center justify-center shrink-0 shadow-lg ml-2">
-              <CheckCircle className="w-4 h-4 sm:w-6 sm:h-6" />
-            </div>
+
+            {serviceLink ? (
+              <Link
+                href={serviceLink}
+                data-no-flip="true"
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+                onMouseEnter={(e) => {
+                  e.stopPropagation();
+                  setIsFlipped(true);
+                }}
+                onMouseLeave={(e) => {
+                  e.stopPropagation();
+                }}
+                className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#FF0043] hover:bg-[#ffe600] text-white hover:text-black font-space font-extrabold text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg shadow-[#FF0043]/30 hover:shadow-[#ffe600]/40 shrink-0 cursor-pointer group/svcbtn self-start sm:self-auto"
+              >
+                <span>{serviceButtonText}</span>
+                <ArrowUpRight className="w-4 h-4 sm:w-4.5 sm:h-4.5 stroke-[2.5] transition-transform duration-300 group-hover/svcbtn:translate-x-0.5 group-hover/svcbtn:-translate-y-0.5" />
+              </Link>
+            ) : (
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#FF0043] text-white flex items-center justify-center shrink-0 shadow-lg ml-2">
+                <CheckCircle className="w-4 h-4 sm:w-6 sm:h-6" />
+              </div>
+            )}
           </div>
         </div>
       </div>

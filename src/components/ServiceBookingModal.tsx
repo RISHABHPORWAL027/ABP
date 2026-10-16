@@ -38,14 +38,15 @@ export const ServiceBookingModal: React.FC<ServiceBookingModalProps> = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // Update current service when selectedService prop changes
-  useEffect(() => {
+  const [prevSelectedService, setPrevSelectedService] = useState<ServiceTicketData | null>(selectedService);
+  if (selectedService !== prevSelectedService) {
+    setPrevSelectedService(selectedService);
     if (selectedService) {
       setCurrentService(selectedService);
       setIsSubmitted(false);
       setIsSubmitting(false);
     }
-  }, [selectedService]);
+  }
 
   // Lock body scroll when modal is open
   useEffect(() => {

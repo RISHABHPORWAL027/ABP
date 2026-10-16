@@ -31,16 +31,8 @@ export const Footer: React.FC = () => {
 
       <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10">
         <div className="max-w-4xl mx-auto">
-          {/* Top Badge */}
-          <div className="flex items-center gap-2 mb-4">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#FF0043] inline-block animate-pulse" />
-            <span className="font-space font-extrabold text-xs sm:text-sm tracking-[2px] uppercase text-[#FF0043]">
-              START A CONVERSATION
-            </span>
-          </div>
-
           {/* Main Headline */}
-          <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-white mb-6 min-h-[1.1em]">
+          <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white mb-6 min-h-[1.1em]">
             <TypewriterText
               words={[
                 "Connect with us.",

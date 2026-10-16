@@ -16,7 +16,7 @@ export const FounderSection: React.FC = () => {
             {/* Left Column: Heading & Bio Paragraphs */}
             <div className="lg:col-span-7">
               <ScrollReveal direction="up">
-                <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-[#000000] mb-8">
+                <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-[#000000] mb-8">
                   <TypewriterText
                     words={["Built by someone who knows the music side", "Strategy rooted in music experience", "Founded for artists & labels"]}
                     className="text-[#000000]"
@@ -74,7 +74,7 @@ export const FounderSection: React.FC = () => {
             {/* Left Column: What We Believe Statements */}
             <div className="lg:col-span-7">
               <ScrollReveal direction="up">
-                <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] mb-12">
+                <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] mb-12">
                   What we <br />
                   <TypewriterText
                     words={["believe", "stand for", "deliver"]}

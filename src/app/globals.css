@@ -165,3 +165,94 @@ h1, h2, h3, h4, h5, h6, p, a, button, input, textarea {
   animation: fadeOutLabel 2s ease-in-out forwards;
 }
 
+/* Device and Screen-Specific Heading Hierarchy (Tailored for Small Screen Laptops, Desktops & Mobile) */
+.heading-hero {
+  font-family: var(--font-montserrat), "Montserrat", sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  font-size: 2rem; /* 32px mobile */
+}
+
+@media (min-width: 640px) {
+  .heading-hero {
+    font-size: 2.75rem; /* 44px tablet */
+  }
+}
+
+@media (min-width: 768px) {
+  .heading-hero {
+    font-size: 3.25rem; /* 52px md */
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Small Screen Laptop: 1024px - 1279px */
+  .heading-hero {
+    font-size: 3.5rem; /* 56px lg */
+    line-height: 1.0;
+  }
+}
+
+@media (min-width: 1280px) {
+  /* Standard Laptop / Desktop: 1280px - 1535px */
+  .heading-hero {
+    font-size: 4.5rem; /* 72px xl */
+    line-height: 0.98;
+  }
+}
+
+@media (min-width: 1536px) {
+  /* Large Monitor / 2XL Desktop */
+  .heading-hero {
+    font-size: 5.625rem; /* 90px 2xl */
+    line-height: 0.95;
+  }
+}
+
+.heading-section {
+  font-family: var(--font-montserrat), "Montserrat", sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  font-size: 1.875rem; /* 30px mobile */
+}
+
+@media (min-width: 640px) {
+  .heading-section {
+    font-size: 2.25rem; /* 36px sm */
+  }
+}
+
+@media (min-width: 768px) {
+  .heading-section {
+    font-size: 2.625rem; /* 42px md */
+    line-height: 1.08;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Small Screen Laptop: 1024px - 1279px */
+  .heading-section {
+    font-size: 2.875rem; /* 46px lg */
+    line-height: 1.06;
+  }
+}
+
+@media (min-width: 1280px) {
+  /* Standard Laptop / Desktop: 1280px - 1535px */
+  .heading-section {
+    font-size: 3.5rem; /* 56px xl */
+    line-height: 1.05;
+  }
+}
+
+@media (min-width: 1536px) {
+  /* Large Monitor / 2XL Desktop */
+  .heading-section {
+    font-size: 4.5rem; /* 72px 2xl */
+    line-height: 1.04;
+  }
+}
+
+

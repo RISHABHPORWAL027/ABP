@@ -2,16 +2,44 @@
 
 import React, { useEffect, useRef } from "react";
 
+interface YTPlayer {
+  mute: () => void;
+  playVideo: () => void;
+  seekTo: (seconds: number, allowSeekAhead: boolean) => void;
+  getCurrentTime?: () => number;
+  destroy?: () => void;
+}
+
+interface YTPlayerEvent {
+  target: YTPlayer;
+  data?: number;
+}
+
+interface YTNamespace {
+  Player: new (
+    element: HTMLElement,
+    options: {
+      events?: {
+        onReady?: (event: YTPlayerEvent) => void;
+        onStateChange?: (event: YTPlayerEvent) => void;
+      };
+    }
+  ) => YTPlayer;
+  PlayerState: {
+    ENDED: number;
+  };
+}
+
 declare global {
   interface Window {
-    YT: any;
-    onYouTubeIframeAPIReady: () => void;
+    YT?: YTNamespace;
+    onYouTubeIframeAPIReady?: () => void;
   }
 }
 
 export const WorkHeroBackgroundVideo: React.FC = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const playerRef = useRef<any>(null);
+  const playerRef = useRef<YTPlayer | null>(null);
   const isLoopingRef = useRef<boolean>(false);
 
   useEffect(() => {
@@ -31,13 +59,13 @@ export const WorkHeroBackgroundVideo: React.FC = () => {
       try {
         playerRef.current = new window.YT.Player(iframeRef.current, {
           events: {
-            onReady: (event: any) => {
+            onReady: (event: YTPlayerEvent) => {
               event.target.mute();
               event.target.playVideo();
             },
-            onStateChange: (event: any) => {
+            onStateChange: (event: YTPlayerEvent) => {
               // If video ends, seamlessly loop back to 20s
-              if (event.data === window.YT.PlayerState.ENDED) {
+              if (window.YT && event.data === window.YT.PlayerState.ENDED) {
                 event.target.seekTo(20, true);
                 event.target.playVideo();
               }

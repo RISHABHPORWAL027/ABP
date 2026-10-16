@@ -37,7 +37,7 @@ export const WhatWeBuiltSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-16 md:mb-24">
           <div className="lg:col-span-6">
             <ScrollReveal direction="up">
-              <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-[#000000]">
+              <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-[#000000]">
                 What we&apos;ve <br />
                 <TypewriterText
                   words={["built so far", "achieved", "delivered"]}
@@ -66,7 +66,7 @@ export const WhatWeBuiltSection: React.FC = () => {
                   idx < 2 ? "md:border-r border-[#E5E5E5]" : ""
                 } ${idx > 0 ? "border-t md:border-t-0 border-[#E5E5E5]" : ""}`}
               >
-                <div className="font-sans font-black text-5xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-tight text-[#000000] mb-8">
+                <div className="font-sans font-black text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl tracking-tight text-[#000000] mb-8">
                   <CountUpNumber
                     end={stat.end}
                     start={stat.start}

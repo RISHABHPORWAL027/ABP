@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Play, Pause, SkipBack, SkipForward, Volume2, ChevronRight, ExternalLink } from "lucide-react";
 import { FaSpotify } from "react-icons/fa";
@@ -31,8 +31,6 @@ export const SpotifyCard: React.FC<SpotifyCardProps> = ({
   const trackList = tracks.length > 0 ? tracks : track ? [track] : defaultTracks;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const currentTrack = trackList[currentIndex] || defaultTracks[0];
 
@@ -43,19 +41,11 @@ export const SpotifyCard: React.FC<SpotifyCardProps> = ({
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % trackList.length);
     setIsPlaying(false);
-    setCurrentTime(0);
   };
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev - 1 + trackList.length) % trackList.length);
     setIsPlaying(false);
-    setCurrentTime(0);
-  };
-
-  const formatTime = (secs: number) => {
-    const m = Math.floor(secs / 60);
-    const s = Math.floor(secs % 60);
-    return `${m}:${s < 10 ? "0" : ""}${s}`;
   };
 
   return (
@@ -93,10 +83,12 @@ export const SpotifyCard: React.FC<SpotifyCardProps> = ({
 
         {/* Center Album Cover Art */}
         <div className="relative w-full aspect-square max-w-[240px] mx-auto rounded-2xl overflow-hidden shadow-2xl border border-white/10 group">
-          <img
+          <Image
             src={currentTrack.albumArt}
             alt={currentTrack.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            fill
+            sizes="240px"
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
           />
           <a
             href={currentTrack.spotifyUrl}

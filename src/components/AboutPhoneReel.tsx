@@ -84,10 +84,10 @@ export const AboutPhoneReel: React.FC = () => {
             loop
             muted={isMuted}
             playsInline
+            preload="metadata"
             className="absolute inset-0 w-full h-full object-cover"
           >
             <source src="/need-help-in-marketing.mp4" type="video/mp4" />
-            <source src="/need%20help%20in%20marketing%20.mp4" type="video/mp4" />
           </video>
 
           {/* Vignette Gradients for Instagram Reel UI Legibility */}

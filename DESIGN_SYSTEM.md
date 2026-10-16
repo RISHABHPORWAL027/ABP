@@ -141,17 +141,26 @@ Every website should have at minimum:
 
 **Primary Font Family:** `"Montserrat", sans-serif` across the entire website.
 
-### Unified Global Typography Scale
+### Unified Global Typography Scale (Device & Screen-Specific)
 
 | Hierarchy Role | Tailwind Classes | Semantic Element | Used For |
 |---|---|---|---|
-| **Page Hero (H1)** | `font-sans font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[92px] tracking-tight leading-[0.95]` | `<h1>` | Landing Hero headlines (`/`, `/about`, `/services`) |
-| **Section Heading (H2)** | `font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05]` | `<h2>` | Major section titles across all pages |
+| **Page Hero (H1)** | `font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-[56px] xl:text-[72px] 2xl:text-[90px] tracking-tight leading-[1.02] md:leading-[1.0] lg:leading-[0.98] xl:leading-[0.95]` | `<h1>` | Landing Hero headlines (`/`, `/about`, `/services`, `/work`). Calibrated to fit without vertical cutoff on 13" laptops (1024x768 / 1280x800). |
+| **Section Heading (H2)** | `font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05]` | `<h2>` | Major section titles across all pages. Restrained to 46px on small laptops (1024px–1279px) to prevent multi-line wrapping, scaling to 56px on 1280px+ and 72px on large monitors. |
 | **Section Eyebrow / Tag** | `font-space font-extrabold text-xs sm:text-sm tracking-[2px] uppercase` | `<span>` / `<div>` | Category badges, section labels, pill indicators |
 | **Lead Subtitle** | `font-sans font-bold text-lg sm:text-xl md:text-2xl leading-snug` | `<p>` | High-contrast highlight sentences beneath H2 |
 | **Body Paragraph** | `font-sans font-medium text-base sm:text-lg leading-relaxed` | `<p>` | Standard descriptive content paragraphs |
-| **Card / Item Title (H3)** | `font-sans font-extrabold text-2xl sm:text-3xl md:text-4xl tracking-tight leading-[1.1]` | `<h3>` | Carousel items, ticket specs, feature cards |
+| **Card / Item Title (H3)** | `font-sans font-extrabold text-xl sm:text-2xl md:text-3xl lg:text-[32px] xl:text-4xl tracking-tight leading-[1.1]` | `<h3>` | Carousel items, ticket specs, feature cards |
 | **Captions & Meta** | `font-sans text-xs sm:text-sm font-semibold tracking-wider uppercase` | `<span>` | Credits, dates, footnotes, secondary stats |
+
+### Breakpoint Device Guide for Headings
+- **Mobile (< 640px)**: H1: 32px | H2: 30px
+- **Tablet (640px - 767px)**: H1: 44px | H2: 36px
+- **Tablet Landscape / iPad (768px - 1023px)**: H1: 52px | H2: 42px
+- **Small Screen Laptop (1024px - 1279px)**: H1: 56px | H2: 46px *(avoids dominating small 13" laptop screens)*
+- **Standard Laptop / Desktop (1280px - 1535px)**: H1: 72px | H2: 56px
+- **Large External Monitor (1536px+)**: H1: 90px | H2: 72px
+
 
 ### Heading requirements
 

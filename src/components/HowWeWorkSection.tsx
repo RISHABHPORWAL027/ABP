@@ -30,10 +30,10 @@ export const HowWeWorkSection: React.FC = () => {
             loop
             muted
             playsInline
+            preload="metadata"
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           >
             <source src="/how-we-work.mp4" type="video/mp4" />
-            <source src="/how%20we%20work.mp4" type="video/mp4" />
           </video>
 
           {/* Subtle Gradient Overlay */}
@@ -57,7 +57,7 @@ export const HowWeWorkSection: React.FC = () => {
         <div className="lg:col-span-6 bg-[#FF0043] text-white p-8 sm:p-12 md:p-16 lg:p-20 flex flex-col justify-center">
           <ScrollReveal direction="up">
             {/* Headline */}
-            <h2 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] mb-8">
+            <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] mb-8">
               How we <br />
               work
             </h2>
