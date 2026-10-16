@@ -653,10 +653,28 @@ export default function ServicesOverviewPage() {
         {/* 5. ONE CONNECTED CAMPAIGN TOOLKIT (WHITE BACKGROUND SECTION) */}
         <section className="w-full bg-[#FFFFFF] text-[#000000] py-16 md:py-24 font-sans relative">
           <div className="max-w-[1380px] mx-auto px-6 md:px-12">
-            <ScrollReveal direction="up">
+            <ScrollReveal direction="up" threshold={0.08} duration={750}>
               <div className="mb-14 md:mb-20">
-                <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[48px] xl:text-[60px] 2xl:text-[76px] text-black tracking-tight leading-[1.04] max-w-4xl">
-                  One connected<br className="hidden sm:inline" /> campaign toolkit.
+                <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[48px] xl:text-[60px] 2xl:text-[76px] text-black tracking-tight leading-[1.04] max-w-5xl">
+                  One connected<br className="hidden sm:inline" /> campaign toolkit for{" "}
+                  <TypewriterText
+                    words={[
+                      "Branding & Marketing",
+                      "Release-based Campaigns",
+                      "PR Activation",
+                      "Instagram-centric Campaigns",
+                      "Spotify-focussed Campaigns",
+                      "Ads Marketing",
+                      "Content & Social Media",
+                    ]}
+                    className="text-[#5B3BE8]"
+                    cursorColor="text-[#FF0043]"
+                    loop={true}
+                    triggerOnView={true}
+                    typingSpeed={60}
+                    deletingSpeed={35}
+                    pauseDuration={2200}
+                  />
                 </h2>
                 <div className="w-full border-b border-black/15 mt-8 md:mt-12" />
               </div>
@@ -676,21 +694,46 @@ export default function ServicesOverviewPage() {
                     id={service.slug}
                     className="scroll-mt-32 invisible pointer-events-none absolute -top-32"
                   />
-                  <ScrollReveal direction="up">
-                    {/* Top Row: Service Header + Content Grid */}
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-8 md:mb-10">
-                      {/* Left Column: Number tag & Title */}
-                      <div className="lg:col-span-5">
+
+                  {/* Top Row: Service Header + Content Grid with Staggered Entrance */}
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-8 md:mb-10">
+                    {/* Left Column: Number tag & Auto-Typewriting Title */}
+                    <div className="lg:col-span-5">
+                      <ScrollReveal
+                        direction="up"
+                        delay={40}
+                        duration={750}
+                        distance={20}
+                        threshold={0.05}
+                        rootMargin="0px 0px -30px 0px"
+                      >
                         <span className="font-mono font-bold text-xs sm:text-[13px] tracking-[0.16em] uppercase text-[#5B3BE8] block mb-3">
                           SERVICE {service.num}
                         </span>
-                        <h3 className="font-sans font-black text-3xl sm:text-4xl md:text-[44px] text-black tracking-tight leading-[1.08]">
-                          {service.title}
+                        <h3 className="font-sans font-black text-3xl sm:text-4xl md:text-[44px] text-black tracking-tight leading-[1.08] min-h-[1.15em]">
+                          <TypewriterText
+                            words={[service.title]}
+                            loop={false}
+                            typingSpeed={45}
+                            startDelay={150}
+                            triggerOnView={true}
+                            className="text-black"
+                            cursorColor="text-[#5B3BE8]"
+                          />
                         </h3>
-                      </div>
+                      </ScrollReveal>
+                    </div>
 
-                      {/* Right Column: Descriptions, Features, Examples, Discuss link */}
-                      <div className="lg:col-span-7 flex flex-col justify-between">
+                    {/* Right Column: Descriptions, Features, Examples, Discuss link */}
+                    <div className="lg:col-span-7 flex flex-col justify-between">
+                      <ScrollReveal
+                        direction="up"
+                        delay={160}
+                        duration={750}
+                        distance={22}
+                        threshold={0.05}
+                        rootMargin="0px 0px -30px 0px"
+                      >
                         <p className="font-sans font-medium text-base sm:text-lg text-black/85 leading-relaxed mb-4">
                           {service.p1}
                         </p>
@@ -725,10 +768,19 @@ export default function ServicesOverviewPage() {
                             <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                           </button>
                         </div>
-                      </div>
+                      </ScrollReveal>
                     </div>
+                  </div>
 
-                    {/* Visual Notes Card at end of service */}
+                  {/* Visual Notes Card at end of service with smooth glide-up entrance */}
+                  <ScrollReveal
+                    direction="up"
+                    delay={260}
+                    duration={850}
+                    distance={26}
+                    threshold={0.04}
+                    rootMargin="0px 0px -30px 0px"
+                  >
                     {service.num === "01" ? (
                       <BrandingShowcaseBanner priority={index === 0} />
                     ) : service.num === "04" ? (
@@ -772,8 +824,16 @@ export default function ServicesOverviewPage() {
                         priority={index < 2}
                       />
                     )}
+                  </ScrollReveal>
 
-                    {/* Huge Stylized Number at Bottom-Right */}
+                  {/* Huge Stylized Number at Bottom-Right & Divider */}
+                  <ScrollReveal
+                    direction="up"
+                    delay={320}
+                    duration={650}
+                    distance={14}
+                    threshold={0.04}
+                  >
                     <div className="flex justify-end pt-3 sm:pt-4 pb-2">
                       <span className="font-sans font-black text-4xl sm:text-5xl md:text-6xl tracking-wider text-[#D4CFC4] select-none scale-y-90">
                         {service.num}

@@ -10,6 +10,8 @@ interface TypewriterTextProps {
   loop?: boolean;
   className?: string;
   cursorColor?: string;
+  triggerOnView?: boolean;
+  startDelay?: number;
 }
 
 export const TypewriterText: React.FC<TypewriterTextProps> = ({
@@ -20,10 +22,67 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
   loop = true,
   className = "",
   cursorColor = "text-[#FF0043]",
+  triggerOnView = false,
+  startDelay = 0,
 }) => {
+  const containerRef = React.useRef<HTMLSpanElement>(null);
+  const [hasStarted, setHasStarted] = useState(!triggerOnView);
+  const [canType, setCanType] = useState(!triggerOnView && startDelay === 0);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+
+  // IntersectionObserver to start typewriter only when scrolled into view
+  useEffect(() => {
+    if (!triggerOnView) {
+      setHasStarted(true);
+      if (startDelay > 0) {
+        const timer = setTimeout(() => setCanType(true), startDelay);
+        return () => clearTimeout(timer);
+      } else {
+        setCanType(true);
+      }
+      return;
+    }
+
+    const element = containerRef.current;
+    if (!element) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      setHasStarted(true);
+      setCanType(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasStarted(true);
+          observer.unobserve(element);
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      if (element) observer.unobserve(element);
+    };
+  }, [triggerOnView, startDelay]);
+
+  // Handle startDelay once element enters view
+  useEffect(() => {
+    if (!hasStarted) return;
+    if (startDelay > 0) {
+      const timer = setTimeout(() => {
+        setCanType(true);
+      }, startDelay);
+      return () => clearTimeout(timer);
+    } else {
+      setCanType(true);
+    }
+  }, [hasStarted, startDelay]);
 
   // Find longest phrase to reserve container space & eliminate flickering
   const longestText =
@@ -35,7 +94,7 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
   const isFinished = !loop && words.length === 1 && currentText.length === fullText.length;
 
   useEffect(() => {
-    if (!words || words.length === 0) return;
+    if (!words || words.length === 0 || !canType) return;
 
     let timer: NodeJS.Timeout;
 
@@ -66,11 +125,14 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
     }
 
     return () => clearTimeout(timer);
-  }, [currentText, isDeleting, currentWordIndex, words, fullText, typingSpeed, deletingSpeed, pauseDuration, loop]);
+  }, [currentText, isDeleting, currentWordIndex, words, fullText, typingSpeed, deletingSpeed, pauseDuration, loop, canType]);
 
   return (
-    <span className={`inline-grid grid-cols-1 grid-rows-1 align-top whitespace-normal ${className}`}>
-      {/* Invisible Ghost Text reserving full space */}
+    <span
+      ref={containerRef}
+      className={`inline-grid grid-cols-1 grid-rows-1 align-top whitespace-normal ${className}`}
+    >
+      {/* Invisible Ghost Text reserving full space to eliminate CLS layout shift */}
       <span
         className="col-start-1 row-start-1 invisible pointer-events-none select-none whitespace-normal"
         aria-hidden="true"
@@ -82,7 +144,7 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
       {/* Active Typewriter Text */}
       <span className="col-start-1 row-start-1 whitespace-normal">
         {currentText}
-        {!isFinished && (
+        {hasStarted && !isFinished && (
           <span className={`inline-block ml-1 ${cursorColor} animate-pulse font-normal opacity-90`}>
             |
           </span>
