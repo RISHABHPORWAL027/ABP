@@ -19,7 +19,7 @@ export const DifferentMovesSection: React.FC = () => {
       textColor: "text-white",
       accentColor: "border-white/40 text-white hover:bg-white hover:text-purple-700",
       serviceLink: "/services#service-02",
-      serviceButtonText: "View Service",
+      serviceButtonText: "View Services",
       backDetails: {
         stat1: "+240%",
         stat1Label: "FIRST-WEEK STREAMS",
@@ -38,7 +38,7 @@ export const DifferentMovesSection: React.FC = () => {
       textColor: "text-white",
       accentColor: "border-white/40 text-white hover:bg-white hover:text-[#FF6B4A]",
       serviceLink: "/services#service-04",
-      serviceButtonText: "View Service",
+      serviceButtonText: "View Services",
       backDetails: {
         stat1: "14.2M",
         stat1Label: "REELS IMPRESSIONS",
@@ -57,7 +57,7 @@ export const DifferentMovesSection: React.FC = () => {
       textColor: "text-[#000000]",
       accentColor: "border-black/30 text-black hover:bg-black hover:text-white",
       serviceLink: "/services#service-05",
-      serviceButtonText: "View Service",
+      serviceButtonText: "View Services",
       backDetails: {
         stat1: "185K",
         stat1Label: "NEW SAVES & LIKES",
@@ -76,7 +76,7 @@ export const DifferentMovesSection: React.FC = () => {
       textColor: "text-white",
       accentColor: "border-white/40 text-white hover:bg-white hover:text-[#FF0043]",
       serviceLink: "/services#service-03",
-      serviceButtonText: "View Service",
+      serviceButtonText: "View Services",
       backDetails: {
         stat1: "45+",
         stat1Label: "EDITORIAL FEATURES",
@@ -95,7 +95,7 @@ export const DifferentMovesSection: React.FC = () => {
       textColor: "text-white",
       accentColor: "border-white/40 text-white hover:bg-white hover:text-[#009082]",
       serviceLink: "/services#service-06",
-      serviceButtonText: "View Service",
+      serviceButtonText: "View Services",
       backDetails: {
         stat1: "3.8X",
         stat1Label: "STREAMING CONVERSION",
@@ -114,7 +114,7 @@ export const DifferentMovesSection: React.FC = () => {
       textColor: "text-[#000000]",
       accentColor: "border-black/30 text-black hover:bg-black hover:text-white",
       serviceLink: "/services#service-01",
-      serviceButtonText: "View Service",
+      serviceButtonText: "View Services",
       backDetails: {
         stat1: "100%",
         stat1Label: "BESPOKE VISUAL DIRECTION",
@@ -143,8 +143,7 @@ export const DifferentMovesSection: React.FC = () => {
         {/* Top Header */}
         <div className="max-w-3xl mb-16">
           <ScrollReveal direction="up">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#FF0043] inline-block animate-pulse" />
+            <div className="flex items-center mb-4">
               <span className="font-space font-extrabold text-xs sm:text-sm tracking-[2px] uppercase text-[#FF0043]">
                 CAMPAIGNS
               </span>

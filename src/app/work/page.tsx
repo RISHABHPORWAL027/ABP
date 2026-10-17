@@ -356,12 +356,9 @@ export default function WorkPage() {
             <ScrollReveal direction="up">
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8">
                 <div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF0043] animate-pulse" />
-                    <span className="text-[#FF0043] font-space text-xs sm:text-sm font-extrabold tracking-[2px] uppercase block">
-                      CASE STUDIES & ARTIST CAMPAIGNS
-                    </span>
-                  </div>
+                  <span className="text-[#FF0043] font-space text-xs sm:text-sm font-extrabold tracking-[2px] uppercase block mb-3">
+                    CASE STUDIES & ARTIST CAMPAIGNS
+                  </span>
                   <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white">
                     Our recent top campaigns & case studies <span className="text-[#FF0043]">.</span>
                   </h2>

@@ -102,8 +102,7 @@ export const TestimonialsWithVerticalMarquee: React.FC = () => {
 
       {/* Header Container */}
       <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10 mb-16 text-center flex flex-col items-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-md mb-4">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#FF0043] animate-pulse" />
+        <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-md mb-4">
           <span className="font-space font-extrabold text-xs tracking-[2px] uppercase text-[#FF0043]">
             CLIENT REVIEWS & TESTIMONIALS
           </span>
@@ -111,7 +110,7 @@ export const TestimonialsWithVerticalMarquee: React.FC = () => {
 
         <h2 className="font-sans font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-5xl 2xl:text-6xl tracking-tight leading-[1.1] text-white mb-6 uppercase min-h-[1.1em] text-center w-full flex justify-center">
           <TypewriterText
-            words={["WHAT ARTISTS & LABELS SAY ."]}
+            words={["WHAT ARTISTS & LABELS SAY"]}
             loop={false}
             className="text-white text-center justify-center"
             cursorColor="text-[#FF0043]"

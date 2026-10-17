@@ -12,6 +12,7 @@ interface HeroSectionProps {
 export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const targetRef = useRef<HTMLAnchorElement>(null);
+  const textContainerRef = useRef<HTMLDivElement>(null);
   const mousePosRef = useRef<{ x: number | null; y: number | null }>({ x: null, y: null });
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
   const animationFrameIdRef = useRef<number | null>(null);
@@ -38,6 +39,29 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
     const rect = targetEl.getBoundingClientRect();
     // Only draw when the button is within the viewport
     if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+
+    // Do not show arrow if cursor is directly on the target button
+    if (
+      x0 >= rect.left - 4 &&
+      x0 <= rect.right + 4 &&
+      y0 >= rect.top - 4 &&
+      y0 <= rect.bottom + 4
+    ) {
+      return;
+    }
+
+    // Do not show arrow if cursor is under/inside the text content block
+    if (textContainerRef.current) {
+      const textRect = textContainerRef.current.getBoundingClientRect();
+      if (
+        x0 >= textRect.left &&
+        x0 <= textRect.right &&
+        y0 >= textRect.top &&
+        y0 <= textRect.bottom
+      ) {
+        return;
+      }
+    }
 
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
@@ -157,28 +181,30 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
         {/* Top Text Content - Centered Modern Layout */}
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center mb-10 sm:mb-14">
           
-          {/* Badge */}
-          <div className="flex items-center justify-center gap-2.5 mb-5 sm:mb-6">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#ffe600] inline-block animate-pulse shadow-md shadow-[#ffe600]/50" />
-            <span className="font-space font-extrabold text-xs sm:text-sm tracking-[2px] uppercase text-white/90">
-              MUSIC-FIRST MARKETING FROM INDIA
-            </span>
+          {/* Main Hero Header & Copy Block */}
+          <div ref={textContainerRef} className="w-full flex flex-col items-center">
+            {/* Badge */}
+            <div className="flex items-center justify-center mb-5 sm:mb-6">
+              <span className="font-space font-extrabold text-xs sm:text-sm tracking-[2px] uppercase text-white/90">
+                MUSIC-FIRST MARKETING FROM INDIA
+              </span>
+            </div>
+
+            {/* Main Headline with Montserrat font */}
+            <h1 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px] tracking-tight leading-[1.04] sm:leading-[1.0] lg:leading-[0.98] text-white text-center mb-5 sm:mb-7">
+              Let&apos;s turn your melodies into <br className="hidden sm:inline" />
+              <TypewriterText
+                words={typewriterWords}
+                className="text-[#ffe600]"
+                cursorColor="text-[#ffe600]"
+              />
+            </h1>
+
+            {/* Subtitle */}
+            <p className="font-sans font-medium text-base sm:text-xl md:text-2xl text-white/85 max-w-2xl mx-auto text-center leading-relaxed mb-8 sm:mb-10">
+              All By Play helps artists, labels, managers, and festivals build music campaigns that feel clear, creative, and effective.
+            </p>
           </div>
-
-          {/* Main Headline with Montserrat font */}
-          <h1 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px] tracking-tight leading-[1.04] sm:leading-[1.0] lg:leading-[0.98] text-white text-center mb-5 sm:mb-7">
-            Let&apos;s turn your melodies into <br className="hidden sm:inline" />
-            <TypewriterText
-              words={typewriterWords}
-              className="text-[#ffe600]"
-              cursorColor="text-[#ffe600]"
-            />
-          </h1>
-
-          {/* Subtitle */}
-          <p className="font-sans font-medium text-base sm:text-xl md:text-2xl text-white/85 max-w-2xl mx-auto text-center leading-relaxed mb-8 sm:mb-10">
-            All By Play helps artists, labels, managers, and festivals build music campaigns that feel clear, creative, and effective.
-          </p>
 
           {/* Interactive CTA Button Target: Our Work */}
           <div className="flex items-center justify-center relative z-20">
@@ -215,13 +241,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
             {/* Inner Video Container running ABP Showcase video */}
             <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-[1.8rem] sm:rounded-[2.2rem] overflow-hidden bg-[#111113] border border-white/15 shadow-inner">
               
-              {/* Badge Overlay */}
-              <div className="absolute top-3.5 left-3.5 sm:top-5 sm:left-5 z-20 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 sm:px-4 py-1 sm:py-1.5 rounded-full border border-white/15 shadow-md">
-                <span className="w-2 h-2 rounded-full bg-[#FF0043] animate-pulse" />
-                <span className="font-space font-extrabold text-[9px] sm:text-[11px] tracking-[2px] uppercase text-white/90">
-                  ALL BY PLAY SHOWCASE
-                </span>
-              </div>
 
               {/* ABP Showcase Video */}
               <iframe

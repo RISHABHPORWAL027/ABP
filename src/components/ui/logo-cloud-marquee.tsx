@@ -102,7 +102,7 @@ export const LogoCloudMarquee: React.FC = () => {
               <img
                 src={label.src}
                 alt={label.name}
-                className="h-12 sm:h-16 w-auto max-w-[160px] sm:max-w-[200px] object-contain select-none"
+                className="h-12 sm:h-16 w-auto max-w-[160px] sm:max-w-[200px] object-contain select-none rounded-md"
                 loading="lazy"
               />
             </div>
@@ -119,7 +119,7 @@ export const LogoCloudMarquee: React.FC = () => {
               <img
                 src={label.src}
                 alt={label.name}
-                className="h-12 sm:h-16 w-auto max-w-[160px] sm:max-w-[200px] object-contain select-none"
+                className="h-12 sm:h-16 w-auto max-w-[160px] sm:max-w-[200px] object-contain select-none rounded-md"
                 loading="lazy"
               />
             </div>
