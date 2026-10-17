@@ -96,12 +96,12 @@ export const TestimonialsWithVerticalMarquee: React.FC = () => {
   const col4 = [...testimonials.slice(1, 4), ...testimonials.slice(1, 4)];
 
   return (
-    <section className="w-full bg-[#000000] text-white py-24 md:py-32 font-sans relative overflow-hidden">
+    <section className="w-full bg-[#000000] text-white py-14 sm:py-24 md:py-32 font-sans relative overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[550px] bg-[#FF0043]/10 blur-[180px] rounded-full pointer-events-none" />
 
       {/* Header Container */}
-      <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10 mb-16 text-center flex flex-col items-center">
+      <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10 mb-10 sm:mb-16 text-center flex flex-col items-center">
         <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-md mb-4">
           <span className="font-space font-extrabold text-xs tracking-[2px] uppercase text-[#FF0043]">
             CLIENT REVIEWS & TESTIMONIALS
@@ -123,10 +123,10 @@ export const TestimonialsWithVerticalMarquee: React.FC = () => {
       </div>
 
       {/* Full-Width Borderless Kinetic Vertical Marquee Display */}
-      <div className="relative w-full h-[650px] overflow-hidden group">
+      <div className="relative w-full h-[500px] sm:h-[600px] lg:h-[650px] overflow-hidden group [isolation:isolate]">
         {/* Top & Bottom Gradient Fade Overlays */}
-        <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-[#000000] via-[#000000]/85 to-transparent z-20 pointer-events-none" />
-        <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-[#000000] via-[#000000]/85 to-transparent z-20 pointer-events-none" />
+        <div className="absolute top-0 inset-x-0 h-20 sm:h-36 bg-gradient-to-b from-[#000000] via-[#000000]/85 to-transparent z-20 pointer-events-none" />
+        <div className="absolute bottom-0 inset-x-0 h-20 sm:h-36 bg-gradient-to-t from-[#000000] via-[#000000]/85 to-transparent z-20 pointer-events-none" />
 
         {/* 4 Column Full-Width Grid */}
         <div className="w-full max-w-[1680px] mx-auto px-4 sm:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 h-full">
@@ -137,8 +137,8 @@ export const TestimonialsWithVerticalMarquee: React.FC = () => {
             ))}
           </div>
 
-          {/* Column 2 - Moving DOWN */}
-          <div className="flex flex-col gap-6 animate-marquee-vertical-down group-hover:[animation-play-state:paused]">
+          {/* Column 2 - Moving DOWN (Hidden on mobile, 2 cols on tablet, 4 on desktop) */}
+          <div className="hidden sm:flex flex-col gap-6 animate-marquee-vertical-down group-hover:[animation-play-state:paused]">
             {col2.map((item, idx) => (
               <CardItem key={idx} {...item} />
             ))}

@@ -43,9 +43,9 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer id="connect" className="w-full bg-[#000000] text-white pt-24 pb-12 font-sans relative overflow-hidden">
-      {/* Background Glow Gradient with Primary & Tertiary Accents */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120vw] h-[600px] bg-gradient-to-t from-[#FF0043]/20 via-[#009082]/15 to-transparent pointer-events-none z-0" />
+    <footer id="connect" className="w-full bg-[#000000] text-white pt-14 sm:pt-24 pb-12 font-sans relative overflow-hidden [isolation:isolate]">
+      {/* Background Glow Gradient with Primary & Tertiary Accents (Edge-to-edge full width) */}
+      <div className="absolute inset-x-0 bottom-0 w-full h-[600px] bg-gradient-to-t from-[#FF0043]/20 via-[#009082]/15 to-transparent pointer-events-none z-0" />
 
       <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10">
         <div className="max-w-4xl mx-auto">
@@ -69,7 +69,7 @@ export const Footer: React.FC = () => {
           </p>
 
           {/* Direct Email Link */}
-          <div className="mb-14">
+          <div className="mb-8 sm:mb-14">
             <a
               href="mailto:hello@allbyplay.com"
               className="inline-flex items-center gap-2 text-base sm:text-lg font-bold text-[#FF0043] hover:text-[#009082] transition-colors"
@@ -80,7 +80,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Form Card Container (Secondary #1A1A1A background) */}
-          <div className="w-full bg-[#1A1A1A]/80 backdrop-blur-xl border border-white/15 rounded-[28px] p-8 sm:p-12 shadow-2xl relative mb-24">
+          <div className="w-full bg-[#1A1A1A]/80 backdrop-blur-xl border border-white/15 rounded-[24px] sm:rounded-[28px] p-6 sm:p-12 shadow-2xl relative mb-16 sm:mb-24">
             {submitted ? (
               <div className="py-16 text-center flex flex-col items-center justify-center gap-4">
                 <CheckCircle2 className="w-16 h-16 text-[#009082] animate-bounce" />

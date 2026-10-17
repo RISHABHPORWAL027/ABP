@@ -77,7 +77,7 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${fontMontserrat.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col font-sans bg-black text-white selection:bg-[#FF0043] selection:text-white">
+      <body className="min-h-full flex flex-col font-sans bg-black text-white selection:bg-[#FF0043] selection:text-white overflow-x-hidden w-full max-w-full">
         {children}
       </body>
     </html>
