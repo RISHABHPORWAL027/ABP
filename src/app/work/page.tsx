@@ -8,7 +8,7 @@ import DiscCascadeCarousel, {
 } from "@/components/ui/disc-cascade-carousel";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { TypewriterText } from "@/components/TypewriterText";
-import { X } from "lucide-react";
+import { X, ArrowDown } from "lucide-react";
 
 import { type SpotifyTrack } from "@/components/ui/spotify-card";
 import { LiquidGlassCarousel } from "@/components/ui/liquid-glass-carousel";
@@ -281,16 +281,16 @@ export default function WorkPage() {
       </div>
 
       <main className="flex-1">
-        {/* HERO SECTION - REDESIGNED TO ALIGN WITH CURRENT ABP DESIGN SYSTEM */}
-        <section className="relative w-full pt-16 sm:pt-20 md:pt-24 pb-14 sm:pb-20 bg-[#000000] overflow-hidden">
-          {/* Background YouTube Video (20s to 35s loop, bright visibility) */}
+        {/* HERO SECTION - PROPER FULL-VIEWPORT HERO SCREEN WITH IMMERSIVE BG VIDEO */}
+        <section className="relative w-full min-h-[calc(100vh-80px)] sm:min-h-[calc(100vh-88px)] flex flex-col justify-center pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-20 bg-[#000000] overflow-hidden">
+          {/* Background YouTube Video (20s to 35s loop, bright visibility, mathematically 16:9) */}
           <WorkHeroBackgroundVideo />
 
-          <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10">
+          <div className="max-w-[1380px] w-full mx-auto px-6 md:px-12 relative z-10 my-auto py-6 sm:py-10">
             <ScrollReveal direction="up">
               {/* Main Headline */}
               <div className="max-w-5xl mb-6 sm:mb-8">
-                <h1 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-[56px] xl:text-[72px] 2xl:text-[90px] tracking-tight leading-[1.02] md:leading-[1.0] lg:leading-[0.98] xl:leading-[0.95] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
+                <h1 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-[64px] xl:text-[76px] 2xl:text-[90px] tracking-tight leading-[1.02] md:leading-[1.0] lg:leading-[0.98] xl:leading-[0.95] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
                   Work that turns <br />
                   tracks into{" "}
                   <TypewriterText
@@ -307,15 +307,26 @@ export default function WorkPage() {
               </div>
 
               {/* Subtitle */}
-              <p className="font-sans font-semibold text-base sm:text-xl md:text-2xl text-white/95 max-w-3xl leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
+              <p className="font-sans font-semibold text-base sm:text-xl md:text-2xl text-white/95 max-w-3xl leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] mb-8 sm:mb-10">
                 A curated collection of our release rollouts, viral short-form creator trends, and Spotify growth campaigns across indie, label, and Bollywood music.
               </p>
+
+              {/* Interactive CTA Buttons */}
+              <div className="flex items-center pt-2">
+                <a
+                  href="#campaigns"
+                  className="inline-flex items-center gap-2.5 bg-[#FF0043] hover:bg-[#e0003b] text-white font-sans font-black text-sm sm:text-base px-7 sm:px-9 py-3.5 sm:py-4 rounded-full transition-all duration-300 hover:scale-[1.04] hover:shadow-2xl hover:shadow-[#FF0043]/40 active:scale-95 shadow-xl cursor-pointer"
+                >
+                  <span>Explore Campaigns</span>
+                  <ArrowDown className="w-4 h-4 stroke-[2.5]" />
+                </a>
+              </div>
             </ScrollReveal>
           </div>
         </section>
 
         {/* 3D DISC CASCADE CAROUSEL CONTAINER */}
-        <section className="relative w-full my-6 sm:my-10 py-8 sm:py-14 bg-gradient-to-b from-[#000000] via-[#09090b] to-[#000000] overflow-hidden border-t border-b border-white/10">
+        <section id="campaigns" className="relative w-full my-6 sm:my-10 py-8 sm:py-14 bg-gradient-to-b from-[#000000] via-[#09090b] to-[#000000] overflow-hidden border-t border-b border-white/10">
           <DiscCascadeCarousel
             items={campaignWorkItems}
             height="clamp(720px, 92vh, 980px)"

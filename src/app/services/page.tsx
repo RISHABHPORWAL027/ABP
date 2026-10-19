@@ -18,6 +18,7 @@ import DiagonalMarqueeCarousel from "@/components/ui/great-ui-diagonal-marquee-c
 import { spotifySongCards } from "@/lib/spotify-songs-data";
 import { BrandingShowcaseBanner } from "@/components/BrandingShowcaseBanner";
 import { InstagramReelsShowcase } from "@/components/InstagramReelsShowcase";
+import { ContentMediaReelsShowcase } from "@/components/ContentMediaReelsShowcase";
 
 interface ServiceCardBannerProps {
   images: string[];
@@ -282,7 +283,7 @@ export default function ServicesOverviewPage() {
       slug: "instagram",
       badge: "SOCIAL",
       categoryTag: "SOCIAL",
-      framesCount: "04",
+      framesCount: "10",
       cardImage: "/services/cards/card-04-clean@2x.png",
       cardImages: [
         "/services/cards/card-04-clean@2x.png",
@@ -361,7 +362,7 @@ export default function ServicesOverviewPage() {
       slug: "content",
       badge: "CONTENT",
       categoryTag: "CONTENT",
-      framesCount: "03",
+      framesCount: "05",
       cardImage: "/services/cards/card-07-clean@2x.png",
       cardImages: [
         "/services/cards/card-07-clean@2x.png",
@@ -811,6 +812,8 @@ export default function ServicesOverviewPage() {
                           />
                         </div>
                       </div>
+                    ) : service.num === "07" ? (
+                      <ContentMediaReelsShowcase />
                     ) : (
                       <ServiceCardBanner
                         images={

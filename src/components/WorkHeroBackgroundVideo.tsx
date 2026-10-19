@@ -116,19 +116,24 @@ export const WorkHeroBackgroundVideo: React.FC = () => {
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-      {/* Video Container - scaled to eliminate YouTube UI overlays */}
+      {/* Video Container - perfectly scaled to guarantee 16:9 aspect ratio and eliminate YouTube UI */}
       <iframe
         ref={iframeRef}
         id="hero-work-bg-player"
         src="https://www.youtube-nocookie.com/embed/M5OCLifZK1w?start=20&end=35&autoplay=1&mute=1&loop=1&playlist=M5OCLifZK1w&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&iv_load_policy=3&disablekb=1&fs=0"
         title="Aarzu Campaign Hero Video"
-        className="absolute top-1/2 left-1/2 w-[180vh] min-w-full min-h-full h-[60vw] -translate-x-1/2 -translate-y-1/2 object-cover opacity-90 sm:opacity-95 pointer-events-none scale-125 sm:scale-130"
+        style={{
+          width: "max(120vw, 214vh)",
+          height: "max(67.5vw, 120.375vh)",
+        }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover opacity-90 sm:opacity-95 pointer-events-none"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       />
 
-      {/* Gentle top navbar vignette & bottom section blend */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black pointer-events-none" />
-      <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+      {/* Gentle top navbar vignette & bottom section blend for seamless transition */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/15 to-black pointer-events-none" />
+      <div className="absolute inset-0 bg-black/15 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-44 sm:h-56 bg-gradient-to-t from-black via-black/75 to-transparent pointer-events-none" />
     </div>
   );
 };

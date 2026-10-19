@@ -170,77 +170,103 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Footer Bottom Bar */}
-        <div className="border-t border-white/10 pt-8 mt-16 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-          {/* Logo & Copyright */}
-          <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-2.5 sm:gap-4">
-            <div className="flex items-center gap-2.5">
-              <Image
-                src="/abp_gradientwhite_opacity.png"
-                alt="All By Play Logo"
-                width={38}
-                height={33}
-                className="h-8 w-auto object-contain"
-              />
+        <div className="border-t border-white/10 pt-8 mt-16 flex flex-col gap-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            {/* Logo & Copyright */}
+            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-2.5 sm:gap-4">
+              <div className="flex items-center gap-2.5">
+                <Image
+                  src="/abp_gradientwhite_opacity.png"
+                  alt="All By Play Logo"
+                  width={38}
+                  height={33}
+                  className="h-8 w-auto object-contain"
+                />
+              </div>
+
+              <span className="hidden sm:inline-block text-white/20">•</span>
+
+              <span className="text-white/40 text-xs font-medium">
+                © {new Date().getFullYear()} All By Play. All rights reserved.
+              </span>
+
+              <span className="hidden sm:inline-block text-white/20">•</span>
+
+              {/* Social Redirection Icons (Logo Only) */}
+              <div className="flex items-center gap-3.5 pt-1 sm:pt-0">
+                <a
+                  href="https://www.instagram.com/allbyplay"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="text-white/50 hover:text-[#ffe600] transition-colors p-1 hover:scale-110 transform transition-transform"
+                >
+                  <InstagramIcon className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://www.youtube.com/@allbyplay"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                  className="text-white/50 hover:text-[#ffe600] transition-colors p-1 hover:scale-110 transform transition-transform"
+                >
+                  <YoutubeIcon className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/allbyplay"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="text-white/50 hover:text-[#ffe600] transition-colors p-1 hover:scale-110 transform transition-transform"
+                >
+                  <LinkedinIcon className="w-4 h-4" />
+                </a>
+              </div>
             </div>
 
-            <span className="hidden sm:inline-block text-white/20">•</span>
-
-            <span className="text-white/40 text-xs font-medium">
-              © {new Date().getFullYear()} All By Play. All rights reserved.
-            </span>
-
-            <span className="hidden sm:inline-block text-white/20">•</span>
-
-            {/* Social Redirection Icons (Logo Only) */}
-            <div className="flex items-center gap-3.5 pt-1 sm:pt-0">
-              <a
-                href="https://www.instagram.com/allbyplay"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="text-white/50 hover:text-[#ffe600] transition-colors p-1 hover:scale-110 transform transition-transform"
-              >
-                <InstagramIcon className="w-4 h-4" />
-              </a>
-              <a
-                href="https://www.youtube.com/@allbyplay"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="YouTube"
-                className="text-white/50 hover:text-[#ffe600] transition-colors p-1 hover:scale-110 transform transition-transform"
-              >
-                <YoutubeIcon className="w-4 h-4" />
-              </a>
-              <a
-                href="https://www.linkedin.com/company/allbyplay"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="text-white/50 hover:text-[#ffe600] transition-colors p-1 hover:scale-110 transform transition-transform"
-              >
-                <LinkedinIcon className="w-4 h-4" />
-              </a>
-            </div>
+            {/* Nav Links */}
+            <ul className="flex items-center justify-center flex-wrap gap-5 sm:gap-8 text-xs font-space font-extrabold tracking-widest uppercase text-white/70">
+              <li>
+                <Link href="/work" className="hover:text-[#ffe600] transition-colors">
+                  WORK
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-[#ffe600] transition-colors">
+                  SERVICES
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:text-[#ffe600] transition-colors">
+                  ABOUT
+                </Link>
+              </li>
+            </ul>
           </div>
 
-          {/* Nav Links */}
-          <ul className="flex items-center justify-center flex-wrap gap-5 sm:gap-8 text-xs font-space font-extrabold tracking-widest uppercase text-white/70">
-            <li>
-              <Link href="/work" className="hover:text-[#ffe600] transition-colors">
-                WORK
-              </Link>
-            </li>
-            <li>
-              <Link href="/services" className="hover:text-[#ffe600] transition-colors">
-                SERVICES
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className="hover:text-[#ffe600] transition-colors">
-                ABOUT
-              </Link>
-            </li>
-          </ul>
+          {/* Credits */}
+          <div className="border-t border-white/5 pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40 text-center sm:text-left">
+            <p>
+              Designed and Developed by{" "}
+              <a
+                href="https://www.linkedin.com/in/radhika-khade2004/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/70 hover:text-[#ffe600] transition-colors underline decoration-white/20 underline-offset-4 hover:decoration-[#ffe600] font-medium"
+              >
+                RK
+              </a>{" "}
+              and{" "}
+              <a
+                href="https://www.devyugsolutions.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/70 hover:text-[#ffe600] transition-colors underline decoration-white/20 underline-offset-4 hover:decoration-[#ffe600] font-medium"
+              >
+                Devyug Solutions
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

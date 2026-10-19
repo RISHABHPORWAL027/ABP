@@ -63,13 +63,14 @@ const labelsList: LabelLogo[] = [
 ];
 
 export const LogoCloudMarquee: React.FC = () => {
-  // Two complementary sets for multi-directional motion
-  const row1 = labelsList;
-  const row2 = [...labelsList.slice(6), ...labelsList.slice(0, 6)];
+  // Split logos so row 1 and row 2 have distinct logos (half in line 1, rest in line 2)
+  const mid = Math.ceil(labelsList.length / 2);
+  const row1 = labelsList.slice(0, mid);
+  const row2 = labelsList.slice(mid);
 
-  // 2 repetitions is optimal for continuous loop without exceeding mobile WebKit texture memory
-  const repeatedRow1 = [...row1, ...row1];
-  const repeatedRow2 = [...row2, ...row2];
+  // 4 repetitions ensures continuous seamless loop on all viewports without gaps
+  const repeatedRow1 = [...row1, ...row1, ...row1, ...row1];
+  const repeatedRow2 = [...row2, ...row2, ...row2, ...row2];
 
   return (
     <section className="w-full bg-[#000000] text-white py-14 sm:py-24 font-sans relative overflow-hidden border-t border-white/10 [isolation:isolate]">

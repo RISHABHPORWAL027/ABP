@@ -31,98 +31,221 @@ export interface ReelData {
   audioTrack: string;
   strategyHook: string;
   keyMetric: string;
+  authorUsername?: string;
+  authorDisplayName?: string;
+  authorVerified?: boolean;
 }
 
 const REELS_DATA: ReelData[] = [
   {
-    id: "kishore",
-    name: "Kishore",
-    playlistTitle: "Kishore Kumar Hits",
-    category: "Golden Era Classics",
-    shortcode: "DdD-5XEMn7x",
-    instagramUrl: "https://www.instagram.com/p/DdD-5XEMn7x/#advertiser",
-    videoSrc: "/services/reels/kishore.mp4",
-    posterSrc: "/services/reels/kishore.jpg",
-    likes: "85K",
-    numericLikes: 85200,
-    comments: "27",
-    caption: "Tap on Listen Now 🎧🎶 #kishorekumar #evergreen #universalmusicindia",
-    audioTrack: "Kishore Kumar Hits · Universal Music India",
+    id: "venkatesh",
+    name: "Vyankatesh Pande",
+    playlistTitle: "Viral Reel Campaign",
+    category: "Couple Comedy / Trend",
+    shortcode: "DcVS5V5sxhE",
+    instagramUrl: "https://www.instagram.com/reel/DcVS5V5sxhE/?igsi=MThwdTB4MzdtNWliMA==",
+    videoSrc: "/services/reels/instagram/DcVS5V5sxhE.mp4",
+    posterSrc: "/services/reels/instagram/DcVS5V5sxhE.jpg",
+    likes: "94K",
+    numericLikes: 93940,
+    comments: "357",
+    caption: "This is how to get her hug😉🤍 #reels #viral #trending #chocolate #adiven",
+    audioTrack: "Trending Audio · ABP Viral Strategy",
     strategyHook:
-      "Golden-era nostalgia hook paired with dynamic bold kinetic typography, converting passive scrollers into long-session Spotify playlist listeners.",
-    keyMetric: "85K+ Likes · Top Converting Ad Creative",
+      "Relatable situational comedy hook that converts passive viewers into highly engaged listeners and sound replays.",
+    keyMetric: "94K+ Likes · Top Creator Reach",
+    authorUsername: "venkatesh.pande",
+    authorDisplayName: "Vyankatesh Pande",
+    authorVerified: true,
   },
   {
-    id: "rafi",
-    name: "Rafi",
-    playlistTitle: "Mohammed Rafi Classics",
-    category: "Evergreen Romantic",
-    shortcode: "DdD-STCsMxH",
-    instagramUrl: "https://www.instagram.com/p/DdD-STCsMxH/#advertiser",
-    videoSrc: "/services/reels/rafi.mp4",
-    posterSrc: "/services/reels/rafi.jpg",
-    likes: "15K",
-    numericLikes: 15400,
-    comments: "18",
-    caption: "Tap on Listen Now 🎧🎶 #mohammedrafi #classics #retrobollywood",
-    audioTrack: "Mohammed Rafi Classics · Universal Music India",
+    id: "beat_push",
+    name: "Radhika Nrk",
+    playlistTitle: "Release Beat Drop",
+    category: "Audio Trend Push",
+    shortcode: "DcIqowuyZoB",
+    instagramUrl: "https://www.instagram.com/reels/DcIqowuyZoB/",
+    videoSrc: "/services/reels/instagram/DcIqowuyZoB.mp4",
+    posterSrc: "/services/reels/instagram/DcIqowuyZoB.jpg",
+    likes: "48K",
+    numericLikes: 48200,
+    comments: "142",
+    caption: "Drop that beat 🎧✨ Tap on Listen Now to stream the full track #indie #trendingaudio",
+    audioTrack: "Original Release Sound · ABP Campaign",
     strategyHook:
-      "Lyric-first emotive hook designed for high shareability and playlist saves across cross-generational classic music enthusiasts.",
-    keyMetric: "15K+ Likes · Exceptional Share Velocity",
+      "High-energy hook crafted for rapid discoverability and Spotify library additions.",
+    keyMetric: "48K+ Likes · High Conversion",
+    authorUsername: "radhikanrk",
+    authorDisplayName: "Radhika Nrk",
+    authorVerified: true,
   },
   {
-    id: "lofi",
-    name: "Lofi",
-    playlistTitle: "Lofi Chill Hindi",
-    category: "Gen-Z & Chillhop",
-    shortcode: "Dd3rVMGsLLD",
-    instagramUrl: "https://www.instagram.com/p/Dd3rVMGsLLD/#advertiser",
-    videoSrc: "/services/reels/lofi.mp4",
-    posterSrc: "/services/reels/lofi.jpg",
-    likes: "3.1K",
-    numericLikes: 3154,
-    comments: "4",
-    caption: "Tap on Listen Now... 🎧✨ #lofichill #slowedandreverb #midnightvibes",
-    audioTrack: "Lofi Chill Hindi · Universal Music India",
+    id: "music_discovery",
+    name: "Music Discovery",
+    playlistTitle: "Indie Discovery",
+    category: "Late Night Playlist",
+    shortcode: "DXEuGdmiTOK",
+    instagramUrl: "https://www.instagram.com/reel/DXEuGdmiTOK/",
+    videoSrc: "/services/reels/instagram/DXEuGdmiTOK.mp4",
+    posterSrc: "/services/reels/instagram/DXEuGdmiTOK.jpg",
+    likes: "32K",
+    numericLikes: 32400,
+    comments: "88",
+    caption: "New song recommendation for your late-night drive playlist 🌙🎵 #newsong #indieartist",
+    audioTrack: "Indie Pop Audio · All By Play",
     strategyHook:
-      "Midnight ambient aesthetic paired with slowed+reverb audio cues, tailored for study/chill algorithmic recommendations.",
-    keyMetric: "3.1K+ Likes · High Loop Retention",
+      "Aesthetic editorial curation tailored for moody late-night playlists and high bookmark velocity.",
+    keyMetric: "32K+ Likes · High Loop Retention",
+    authorUsername: "music.discovery.in",
+    authorDisplayName: "Music Discovery",
+    authorVerified: false,
   },
   {
-    id: "sadabahar",
-    name: "Sadabahar",
-    playlistTitle: "Sadabahar Naghme",
-    category: "All-Time Melodies",
-    shortcode: "Dd3sKchszqQ",
-    instagramUrl: "https://www.instagram.com/p/Dd3sKchszqQ/#advertiser",
-    videoSrc: "/services/reels/sadabahar.mp4",
-    posterSrc: "/services/reels/sadabahar.jpg",
-    likes: "17K",
-    numericLikes: 17100,
-    comments: "24",
-    caption: "Tap on Listen Now 🎧🎶 #sadabaharnaghme #vintagemusic #bollyretro",
-    audioTrack: "Sadabahar Naghme · Universal Music India",
+    id: "sameera",
+    name: "Sameera Soni",
+    playlistTitle: "Majboor Campaign",
+    category: "Lip-Sync & Dance",
+    shortcode: "DW_oQgnk6uF",
+    instagramUrl: "https://www.instagram.com/reel/DW_oQgnk6uF/?igsh=MWE1NmZ1cWdjd2dmOQ%3D%3D",
+    videoSrc: "/services/reels/instagram/DW_oQgnk6uF.mp4",
+    posterSrc: "/services/reels/instagram/DW_oQgnk6uF.jpg",
+    likes: "217K",
+    numericLikes: 217000,
+    comments: "1,153",
+    caption: "This songgg has been playing in my head 24/7 😭❤️ #majboor #aapkahikehnabanta #samira #lipsync #viral",
+    audioTrack: "Majboor · Aap Kahi Kehna Banta",
     strategyHook:
-      "Vibrant high-contrast visuals showcasing iconic evergreen anthems to drive immediate playlist follows and saves.",
-    keyMetric: "17K+ Likes · High Click-Through Rate",
+      "Viral earworm lip-sync activation generating exponential audio usage across creator ecosystems.",
+    keyMetric: "217K+ Likes · 1.1K+ Comments · Mega Viral",
+    authorUsername: "samiraahaha",
+    authorDisplayName: "Sameera Soni",
+    authorVerified: true,
   },
   {
-    id: "bollywood_romantic",
-    name: "Bollywood Romantic",
-    playlistTitle: "Bollywood Romantic",
-    category: "Love Anthems",
-    shortcode: "Dd_CXxesv-F",
-    instagramUrl: "https://www.instagram.com/p/Dd_CXxesv-F/#advertiser",
-    videoSrc: "/services/reels/bollywood_romantic.mp4",
-    posterSrc: "/services/reels/bollywood_romantic.jpg",
-    likes: "11K",
-    numericLikes: 11200,
-    comments: "2",
-    caption: "Tap on Listen Now.. 🌹🎵 #bollywoodromantic #lovesongs #soulful",
-    audioTrack: "Bollywood Romantic · Universal Music India",
+    id: "shreyaa",
+    name: "Shreyaa Thapa",
+    playlistTitle: "Aesthetic Lifestyle",
+    category: "Slowed & Reverb Mood",
+    shortcode: "DZxgHZoJejp",
+    instagramUrl: "https://www.instagram.com/reels/DZxgHZoJejp/",
+    videoSrc: "/services/reels/instagram/DZxgHZoJejp.mp4",
+    posterSrc: "/services/reels/instagram/DZxgHZoJejp.jpg",
+    likes: "39K",
+    numericLikes: 38874,
+    comments: "52",
+    caption: "🙏 #foryou #fyp #explorepage✨ #trending #reelitfeelit",
+    audioTrack: "Trending Audio · ABP Indie Pulse",
     strategyHook:
-      "Warm atmospheric storytelling crafted for romance and mood playlists, driving high Spotify algorithmic radio pull.",
-    keyMetric: "11K+ Likes · Top CTR on Conversion Ads",
+      "Atmospheric lifestyle visuals synced to melodic hooks, driving strong sound saves and repeat views.",
+    keyMetric: "39K+ Likes · High Share Velocity",
+    authorUsername: "shr3yaa.thapa",
+    authorDisplayName: "shreyaa",
+    authorVerified: false,
+  },
+  {
+    id: "momo",
+    name: "Momo Art",
+    playlistTitle: "Jo Na Ho Tum",
+    category: "Digital Art & Story",
+    shortcode: "DaNw0lssDjk",
+    instagramUrl: "https://www.instagram.com/reels/DaNw0lssDjk/",
+    videoSrc: "/services/reels/instagram/DaNw0lssDjk.mp4",
+    posterSrc: "/services/reels/instagram/DaNw0lssDjk.jpg",
+    likes: "18K",
+    numericLikes: 18200,
+    comments: "45",
+    caption: "Jo na ho tum stream now. #explore #art #artist #digitalart #couples",
+    audioTrack: "Jo Na Ho Tum · Official Sound",
+    strategyHook:
+      "Hand-crafted visual animation pairing music lyrics with heartwarming relationship art.",
+    keyMetric: "18K+ Likes · Niche Art Audience",
+    authorUsername: "momo_yarrrr",
+    authorDisplayName: "momo✧",
+    authorVerified: false,
+  },
+  {
+    id: "aditya",
+    name: "Aditya Khalkho",
+    playlistTitle: "Cinematography Film",
+    category: "Cinematic Film Edit",
+    shortcode: "DZuss_5yKRA",
+    instagramUrl: "https://www.instagram.com/reels/DZuss_5yKRA/",
+    videoSrc: "/services/reels/instagram/DZuss_5yKRA.mp4",
+    posterSrc: "/services/reels/instagram/DZuss_5yKRA.jpg",
+    likes: "16K",
+    numericLikes: 15787,
+    comments: "31",
+    caption: "Na ho tum… #explorepage #viralpage #cinema #cinematography #films",
+    audioTrack: "Na Ho Tum · Cinematic Audio",
+    strategyHook:
+      "Film-grade color grading and cinematic framing that elevate the song into a cultural moment.",
+    keyMetric: "16K+ Likes · High Aesthetic Credibility",
+    authorUsername: "wzar.__",
+    authorDisplayName: "ᴀᴅɪᴛʏᴀ ᴋʜᴀʟᴋʜᴏ",
+    authorVerified: false,
+  },
+  {
+    id: "harshika",
+    name: "Mehta Harshika",
+    playlistTitle: "Emotional Ballad",
+    category: "Love Storytelling",
+    shortcode: "DbXYJN7KIGe",
+    instagramUrl: "https://www.instagram.com/reel/DbXYJN7KIGe/?igsh=MXZhczliczlhcGJjMw==",
+    videoSrc: "/services/reels/instagram/DbXYJN7KIGe.mp4",
+    posterSrc: "/services/reels/instagram/DbXYJN7KIGe.jpg",
+    likes: "14K",
+    numericLikes: 13948,
+    comments: "192",
+    caption: "jo kuch mera hai sab kuch… unka♥️",
+    audioTrack: "Original Acoustic · Track Release",
+    strategyHook:
+      "Intimate relationship storytelling connecting lyrics with genuine human connection.",
+    keyMetric: "14K+ Likes · High Comment Ratio",
+    authorUsername: "harshikamehtaa",
+    authorDisplayName: "Mehta Harshika",
+    authorVerified: false,
+  },
+  {
+    id: "yashika",
+    name: "Yashika Sharma",
+    playlistTitle: "Dance Anthem",
+    category: "Creator Choreography",
+    shortcode: "DcL1i_VMJ18",
+    instagramUrl: "https://www.instagram.com/reel/DcL1i_VMJ18/?igsh=bGs0cmUxOGo0Zjhs",
+    videoSrc: "/services/reels/instagram/DcL1i_VMJ18.mp4",
+    posterSrc: "/services/reels/instagram/DcL1i_VMJ18.jpg",
+    likes: "115K",
+    numericLikes: 114917,
+    comments: "2,602",
+    caption: "❤️❤️ #yashikasharma #trending #reels",
+    audioTrack: "Trending Dance Anthem · ABP Push",
+    strategyHook:
+      "Dynamic creator dance choreography igniting mass replications and sound adoption.",
+    keyMetric: "115K+ Likes · 2.6K+ Comments · Dance Push",
+    authorUsername: "belleyashika",
+    authorDisplayName: "Yashika Sharma🪷",
+    authorVerified: true,
+  },
+  {
+    id: "sakshi",
+    name: "Sakshi Shrivas",
+    playlistTitle: "Obsessed Trend",
+    category: "Fashion / Glamour",
+    shortcode: "DcOZAXxTHsS",
+    instagramUrl: "https://www.instagram.com/reel/DcOZAXxTHsS/",
+    videoSrc: "/services/reels/instagram/DcOZAXxTHsS.mp4",
+    posterSrc: "/services/reels/instagram/DcOZAXxTHsS.jpg",
+    likes: "27K",
+    numericLikes: 27100,
+    comments: "596",
+    caption: "Currently obsessed with this song ❤️ Shot by: @whoisparry Hair: @hair_house_1111 Outfit: @the_adhya_designer",
+    audioTrack: "Obsessed With This Song · Original",
+    strategyHook:
+      "High-fashion lookbook aesthetic paired with release chorus drops for maximum lifestyle resonance.",
+    keyMetric: "27K+ Likes · 590+ Comments",
+    authorUsername: "sakshishrivas___",
+    authorDisplayName: "Sakshi Shrivas",
+    authorVerified: true,
   },
 ];
 
@@ -222,8 +345,6 @@ const PhoneMockup: React.FC<PhoneMockupProps> = ({
           </button>
         </div>
 
-
-
         {/* Right Action Rail */}
         <div className="absolute right-2.5 sm:right-3 bottom-14 sm:bottom-16 z-30 flex flex-col items-center gap-3 text-white">
           {/* Like Heart */}
@@ -311,18 +432,20 @@ const PhoneMockup: React.FC<PhoneMockupProps> = ({
           {/* Profile Row */}
           <div className="flex items-center gap-1.5">
             <div className="w-6 h-6 rounded-full p-[1px] bg-gradient-to-tr from-[#ffe600] via-[#FF0043] to-[#d946ef] flex items-center justify-center shadow-md">
-              <div className="w-full h-full rounded-full bg-[#000000] flex items-center justify-center text-[7px] font-black font-space text-white">
-                UMI
+              <div className="w-full h-full rounded-full bg-[#000000] flex items-center justify-center text-[7px] font-black font-space text-white uppercase">
+                {(reel.authorUsername || reel.name).slice(0, 3)}
               </div>
             </div>
             <div className="flex items-center gap-1">
               <span className="font-sans font-bold text-[11px] sm:text-xs tracking-tight text-white drop-shadow truncate max-w-[100px]">
-                universalmusicindia
+                {reel.authorUsername || reel.name}
               </span>
-              <CheckCircle2 className="w-3 h-3 text-[#38bdf8] fill-[#38bdf8] stroke-black flex-shrink-0" />
+              {reel.authorVerified && (
+                <CheckCircle2 className="w-3 h-3 text-[#38bdf8] fill-[#38bdf8] stroke-black flex-shrink-0" />
+              )}
             </div>
             <span className="text-[8px] bg-white/20 px-1 py-0.2 rounded text-white/90 font-mono">
-              Ad
+              Reel
             </span>
           </div>
 
@@ -331,7 +454,7 @@ const PhoneMockup: React.FC<PhoneMockupProps> = ({
             {reel.caption}
           </p>
 
-          {/* "Listen Now" CTA Pill */}
+          {/* "View Reel 🎧" CTA Pill */}
           <div className="pt-0.5">
             <Link
               href={reel.instagramUrl}
@@ -366,8 +489,8 @@ export const InstagramReelsShowcase: React.FC = () => {
   const [savedMap, setSavedMap] = useState<Record<string, boolean>>({});
   const [isPaused, setIsPaused] = useState<boolean>(false);
 
-  // Repeat the 5 reels 3 times for a seamless, continuous infinite horizontal marquee
-  const duplicatedReels = [...REELS_DATA, ...REELS_DATA, ...REELS_DATA];
+  // Repeat the 10 reels twice for a seamless, continuous infinite horizontal marquee
+  const duplicatedReels = [...REELS_DATA, ...REELS_DATA];
 
   return (
     <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-black/15 bg-[#000000] select-none group">
@@ -377,7 +500,7 @@ export const InstagramReelsShowcase: React.FC = () => {
           SOCIAL / VISUAL NOTES
         </span>
         <span className="font-mono font-black text-xs sm:text-sm tracking-widest uppercase">
-          05 REELS
+          10 REELS
         </span>
       </div>
 
@@ -399,18 +522,18 @@ export const InstagramReelsShowcase: React.FC = () => {
         <style
           dangerouslySetInnerHTML={{
             __html: `
-              @keyframes marquee-phones {
+              @keyframes marquee-phones-ig {
                 0% {
                   transform: translate3d(0, 0, 0);
                 }
                 100% {
-                  transform: translate3d(-33.333333%, 0, 0);
+                  transform: translate3d(-50%, 0, 0);
                 }
               }
-              .animate-marquee-phones {
-                animation: marquee-phones 38s linear infinite;
+              .animate-marquee-phones-ig {
+                animation: marquee-phones-ig 60s linear infinite;
               }
-              .animate-marquee-phones-paused {
+              .animate-marquee-phones-ig-paused {
                 animation-play-state: paused !important;
               }
             `,
@@ -420,13 +543,13 @@ export const InstagramReelsShowcase: React.FC = () => {
         {/* Infinite Moving Phones Track */}
         <div
           className={cn(
-            "flex items-center gap-6 sm:gap-8 md:gap-10 pl-6 animate-marquee-phones will-change-transform",
-            isPaused && "animate-marquee-phones-paused"
+            "flex items-center gap-6 sm:gap-8 md:gap-10 pl-6 animate-marquee-phones-ig will-change-transform",
+            isPaused && "animate-marquee-phones-ig-paused"
           )}
           style={{ width: "max-content" }}
         >
           {duplicatedReels.map((reel, index) => {
-            const uniqueKey = `${reel.id}-${index}`;
+            const uniqueKey = `ig-${reel.id}-${index}`;
             const isThisMuted = unmutedReelKey !== uniqueKey;
             const isLiked = !!likedMap[uniqueKey];
             const isSaved = !!savedMap[uniqueKey];

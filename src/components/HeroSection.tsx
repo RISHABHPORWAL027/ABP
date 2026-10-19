@@ -179,7 +179,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
       <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10">
         
         {/* Top Text Content - Centered Modern Layout */}
-        <div className="max-w-4xl mx-auto flex flex-col items-center text-center mb-10 sm:mb-14">
+        <div className="max-w-5xl mx-auto flex flex-col items-center text-center mb-10 sm:mb-14">
           
           {/* Main Hero Header & Copy Block */}
           <div ref={textContainerRef} className="w-full flex flex-col items-center">
@@ -191,8 +191,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
             </div>
 
             {/* Main Headline with Montserrat font */}
-            <h1 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px] tracking-tight leading-[1.04] sm:leading-[1.0] lg:leading-[0.98] text-white text-center mb-5 sm:mb-7">
-              Let&apos;s turn your melodies into <br className="hidden sm:inline" />
+            <h1 className="font-sans font-black text-[27px] sm:text-4xl md:text-[46px] lg:text-6xl xl:text-[76px] tracking-tight leading-[1.08] sm:leading-[1.03] lg:leading-[0.98] text-white text-center mb-5 sm:mb-7">
+              <span className="inline sm:whitespace-nowrap">
+                Let&apos;s turn your <span className="whitespace-nowrap">melodies into</span>
+              </span>{" "}
+              <br />
               <TypewriterText
                 words={typewriterWords}
                 className="text-[#ffe600]"
