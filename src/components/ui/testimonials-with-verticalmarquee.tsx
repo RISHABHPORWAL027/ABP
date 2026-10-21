@@ -90,15 +90,21 @@ const testimonials: TestimonialCardProps[] = [
 
 export const TestimonialsWithVerticalMarquee: React.FC = () => {
   // Split into 4 columns for full-width 3D vertical marquee scrolling
-  const col1 = [...testimonials.slice(0, 3), ...testimonials.slice(0, 3)];
-  const col2 = [...testimonials.slice(3, 6), ...testimonials.slice(3, 6)];
+  const col1 = [...testimonials.slice(0, 4), ...testimonials.slice(0, 4)];
+  const col2 = [...testimonials.slice(4, 7), ...testimonials.slice(4, 7)];
   const col3 = [...testimonials.slice(6, 9), ...testimonials.slice(6, 9)];
-  const col4 = [...testimonials.slice(1, 4), ...testimonials.slice(1, 4)];
+  const col4 = [...testimonials.slice(1, 5), ...testimonials.slice(1, 5)];
 
   return (
     <section className="w-full bg-[#000000] text-white py-14 sm:py-24 md:py-32 font-sans relative overflow-hidden">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[550px] bg-[#FF0043]/10 blur-[180px] rounded-full pointer-events-none" />
+      {/* Background ambient lighting - GPU-safe radial gradient instead of heavy blur */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[550px] rounded-full pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, rgba(255, 0, 67, 0.12) 0%, transparent 70%)",
+        }}
+      />
 
       {/* Header Container */}
       <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10 mb-10 sm:mb-16 text-center flex flex-col items-center">
@@ -123,7 +129,7 @@ export const TestimonialsWithVerticalMarquee: React.FC = () => {
       </div>
 
       {/* Full-Width Borderless Kinetic Vertical Marquee Display */}
-      <div className="relative w-full h-[500px] sm:h-[600px] lg:h-[650px] overflow-hidden group [isolation:isolate]">
+      <div className="relative w-full h-[500px] sm:h-[600px] lg:h-[650px] overflow-hidden group">
         {/* Top & Bottom Gradient Fade Overlays */}
         <div className="absolute top-0 inset-x-0 h-20 sm:h-36 bg-gradient-to-b from-[#000000] via-[#000000]/85 to-transparent z-20 pointer-events-none" />
         <div className="absolute bottom-0 inset-x-0 h-20 sm:h-36 bg-gradient-to-t from-[#000000] via-[#000000]/85 to-transparent z-20 pointer-events-none" />

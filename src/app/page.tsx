@@ -57,7 +57,7 @@ export default function Home() {
         ]}
       />
 
-      <main className="flex-1 min-w-0 w-full overflow-hidden">
+      <main className="flex-1 min-w-0 w-full">
         {/* DIFFERENT MUSIC. DIFFERENT MOVES SECTION */}
         <DifferentMovesSection />
 

@@ -43,7 +43,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer id="connect" className="w-full bg-[#000000] text-white pt-14 sm:pt-24 pb-12 font-sans relative overflow-hidden [isolation:isolate]">
+    <footer id="connect" className="w-full bg-[#000000] text-white pt-14 sm:pt-24 pb-12 font-sans relative overflow-hidden">
       {/* Background Glow Gradient with Primary & Tertiary Accents (Edge-to-edge full width) */}
       <div className="absolute inset-x-0 bottom-0 w-full h-[600px] bg-gradient-to-t from-[#FF0043]/20 via-[#009082]/15 to-transparent pointer-events-none z-0" />
 
