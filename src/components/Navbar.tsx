@@ -47,7 +47,7 @@ export const Navbar: React.FC<NavbarProps> = ({ className = "" }) => {
           <div className="hidden md:flex items-center">
             <a
               href="#connect"
-              className="inline-flex items-center gap-2.5 bg-white text-[#000000] font-sans font-extrabold text-base px-7 py-3 rounded-full transition-all duration-300 ease-out hover:bg-[#ffe600] hover:text-[#000000] hover:scale-[1.03] hover:shadow-xl active:scale-95 shadow-lg cursor-pointer"
+              className="inline-flex items-center gap-2.5 bg-white text-[#000000] font-dmsans font-bold text-base px-7 py-3 rounded-full transition-all duration-300 ease-out hover:bg-[#ffe600] hover:text-[#000000] hover:scale-[1.03] hover:shadow-xl active:scale-95 shadow-lg cursor-pointer tracking-[0px]"
             >
               Connect
               <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />

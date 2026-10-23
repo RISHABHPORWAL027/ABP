@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Playfair_Display, Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
 
 const fontMontserrat = Montserrat({
@@ -7,6 +7,28 @@ const fontMontserrat = Montserrat({
   variable: "--font-montserrat",
   display: "swap",
   style: ["normal", "italic"],
+});
+
+const fontPlayfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+});
+
+const fontSyne = Syne({
+  subsets: ["latin"],
+  variable: "--font-syne",
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const fontDmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dmsans",
+  display: "swap",
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -75,7 +97,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${fontMontserrat.variable} h-full antialiased scroll-smooth`}
+      className={`${fontMontserrat.variable} ${fontPlayfair.variable} ${fontSyne.variable} ${fontDmSans.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col font-sans bg-black text-white selection:bg-[#FF0043] selection:text-white overflow-x-hidden w-full max-w-full">
         {children}

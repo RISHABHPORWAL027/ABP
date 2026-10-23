@@ -5,14 +5,15 @@
   --color-brand-secondary: #1A1A1A;
   --color-brand-tertiary: #009082;
   --color-brand-black: #000000;
-  --font-montserrat: var(--font-montserrat), "Montserrat", sans-serif;
-  --font-sans: var(--font-montserrat), "Montserrat", sans-serif;
-  --font-space: var(--font-montserrat), "Montserrat", sans-serif;
-  --font-syne: var(--font-montserrat), "Montserrat", sans-serif;
-  --font-outfit: var(--font-montserrat), "Montserrat", sans-serif;
-  --font-satoshi: var(--font-montserrat), "Montserrat", sans-serif;
-  --font-playfair: var(--font-montserrat), "Montserrat", sans-serif;
-  --font-serif: var(--font-montserrat), "Montserrat", sans-serif;
+  --font-montserrat: var(--font-montserrat);
+  --font-sans: var(--font-montserrat);
+  --font-space: var(--font-montserrat);
+  --font-syne: var(--font-syne);
+  --font-outfit: var(--font-montserrat);
+  --font-satoshi: var(--font-montserrat);
+  --font-playfair: var(--font-playfair);
+  --font-serif: var(--font-playfair);
+  --font-dmsans: var(--font-dmsans);
 }
 
 :root {
@@ -22,14 +23,6 @@
   --color-hero-bg: #FF0043;
   --color-black: #000000;
   --color-surface: #1A1A1A;
-  --font-montserrat: var(--font-montserrat), "Montserrat", sans-serif;
-  --font-sans: var(--font-montserrat), "Montserrat", sans-serif;
-  --font-space: var(--font-montserrat), "Montserrat", sans-serif;
-  --font-syne: var(--font-montserrat), "Montserrat", sans-serif;
-  --font-outfit: var(--font-montserrat), "Montserrat", sans-serif;
-  --font-satoshi: var(--font-montserrat), "Montserrat", sans-serif;
-  --font-playfair: var(--font-montserrat), "Montserrat", sans-serif;
-  --font-serif: var(--font-montserrat), "Montserrat", sans-serif;
 }
 
 * {
@@ -46,9 +39,27 @@ body {
   overflow-x: hidden;
 }
 
-/* Headings, subheadings, paragraphs default to consistent Montserrat */
-h1, h2, h3, h4, h5, h6, p, a, button, input, textarea {
-  font-family: var(--font-montserrat), "Montserrat", sans-serif;
+/* Base Typography Defaults:
+   - Headings (h1-h6): Playfair Display Bold
+   - Paragraphs, subtext, descriptions: Syne Regular
+   - Buttons, CTAs: DM Sans Bold
+*/
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), "Playfair Display", Georgia, serif !important;
+  font-weight: 700;
+  letter-spacing: 0px;
+}
+
+p, .subtext, .subtitle {
+  font-family: var(--font-syne), "Syne", sans-serif !important;
+  font-weight: 400;
+  letter-spacing: 0px;
+}
+
+button, a.btn, .btn, [role="button"], input[type="submit"], input[type="button"] {
+  font-family: var(--font-dmsans), "DM Sans", sans-serif !important;
+  font-weight: 700;
+  letter-spacing: 0px;
 }
 
 .font-montserrat {
@@ -61,12 +72,19 @@ h1, h2, h3, h4, h5, h6, p, a, button, input, textarea {
 
 .font-playfair,
 .font-serif {
-  font-family: var(--font-montserrat), "Montserrat", sans-serif;
+  font-family: var(--font-playfair), "Playfair Display", Georgia, serif !important;
+}
+
+.font-syne {
+  font-family: var(--font-syne), "Syne", sans-serif !important;
+}
+
+.font-dmsans {
+  font-family: var(--font-dmsans), "DM Sans", sans-serif !important;
 }
 
 .font-sans,
 .font-space,
-.font-syne,
 .font-outfit {
   font-family: var(--font-montserrat), "Montserrat", sans-serif;
 }

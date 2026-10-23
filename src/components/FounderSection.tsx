@@ -16,7 +16,7 @@ export const FounderSection: React.FC = () => {
             {/* Left Column: Heading & Bio Paragraphs */}
             <div className="lg:col-span-7">
               <ScrollReveal direction="up">
-                <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-[#000000] mb-8">
+                <h2 className="font-playfair font-bold text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-[0px] leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-[#000000] mb-8">
                   <TypewriterText
                     words={["Built by someone who knows the music side", "Strategy rooted in music experience", "Founded for artists & labels"]}
                     className="text-[#000000]"
@@ -25,15 +25,15 @@ export const FounderSection: React.FC = () => {
                 </h2>
 
                 {/* Accent Highlighted Intro Sentence */}
-                <p className="font-sans font-bold text-lg sm:text-xl md:text-2xl text-[#FF0043] leading-snug mb-6 max-w-2xl">
+                <p className="font-syne font-medium text-lg sm:text-xl md:text-2xl text-[#FF0043] leading-snug mb-6 max-w-2xl tracking-[0px]">
                   All By Play was founded by Dhaval Kothari, a music entrepreneur, ex-Spotify team member, and Berklee alum.
                 </p>
 
-                <p className="font-sans font-medium text-base sm:text-lg text-black/70 leading-relaxed mb-6 max-w-2xl">
+                <p className="font-syne font-normal text-base sm:text-lg text-black/75 leading-relaxed mb-6 max-w-2xl tracking-[0px]">
                   His background in artist partnerships, campaign thinking, and music business helped shape ABP into a company that approaches music marketing with both taste and structure.
                 </p>
 
-                <p className="font-sans font-medium text-base sm:text-lg text-black/70 leading-relaxed max-w-2xl">
+                <p className="font-syne font-normal text-base sm:text-lg text-black/75 leading-relaxed max-w-2xl tracking-[0px]">
                   He started the agency because too many good releases were getting lost in weak rollout, poor timing, or campaigns that didn&apos;t understand the music properly.
                 </p>
               </ScrollReveal>
@@ -53,7 +53,7 @@ export const FounderSection: React.FC = () => {
                   />
 
                   {/* Distinct Colored Quote */}
-                  <blockquote className="font-sans italic font-medium text-xl sm:text-2xl lg:text-3xl leading-snug text-[#FF0043] mb-8">
+                  <blockquote className="font-playfair italic font-bold text-xl sm:text-2xl lg:text-3xl leading-snug text-[#FF0043] mb-8 tracking-[0px]">
                     &ldquo;The campaign should understand the music before it asks people to care.&rdquo;
                   </blockquote>
 
@@ -74,7 +74,7 @@ export const FounderSection: React.FC = () => {
             {/* Left Column: What We Believe Statements */}
             <div className="lg:col-span-7">
               <ScrollReveal direction="up">
-                <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] mb-12">
+                <h2 className="font-playfair font-bold text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-[0px] leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] mb-12">
                   What we <br />
                   <TypewriterText
                     words={["believe", "stand for", "deliver"]}
@@ -84,15 +84,15 @@ export const FounderSection: React.FC = () => {
                 </h2>
 
                 <div className="space-y-8 max-w-2xl">
-                  <p className="font-sans font-bold text-lg sm:text-xl md:text-2xl text-white/95 leading-relaxed">
+                  <p className="font-syne font-normal text-lg sm:text-xl md:text-2xl text-white/95 leading-relaxed tracking-[0px]">
                     We believe music should be marketed like something people care about, not something people scroll past.
                   </p>
 
-                  <p className="font-sans font-bold text-lg sm:text-xl md:text-2xl text-white/95 leading-relaxed">
+                  <p className="font-syne font-normal text-lg sm:text-xl md:text-2xl text-white/95 leading-relaxed tracking-[0px]">
                     We believe strong campaigns come from knowing the artist, the release, and the audience.
                   </p>
 
-                  <p className="font-sans font-bold text-lg sm:text-xl md:text-2xl text-white/95 leading-relaxed">
+                  <p className="font-syne font-normal text-lg sm:text-xl md:text-2xl text-white/95 leading-relaxed tracking-[0px]">
                     We believe the best work sits somewhere between creative instinct and clear data.
                   </p>
                 </div>

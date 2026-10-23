@@ -53,11 +53,11 @@ export const JourneyMorphSliderSection: React.FC = () => {
             </span>
           </div>
 
-          <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white mb-4">
+          <h2 className="font-playfair font-bold text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-[0px] leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white mb-4">
             A Story Of Growth
           </h2>
 
-          <p className="font-sans font-medium text-base sm:text-lg md:text-xl text-white/75 leading-relaxed">
+          <p className="font-syne font-normal text-base sm:text-lg md:text-xl text-white/80 leading-relaxed tracking-[0px]">
             Our journey reflects years of collaboration, creativity, and dedication to helping indie artists and labels build lasting audience communities.
           </p>
         </div>

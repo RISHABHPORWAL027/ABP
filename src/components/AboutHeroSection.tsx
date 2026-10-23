@@ -26,17 +26,17 @@ export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({ className = 
               </div>
 
               {/* Main Headline */}
-              <h1 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-[56px] xl:text-[72px] 2xl:text-[90px] tracking-tight leading-[1.02] md:leading-[1.0] lg:leading-[0.98] xl:leading-[0.95] text-[#000000] mb-8">
+              <h1 className="font-playfair font-bold text-3xl sm:text-5xl md:text-6xl lg:text-[76px] xl:text-[93.6px] tracking-[0px] leading-[1.08] sm:leading-[1.04] lg:leading-[85px] xl:leading-[100px] text-[#000000] mb-8">
                 About <br />
                 <TypewriterText
                   words={["All By Play", "Visual Strategy", "Music Campaigns"]}
-                  className="font-black text-[#FF0043]"
+                  className="font-bold text-[#FF0043]"
                   cursorColor="text-[#FF0043]"
                 />
               </h1>
 
               {/* Paragraph */}
-              <p className="font-sans font-medium text-base sm:text-xl md:text-2xl text-black/80 max-w-2xl leading-relaxed mb-10">
+              <p className="font-syne font-normal text-base sm:text-lg md:text-xl lg:text-[24px] xl:text-[28.5px] leading-relaxed md:leading-[1.5] lg:leading-[42px] xl:leading-[50.67px] tracking-[0px] text-black/85 max-w-2xl mb-10">
                 All By Play is a music marketing company built for artists, labels, and festivals that want more than generic promotion. We help music move with better strategy, sharper storytelling, and campaigns that actually fit the artist.
               </p>
 
@@ -44,7 +44,7 @@ export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({ className = 
               <div>
                 <a
                   href="#story"
-                  className="group inline-flex items-center gap-2.5 font-sans font-bold text-base sm:text-lg text-[#000000] hover:text-[#FF0043] transition-colors border-b-2 border-black/20 hover:border-[#FF0043] pb-1 cursor-pointer"
+                  className="group inline-flex items-center gap-2.5 font-dmsans font-bold text-base sm:text-lg lg:text-[19px] xl:text-[21.54px] tracking-[0px] text-[#000000] hover:text-[#FF0043] transition-colors border-b-2 border-black/20 hover:border-[#FF0043] pb-1 cursor-pointer"
                 >
                   <span>Read our story</span>
                   <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-1" />

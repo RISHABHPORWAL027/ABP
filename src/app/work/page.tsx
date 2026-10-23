@@ -290,7 +290,7 @@ export default function WorkPage() {
             <ScrollReveal direction="up">
               {/* Main Headline */}
               <div className="max-w-5xl mb-6 sm:mb-8">
-                <h1 className="font-sans font-black text-3xl sm:text-5xl md:text-6xl lg:text-[64px] xl:text-[76px] 2xl:text-[90px] tracking-tight leading-[1.02] md:leading-[1.0] lg:leading-[0.98] xl:leading-[0.95] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
+                <h1 className="font-playfair font-bold text-3xl sm:text-5xl md:text-6xl lg:text-[76px] xl:text-[93.6px] tracking-[0px] leading-[1.08] sm:leading-[1.04] lg:leading-[85px] xl:leading-[100px] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
                   Work that turns <br />
                   tracks into{" "}
                   <TypewriterText
@@ -307,7 +307,7 @@ export default function WorkPage() {
               </div>
 
               {/* Subtitle */}
-              <p className="font-sans font-semibold text-base sm:text-xl md:text-2xl text-white/95 max-w-3xl leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] mb-8 sm:mb-10">
+              <p className="font-syne font-normal text-base sm:text-lg md:text-xl lg:text-[24px] xl:text-[28.5px] leading-relaxed md:leading-[1.5] lg:leading-[42px] xl:leading-[50.67px] tracking-[0px] text-white/95 max-w-3xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] mb-8 sm:mb-10">
                 A curated collection of our release rollouts, viral short-form creator trends, and Spotify growth campaigns across indie, label, and Bollywood music.
               </p>
 
@@ -315,10 +315,10 @@ export default function WorkPage() {
               <div className="flex items-center pt-2">
                 <a
                   href="#campaigns"
-                  className="inline-flex items-center gap-2.5 bg-[#FF0043] hover:bg-[#e0003b] text-white font-sans font-black text-sm sm:text-base px-7 sm:px-9 py-3.5 sm:py-4 rounded-full transition-all duration-300 hover:scale-[1.04] hover:shadow-2xl hover:shadow-[#FF0043]/40 active:scale-95 shadow-xl cursor-pointer"
+                  className="inline-flex items-center gap-2.5 bg-[#FF0043] hover:bg-[#e0003b] text-white font-dmsans font-bold text-base sm:text-lg lg:text-[19px] xl:text-[21.54px] lg:leading-[30px] xl:leading-[32.3px] tracking-[0px] px-8 sm:px-9 xl:px-10 py-3.5 sm:py-4 xl:py-4.5 rounded-full transition-all duration-300 hover:scale-[1.04] hover:shadow-2xl hover:shadow-[#FF0043]/40 active:scale-95 shadow-xl cursor-pointer"
                 >
                   <span>Explore Campaigns</span>
-                  <ArrowDown className="w-4 h-4 stroke-[2.5]" />
+                  <ArrowDown className="w-5 h-5 xl:w-6 xl:h-6 stroke-[2.5]" />
                 </a>
               </div>
             </ScrollReveal>
@@ -347,11 +347,11 @@ export default function WorkPage() {
                 <span className="text-[#1ED760] font-space text-xs sm:text-sm font-extrabold tracking-[2px] uppercase block mb-3">
                   SPOTIFY CAMPAIGNS & STREAMING DRIVES
                 </span>
-                <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white">
+                <h2 className="font-playfair font-bold text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-[0px] leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white">
                   Spotify featured tracks <span className="text-[#1ED760]">.</span>
                 </h2>
               </div>
-              <p className="text-white/75 max-w-md text-base sm:text-lg font-sans leading-relaxed">
+              <p className="text-white/80 max-w-md text-base sm:text-lg font-syne font-normal leading-relaxed tracking-[0px]">
                 Explore our top Spotify-focused campaigns, DSP chartbusters, and viral indie releases built for long-term algorithmic growth.
               </p>
             </div>
@@ -370,11 +370,11 @@ export default function WorkPage() {
                   <span className="text-[#FF0043] font-space text-xs sm:text-sm font-extrabold tracking-[2px] uppercase block mb-3">
                     CASE STUDIES & ARTIST CAMPAIGNS
                   </span>
-                  <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white">
+                  <h2 className="font-playfair font-bold text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-[0px] leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white">
                     Our recent top campaigns & case studies <span className="text-[#FF0043]">.</span>
                   </h2>
                 </div>
-                <p className="text-white/75 max-w-md text-base sm:text-lg font-sans leading-relaxed">
+                <p className="text-white/80 max-w-md text-base sm:text-lg font-syne font-normal leading-relaxed tracking-[0px]">
                   Deep-dive breakdowns of viral momentum, artist rollouts, and chart-topping digital strategies for standout music campaigns.
                 </p>
               </div>

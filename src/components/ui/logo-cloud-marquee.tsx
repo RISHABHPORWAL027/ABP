@@ -85,11 +85,11 @@ export const LogoCloudMarquee: React.FC = () => {
 
       {/* Header Container */}
       <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10 mb-8 sm:mb-14 text-center">
-        <h2 className="font-sans font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-5xl 2xl:text-6xl tracking-tight leading-[1.1] text-white uppercase mb-3 sm:mb-4">
+        <h2 className="font-playfair font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-5xl 2xl:text-6xl tracking-[0px] leading-[1.1] text-white uppercase mb-3 sm:mb-4">
           INDUSTRY PARTNERS & LABELS <span className="text-[#FF0043]">.</span>
         </h2>
 
-        <p className="font-sans font-medium text-sm sm:text-base md:text-lg text-white/75 leading-relaxed max-w-2xl mx-auto">
+        <p className="font-syne font-normal text-sm sm:text-base md:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto tracking-[0px]">
           Partnering with premier indie, major, and international music labels across Bollywood, hip-hop, electronic, and pop music.
         </p>
       </div>

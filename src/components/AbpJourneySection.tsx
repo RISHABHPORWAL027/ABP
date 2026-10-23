@@ -117,7 +117,7 @@ export const AbpJourneySection: React.FC = () => {
             </div>
 
             {/* Main Headline */}
-            <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-[#111111] mb-6 min-h-[1.1em]">
+            <h2 className="font-playfair font-bold text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-[0px] leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-[#111111] mb-6 min-h-[1.1em]">
               <TypewriterText
                 words={["Built to move music forward."]}
                 loop={false}
@@ -127,7 +127,7 @@ export const AbpJourneySection: React.FC = () => {
             </h2>
 
             {/* Subtitle Paragraph */}
-            <p className="font-sans font-medium text-base sm:text-lg md:text-xl text-[#333333] leading-relaxed max-w-3xl">
+            <p className="font-syne font-normal text-base sm:text-lg md:text-xl text-[#333333] leading-relaxed max-w-3xl tracking-[0px]">
               Founded in January 2023, All By Play has grown into a music-first, founder-led agency working across indie, label, and Bollywood campaigns.
             </p>
           </ScrollReveal>
@@ -190,7 +190,7 @@ export const AbpJourneySection: React.FC = () => {
 
                     {/* Main Title */}
                     <h3
-                      className={`font-sans font-extrabold text-2xl sm:text-3xl tracking-tight leading-snug mb-4 ${
+                      className={`font-playfair font-bold text-2xl sm:text-3xl tracking-[0px] leading-snug mb-4 ${
                         step.isHighlight ? "text-white" : "text-[#111111]"
                       }`}
                     >
@@ -200,7 +200,7 @@ export const AbpJourneySection: React.FC = () => {
 
                   {/* Description */}
                   <p
-                    className={`font-sans font-medium text-sm sm:text-base leading-relaxed ${
+                    className={`font-syne font-normal text-sm sm:text-base leading-relaxed tracking-[0px] ${
                       step.isHighlight ? "text-white/90" : "text-[#555555]"
                     }`}
                   >

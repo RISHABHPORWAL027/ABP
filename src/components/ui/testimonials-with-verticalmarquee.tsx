@@ -114,7 +114,7 @@ export const TestimonialsWithVerticalMarquee: React.FC = () => {
           </span>
         </div>
 
-        <h2 className="font-sans font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-5xl 2xl:text-6xl tracking-tight leading-[1.1] text-white mb-6 uppercase min-h-[1.1em] text-center w-full flex justify-center">
+        <h2 className="font-playfair font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-5xl 2xl:text-6xl tracking-[0px] leading-[1.1] text-white mb-6 uppercase min-h-[1.1em] text-center w-full flex justify-center">
           <TypewriterText
             words={["WHAT ARTISTS & LABELS SAY"]}
             loop={false}
@@ -123,7 +123,7 @@ export const TestimonialsWithVerticalMarquee: React.FC = () => {
           />
         </h2>
 
-        <p className="font-sans font-medium text-base sm:text-lg text-white/75 leading-relaxed max-w-2xl mx-auto text-center">
+        <p className="font-syne font-normal text-base sm:text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mx-auto text-center tracking-[0px]">
           Real stories from independent artists, managers, and label executives who built their release campaigns with All By Play.
         </p>
       </div>

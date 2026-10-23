@@ -149,7 +149,7 @@ export const DifferentMovesSection: React.FC = () => {
               </span>
             </div>
 
-            <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white mb-6 min-h-[1.1em]">
+            <h2 className="font-playfair font-bold text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-[0px] leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white mb-6 min-h-[1.1em]">
               <TypewriterText
                 words={["Different music. Different moves."]}
                 loop={false}
@@ -158,7 +158,7 @@ export const DifferentMovesSection: React.FC = () => {
               />
             </h2>
 
-            <p className="font-sans font-medium text-base sm:text-lg text-white/75 leading-relaxed max-w-2xl">
+            <p className="font-syne font-normal text-base sm:text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl tracking-[0px]">
               Take a look at some of the campaigns we&apos;ve worked on — each one built around a different artist, goal, and audience.
             </p>
           </ScrollReveal>
@@ -178,7 +178,7 @@ export const DifferentMovesSection: React.FC = () => {
           <div className="flex items-center justify-start">
             <a
               href="#connect"
-              className="inline-flex items-center gap-2.5 border-2 border-white/60 text-white font-sans font-extrabold text-sm sm:text-base px-8 py-3.5 rounded-full transition-all duration-300 ease-out hover:bg-white hover:text-[#000000] hover:border-white hover:scale-[1.03] hover:shadow-xl active:scale-95 cursor-pointer"
+              className="inline-flex items-center gap-2.5 border-2 border-white/60 text-white font-dmsans font-bold text-base sm:text-lg tracking-[0px] px-8 py-3.5 rounded-full transition-all duration-300 ease-out hover:bg-white hover:text-[#000000] hover:border-white hover:scale-[1.03] hover:shadow-xl active:scale-95 cursor-pointer"
             >
               Discuss a campaign
               <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />

@@ -55,20 +55,20 @@ export const HowWeWorkSection: React.FC = () => {
 
         {/* Right Column: Red Brand Container (#FF0043) */}
         <div className="lg:col-span-6 bg-[#FF0043] text-white p-8 sm:p-12 md:p-16 lg:p-20 flex flex-col justify-center">
+          {/* Headline */}
           <ScrollReveal direction="up">
-            {/* Headline */}
-            <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] mb-8">
+            <h2 className="font-playfair font-bold text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-[0px] leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] mb-8">
               How we <br />
               work
             </h2>
 
             {/* Main Paragraph 1 */}
-            <p className="font-sans font-bold text-lg sm:text-xl md:text-2xl text-white leading-relaxed mb-6 max-w-xl">
+            <p className="font-syne font-normal text-lg sm:text-xl md:text-2xl text-white leading-relaxed mb-6 max-w-xl tracking-[0px]">
               We don&apos;t force every project into the same shape. Some need release support. Some need social energy. Some need Spotify focus. Some need all of it together.
             </p>
 
             {/* Main Paragraph 2 */}
-            <p className="font-sans font-medium text-base sm:text-lg text-white/90 leading-relaxed mb-12 max-w-xl">
+            <p className="font-syne font-normal text-base sm:text-lg text-white/90 leading-relaxed mb-12 max-w-xl tracking-[0px]">
               So we start by understanding the music, the goal, and the context, then build the campaign around that.
             </p>
 
@@ -79,10 +79,10 @@ export const HowWeWorkSection: React.FC = () => {
                   key={idx}
                   className="py-6 border-b border-white/30 grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 items-baseline"
                 >
-                  <div className="sm:col-span-5 font-sans font-bold text-xl sm:text-2xl text-white">
+                  <div className="sm:col-span-5 font-playfair font-bold text-xl sm:text-2xl text-white tracking-[0px]">
                     {step.label}
                   </div>
-                  <div className="sm:col-span-7 font-sans font-medium text-sm sm:text-base text-white/90">
+                  <div className="sm:col-span-7 font-syne font-normal text-sm sm:text-base text-white/90 tracking-[0px]">
                     {step.detail}
                   </div>
                 </div>

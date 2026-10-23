@@ -59,7 +59,7 @@ export const ArtistsWorkedWithSection: React.FC<ArtistsWorkedWithSectionProps> =
           <span className="font-mono text-xs sm:text-sm font-bold tracking-[0.2em] text-[#FFE600] uppercase block mb-3">
             CAMPAIGN COLLABORATIONS
           </span>
-          <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white">
+          <h2 className="font-playfair font-bold text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-[0px] leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white">
             Artist we have worked with
           </h2>
         </ScrollReveal>

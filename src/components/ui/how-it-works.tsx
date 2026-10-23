@@ -390,28 +390,28 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({
 
           {title !== undefined ? (
             typeof title === "string" ? (
-              <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white mb-4">
+              <h2 className="font-playfair font-bold text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-[0px] leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white mb-4">
                 {title}
               </h2>
             ) : (
               title
             )
           ) : (
-            <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white mb-4">
+            <h2 className="font-playfair font-bold text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-[0px] leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white mb-4">
               A simple way to work together.
             </h2>
           )}
 
           {subtitle !== undefined ? (
             typeof subtitle === "string" ? (
-              <p className="font-sans font-medium text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl mx-auto">
+              <p className="font-syne font-normal text-base sm:text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mx-auto tracking-[0px]">
                 {subtitle}
               </p>
             ) : (
               subtitle
             )
           ) : (
-            <p className="font-sans font-medium text-base sm:text-lg text-white/70 leading-relaxed max-w-2xl mx-auto">
+            <p className="font-syne font-normal text-base sm:text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mx-auto tracking-[0px]">
               Clear inputs, a tailored rollout plan, and execution that keeps refining as the music travels.
             </p>
           )}

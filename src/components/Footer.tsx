@@ -50,7 +50,7 @@ export const Footer: React.FC = () => {
       <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* Main Headline */}
-          <h2 className="font-sans font-black text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-tight leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white mb-6 min-h-[1.1em]">
+          <h2 className="font-playfair font-bold text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-[0px] leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white mb-6 min-h-[1.1em]">
             <TypewriterText
               words={[
                 "Connect with us.",
@@ -64,7 +64,7 @@ export const Footer: React.FC = () => {
           </h2>
 
           {/* Description */}
-          <p className="font-sans font-medium text-base sm:text-lg text-white/75 leading-relaxed max-w-xl mb-6">
+          <p className="font-syne font-normal text-base sm:text-lg md:text-xl text-white/80 leading-relaxed max-w-xl mb-6 tracking-[0px]">
             Whether you&apos;re an artist, manager, label, or team, share your profile links, goals, and a short brief. We&apos;ll help you figure out the next step.
           </p>
 
@@ -158,7 +158,7 @@ export const Footer: React.FC = () => {
                 <div className="pt-4">
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-2.5 bg-[#FF0043] text-white font-sans font-extrabold text-base px-8 py-3.5 rounded-full hover:bg-[#009082] transition-all hover:scale-105 shadow-xl shadow-[#FF0043]/20 cursor-pointer"
+                    className="inline-flex items-center gap-2.5 bg-[#FF0043] text-white font-dmsans font-bold text-base sm:text-lg tracking-[0px] px-8 py-3.5 rounded-full hover:bg-[#009082] transition-all hover:scale-105 shadow-xl shadow-[#FF0043]/20 cursor-pointer"
                   >
                     Send your brief
                     <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />

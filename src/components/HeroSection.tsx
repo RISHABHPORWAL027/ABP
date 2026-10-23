@@ -190,8 +190,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
               </span>
             </div>
 
-            {/* Main Headline with Montserrat font */}
-            <h1 className="font-sans font-black text-[27px] sm:text-4xl md:text-[46px] lg:text-6xl xl:text-[76px] tracking-tight leading-[1.08] sm:leading-[1.03] lg:leading-[0.98] text-white text-center mb-5 sm:mb-7">
+            {/* Main Headline with Playfair Display Bold */}
+            <h1 className="font-playfair font-bold text-3xl sm:text-5xl md:text-6xl lg:text-[76px] xl:text-[93.6px] tracking-[0px] leading-[1.08] sm:leading-[1.04] lg:leading-[85px] xl:leading-[100px] text-white text-center mb-6 sm:mb-8">
               <span className="inline sm:whitespace-nowrap">
                 Let&apos;s turn your <span className="whitespace-nowrap">melodies into</span>
               </span>{" "}
@@ -203,21 +203,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
               />
             </h1>
 
-            {/* Subtitle */}
-            <p className="font-sans font-medium text-base sm:text-xl md:text-2xl text-white/85 max-w-2xl mx-auto text-center leading-relaxed mb-8 sm:mb-10">
+            {/* Subtitle with Syne Regular */}
+            <p className="font-syne font-normal text-base sm:text-lg md:text-xl lg:text-[24px] xl:text-[28.5px] leading-relaxed md:leading-[1.5] lg:leading-[42px] xl:leading-[50.67px] tracking-[0px] text-white/90 max-w-3xl mx-auto text-center mb-8 sm:mb-10">
               All By Play helps artists, labels, managers, and festivals build music campaigns that feel clear, creative, and effective.
             </p>
           </div>
 
-          {/* Interactive CTA Button Target: Our Work */}
+          {/* Interactive CTA Button Target: Our Work with DM Sans Bold */}
           <div className="flex items-center justify-center relative z-20">
             <a
               ref={targetRef}
               href="#work"
-              className="inline-flex items-center justify-center gap-2.5 bg-[#ffe600] text-[#000000] font-sans font-extrabold text-base sm:text-lg px-9 sm:px-12 py-3.5 sm:py-4 rounded-full transition-all duration-300 ease-out hover:bg-yellow-300 hover:scale-[1.05] hover:shadow-2xl hover:shadow-[#ffe600]/30 active:scale-95 shadow-xl shadow-black/30 cursor-pointer group"
+              className="inline-flex items-center justify-center gap-2.5 bg-[#ffe600] text-[#000000] font-dmsans font-bold text-base sm:text-lg lg:text-[19px] xl:text-[21.54px] lg:leading-[30px] xl:leading-[32.3px] tracking-[0px] px-8 sm:px-10 py-3.5 sm:py-4 xl:py-4.5 rounded-full transition-all duration-300 ease-out hover:bg-yellow-300 hover:scale-[1.05] hover:shadow-2xl hover:shadow-[#ffe600]/30 active:scale-95 shadow-xl shadow-black/30 cursor-pointer group"
             >
               <span>Our Work</span>
-              <ArrowUpRight className="w-5 h-5 stroke-[2.5] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="w-5 h-5 xl:w-6 xl:h-6 stroke-[2.5] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>
         </div>
