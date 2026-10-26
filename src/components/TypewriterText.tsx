@@ -12,6 +12,7 @@ interface TypewriterTextProps {
   cursorColor?: string;
   triggerOnView?: boolean;
   startDelay?: number;
+  noWrap?: boolean;
 }
 
 export const TypewriterText: React.FC<TypewriterTextProps> = ({
@@ -24,6 +25,7 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
   cursorColor = "text-[#FF0043]",
   triggerOnView = false,
   startDelay = 0,
+  noWrap = false,
 }) => {
   const containerRef = React.useRef<HTMLSpanElement>(null);
   const [hasStarted, setHasStarted] = useState(!triggerOnView);
@@ -127,25 +129,27 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
     return () => clearTimeout(timer);
   }, [currentText, isDeleting, currentWordIndex, words, fullText, typingSpeed, deletingSpeed, pauseDuration, loop, canType]);
 
+  const wrapClass = noWrap ? "whitespace-nowrap" : "whitespace-normal";
+
   return (
     <span
       ref={containerRef}
-      className={`inline-grid grid-cols-1 grid-rows-1 align-top whitespace-normal ${className}`}
+      className={`inline-grid grid-cols-1 grid-rows-1 align-top ${wrapClass} ${className}`}
     >
       {/* Invisible Ghost Text reserving full space to eliminate CLS layout shift */}
       <span
-        className="col-start-1 row-start-1 invisible pointer-events-none select-none whitespace-normal"
+        className={`col-start-1 row-start-1 invisible pointer-events-none select-none ${wrapClass}`}
         aria-hidden="true"
       >
         {longestText}
-        <span className="inline-block ml-1 opacity-0 font-normal">|</span>
+        <span className="inline-block ml-0.5 opacity-0 font-normal">|</span>
       </span>
 
       {/* Active Typewriter Text */}
-      <span className="col-start-1 row-start-1 whitespace-normal">
+      <span className={`col-start-1 row-start-1 ${wrapClass}`}>
         {currentText}
         {hasStarted && !isFinished && (
-          <span className={`inline-block ml-1 ${cursorColor} animate-pulse font-normal opacity-90`}>
+          <span className={`inline-block ml-0.5 ${cursorColor} animate-pulse font-normal opacity-90 select-none`}>
             |
           </span>
         )}

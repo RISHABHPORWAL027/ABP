@@ -179,7 +179,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
       <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10">
         
         {/* Top Text Content - Centered Modern Layout */}
-        <div className="max-w-5xl mx-auto flex flex-col items-center text-center mb-10 sm:mb-14">
+        <div className="w-full max-w-[70vw] min-[1440px]:max-w-6xl mx-auto flex flex-col items-center text-center mb-10 sm:mb-14">
           
           {/* Main Hero Header & Copy Block */}
           <div ref={textContainerRef} className="w-full flex flex-col items-center">
@@ -191,20 +191,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
             </div>
 
             {/* Main Headline with Playfair Display Bold */}
-            <h1 className="font-playfair font-bold text-3xl sm:text-5xl md:text-6xl lg:text-[76px] xl:text-[93.6px] tracking-[0px] leading-[1.08] sm:leading-[1.04] lg:leading-[85px] xl:leading-[100px] text-white text-center mb-6 sm:mb-8">
-              <span className="inline sm:whitespace-nowrap">
-                Let&apos;s turn your <span className="whitespace-nowrap">melodies into</span>
+            <h1 className="font-playfair font-bold text-[clamp(28px,4.8vw,76px)] min-[1440px]:text-[93.6px] tracking-[0px] leading-[1.1] min-[1440px]:leading-[100px] text-white text-center mb-6 sm:mb-8 w-full mx-auto">
+              <span className="inline">
+                Let&apos;s turn your <span className="whitespace-normal sm:whitespace-nowrap">melodies into</span>
               </span>{" "}
               <br />
               <TypewriterText
                 words={typewriterWords}
                 className="text-[#ffe600]"
                 cursorColor="text-[#ffe600]"
+                noWrap
               />
             </h1>
 
             {/* Subtitle with Syne Regular */}
-            <p className="font-syne font-normal text-base sm:text-lg md:text-xl lg:text-[24px] xl:text-[28.5px] leading-relaxed md:leading-[1.5] lg:leading-[42px] xl:leading-[50.67px] tracking-[0px] text-white/90 max-w-3xl mx-auto text-center mb-8 sm:mb-10">
+            <p className="font-syne font-normal text-base sm:text-lg md:text-xl min-[1440px]:text-[28.5px] leading-relaxed md:leading-[1.5] min-[1440px]:leading-[50.67px] tracking-[0px] text-white/90 max-w-2xl min-[1440px]:max-w-3xl mx-auto text-center mb-8 sm:mb-10">
               All By Play helps artists, labels, managers, and festivals build music campaigns that feel clear, creative, and effective.
             </p>
           </div>

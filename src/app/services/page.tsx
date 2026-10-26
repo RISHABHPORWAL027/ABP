@@ -460,29 +460,31 @@ export default function ServicesOverviewPage() {
         {/* 1. HERO SECTION */}
         <section className="w-full bg-[#000000] text-white pt-6 pb-0 sm:pt-10 md:pt-14 relative font-sans overflow-hidden min-h-[85vh] flex flex-col justify-between">
           <div className="max-w-[1380px] mx-auto px-6 md:px-12 w-full pt-4 md:pt-8 relative z-10 flex-1 flex flex-col justify-center">
-            <div className="max-w-6xl xl:max-w-[1280px]">
-              <h1 className="font-playfair font-bold text-3xl sm:text-5xl md:text-6xl lg:text-[76px] xl:text-[93.6px] tracking-[0px] leading-[1.08] sm:leading-[1.04] lg:leading-[85px] xl:leading-[100px] text-white mb-6 md:mb-8">
-                <span className="block">Music marketing that feels</span>
-                <span className="text-[#FF0043]">clear, creative,</span> and built{" "}
-                <span className="block sm:inline">around the release.</span>
+            <div className="max-w-4xl lg:max-w-5xl xl:max-w-6xl min-[1440px]:max-w-[1280px]">
+              <h1 className="font-playfair font-bold text-[clamp(32px,5.2vw,78px)] min-[1440px]:text-[93.6px] tracking-tight leading-[1.12] min-[1440px]:leading-[100px] text-white mb-6 md:mb-8">
+                <span className="block whitespace-normal sm:whitespace-nowrap">Music marketing that feels</span>
+                <span className="block whitespace-normal sm:whitespace-nowrap">
+                  <span className="text-[#FF0043]">clear, creative,</span> and built
+                </span>
+                <span className="block whitespace-normal sm:whitespace-nowrap">around the release.</span>
               </h1>
 
-              <p className="font-syne font-normal text-base sm:text-lg md:text-xl lg:text-[24px] xl:text-[28.5px] leading-relaxed md:leading-[1.5] lg:leading-[42px] xl:leading-[50.67px] tracking-[0px] text-white/95 max-w-5xl xl:max-w-[1140px] mb-8 md:mb-10">
+              <p className="font-syne font-normal text-base sm:text-lg md:text-xl min-[1440px]:text-[28.5px] leading-relaxed md:leading-[1.5] min-[1440px]:leading-[50.67px] tracking-[0px] text-white/90 max-w-3xl xl:max-w-4xl min-[1440px]:max-w-[1140px] mb-8 md:mb-10">
                 All By Play helps artists, labels, managers, and festivals grow through music marketing that actually makes sense. From release campaigns and PR to Instagram, Spotify, ads, and branding, we build strategies shaped around the music, the goals, and the audience.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 mb-14 sm:mb-20">
                 <Link
                   href="/#connect"
-                  className="bg-[#ffe600] hover:bg-[#ffe600]/90 text-black font-dmsans font-bold text-base sm:text-lg lg:text-[19px] xl:text-[21.54px] lg:leading-[30px] xl:leading-[32.3px] tracking-[0px] px-8 sm:px-9 xl:px-10 py-3.5 sm:py-4 xl:py-4.5 rounded-full inline-flex items-center gap-2.5 transition-all duration-300 hover:scale-[1.03] active:scale-95 shadow-xl cursor-pointer"
+                  className="bg-[#ffe600] hover:bg-[#ffe600]/90 text-black font-dmsans font-bold text-sm sm:text-base lg:text-lg min-[1440px]:text-[21.54px] min-[1440px]:leading-[32.3px] px-7 sm:px-8 xl:px-9 min-[1440px]:px-10 py-3 sm:py-3.5 xl:py-4 min-[1440px]:py-4.5 rounded-full inline-flex items-center gap-2.5 transition-all duration-300 hover:scale-[1.03] active:scale-95 shadow-xl cursor-pointer"
                 >
                   <span>Start your project</span>
-                  <ArrowUpRight className="w-5 h-5 xl:w-6 xl:h-6 stroke-[2.5]" />
+                  <ArrowUpRight className="w-5 h-5 xl:w-5.5 xl:h-5.5 stroke-[2.5]" />
                 </Link>
 
                 <Link
                   href="/#work"
-                  className="bg-transparent hover:bg-white/10 text-white border border-white/25 hover:border-white font-dmsans font-bold text-base sm:text-lg lg:text-[19px] xl:text-[21.54px] lg:leading-[30px] xl:leading-[32.3px] tracking-[0px] px-8 sm:px-9 xl:px-10 py-3.5 sm:py-4 xl:py-4.5 rounded-full inline-flex items-center justify-center transition-all duration-300 cursor-pointer"
+                  className="bg-transparent hover:bg-white/10 text-white border border-white/25 hover:border-white font-dmsans font-bold text-sm sm:text-base lg:text-lg min-[1440px]:text-[21.54px] min-[1440px]:leading-[32.3px] px-7 sm:px-8 xl:px-9 min-[1440px]:px-10 py-3 sm:py-3.5 xl:py-4 min-[1440px]:py-4.5 rounded-full inline-flex items-center justify-center transition-all duration-300 cursor-pointer"
                 >
                   See our work
                 </Link>
@@ -501,7 +503,7 @@ export default function ServicesOverviewPage() {
               {/* Left Column: Text Content */}
               <div className="lg:col-span-7">
                 <ScrollReveal direction="up">
-                  <h2 className="font-playfair font-bold text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-[0px] leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-[#000000] mb-8">
+                  <h2 className="font-playfair font-bold text-2xl sm:text-3xl md:text-[38px] lg:text-[44px] xl:text-[54px] min-[1440px]:text-7xl tracking-[0px] leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-[#000000] mb-8">
                     <TypewriterText
                       words={[
                         "What we help with",
@@ -567,7 +569,7 @@ export default function ServicesOverviewPage() {
           <div className="max-w-[1380px] mx-auto px-6 md:px-12">
             <div className="max-w-4xl">
               <ScrollReveal direction="up">
-                <h2 className="font-playfair font-bold text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[56px] 2xl:text-7xl tracking-[0px] leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white mb-8">
+                <h2 className="font-playfair font-bold text-2xl sm:text-3xl md:text-[38px] lg:text-[44px] xl:text-[54px] min-[1440px]:text-7xl tracking-[0px] leading-[1.1] md:leading-[1.08] lg:leading-[1.06] xl:leading-[1.05] text-white mb-8">
                   <TypewriterText
                     words={[
                       "Built for different parts of the music world",
@@ -649,7 +651,7 @@ export default function ServicesOverviewPage() {
           <div className="max-w-[1380px] mx-auto px-6 md:px-12">
             <ScrollReveal direction="up" threshold={0.08} duration={750}>
               <div className="mb-14 md:mb-20">
-                <h2 className="font-playfair font-bold text-3xl sm:text-4xl md:text-[42px] lg:text-[48px] xl:text-[60px] 2xl:text-[76px] text-black tracking-[0px] leading-[1.04] max-w-5xl">
+                <h2 className="font-playfair font-bold text-2xl sm:text-3xl md:text-[38px] lg:text-[44px] xl:text-[54px] min-[1440px]:text-[76px] text-black tracking-[0px] leading-[1.06] max-w-5xl">
                   One connected<br className="hidden sm:inline" /> campaign toolkit for{" "}
                   <TypewriterText
                     words={[
