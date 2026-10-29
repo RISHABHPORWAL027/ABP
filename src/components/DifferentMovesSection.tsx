@@ -159,7 +159,7 @@ export const DifferentMovesSection: React.FC = () => {
             </h2>
 
             <p className="font-syne font-normal text-base sm:text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl tracking-[0px]">
-              Take a look at some of the campaigns we&apos;ve worked on — each one built around a different artist, goal, and audience.
+              From music marketing and PR to artist management and live experiences, explore the services we bring together to make every move count.
             </p>
           </ScrollReveal>
         </div>

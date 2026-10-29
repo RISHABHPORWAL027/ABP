@@ -186,7 +186,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
             {/* Badge */}
             <div className="flex items-center justify-center mb-5 sm:mb-6">
               <span className="font-space font-extrabold text-xs sm:text-sm tracking-[2px] uppercase text-white/90">
-                MUSIC-FIRST MARKETING FROM INDIA
+                India&apos;s First 360° Music Marketing Agency
               </span>
             </div>
 
@@ -206,7 +206,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
 
             {/* Subtitle with Syne Regular */}
             <p className="font-syne font-normal text-base sm:text-lg md:text-xl min-[1440px]:text-[28.5px] leading-relaxed md:leading-[1.5] min-[1440px]:leading-[50.67px] tracking-[0px] text-white/90 max-w-2xl min-[1440px]:max-w-3xl mx-auto text-center mb-8 sm:mb-10">
-              All By Play helps artists, labels, managers, and festivals build music campaigns that feel clear, creative, and effective.
+              Influencer marketing, artist management, ads, PR, artist retainers, and more. We help artists, labels, and managers build campaigns that actually move music.
             </p>
           </div>
 
