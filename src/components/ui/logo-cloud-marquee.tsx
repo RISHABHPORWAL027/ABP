@@ -10,19 +10,19 @@ interface LabelLogo {
 const labelsList: LabelLogo[] = [
   {
     name: "WARNER MUSIC GROUP",
-    src: "/labels_logo/Rectangle.svg",
+    src: "/labels_logo/Rectangle.webp",
   },
   {
     name: "SAREGAMA",
-    src: "/labels_logo/I.svg",
+    src: "/labels_logo/I.webp",
   },
   {
     name: "SONY MUSIC",
-    src: "/labels_logo/H.svg",
+    src: "/labels_logo/H.webp",
   },
   {
     name: "ZEE MUSIC CO.",
-    src: "/labels_logo/I (1).svg",
+    src: "/labels_logo/I (1).webp",
   },
   {
     name: "UNIVERSAL MUSIC GROUP",
@@ -30,23 +30,23 @@ const labelsList: LabelLogo[] = [
   },
   {
     name: "TIPS MUSIC",
-    src: "/labels_logo/Rectangle (1).svg",
+    src: "/labels_logo/Rectangle (1).webp",
   },
   {
     name: "TIMES MUSIC",
-    src: "/labels_logo/I (2).svg",
+    src: "/labels_logo/I (2).webp",
   },
   {
     name: "AZAADI RECORDS",
-    src: "/labels_logo/I (4).svg",
+    src: "/labels_logo/I (4).webp",
   },
   {
     name: "55 RECORDS",
-    src: "/labels_logo/I (5).svg",
+    src: "/labels_logo/I (5).webp",
   },
   {
     name: "TM MUSIC",
-    src: "/labels_logo/I (3).svg",
+    src: "/labels_logo/I (3).webp",
   },
   {
     name: "VYRL ORIGINALS",

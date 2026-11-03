@@ -7,18 +7,35 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { cn } from "@/lib/utils";
+import dynamic from "next/dynamic";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { HowItWorks } from "@/components/ui/how-it-works";
-import { ServiceTicketData } from "@/components/ui/admit-one-ticket";
+import type { ServiceTicketData } from "@/components/ui/admit-one-ticket";
 import { AnimatedEqualizer } from "@/components/AnimatedEqualizer";
 import { TypewriterText } from "@/components/TypewriterText";
 import { AnimatedFolder } from "@/components/ui/3d-folder";
-import { ServiceBookingModal } from "@/components/ServiceBookingModal";
-import DiagonalMarqueeCarousel from "@/components/ui/great-ui-diagonal-marquee-carousel";
 import { spotifySongCards } from "@/lib/spotify-songs-data";
 import { BrandingShowcaseBanner } from "@/components/BrandingShowcaseBanner";
-import { InstagramReelsShowcase } from "@/components/InstagramReelsShowcase";
-import { ContentMediaReelsShowcase } from "@/components/ContentMediaReelsShowcase";
+
+const ServiceBookingModal = dynamic(
+  () => import("@/components/ServiceBookingModal").then((mod) => mod.ServiceBookingModal),
+  { ssr: false }
+);
+
+const DiagonalMarqueeCarousel = dynamic(
+  () => import("@/components/ui/great-ui-diagonal-marquee-carousel"),
+  { ssr: false, loading: () => <div className="h-[480px] w-full bg-black" /> }
+);
+
+const InstagramReelsShowcase = dynamic(
+  () => import("@/components/InstagramReelsShowcase").then((mod) => mod.InstagramReelsShowcase),
+  { ssr: false, loading: () => <div className="h-[530px] w-full bg-black" /> }
+);
+
+const ContentMediaReelsShowcase = dynamic(
+  () => import("@/components/ContentMediaReelsShowcase").then((mod) => mod.ContentMediaReelsShowcase),
+  { ssr: false, loading: () => <div className="h-[530px] w-full bg-black" /> }
+);
 
 interface ServiceCardBannerProps {
   images: string[];
@@ -208,10 +225,10 @@ export default function ServicesOverviewPage() {
       badge: "BRAND",
       categoryTag: "BRAND",
       framesCount: "02",
-      cardImage: "/services/cards/card-01-shreya-spread@2x.png",
+      cardImage: "/Services page/branding and marketing/shrreya1.webp",
       cardImages: [
-        "/Services page/branding and marketing/shrreya1.png",
-        "/Services page/branding and marketing/shreya2.png",
+        "/Services page/branding and marketing/shrreya1.webp",
+        "/Services page/branding and marketing/shreya2.webp",
       ],
       bg: "bg-[#5B3BE8] text-white",
       badgeBg: "#FFE600",
@@ -259,9 +276,9 @@ export default function ServicesOverviewPage() {
       badge: "PR",
       categoryTag: "PRESS",
       framesCount: "02",
-      cardImage: "/services/cards/card-03-clean@2x.png",
+      cardImage: "/services/cards/card-03-clean@2x.webp",
       cardImages: [
-        "/services/cards/card-03-clean@2x.png",
+        "/services/cards/card-03-clean@2x.webp",
       ],
       bg: "bg-[#1E1E28] text-white",
       badgeBg: "#FFE600",
@@ -284,9 +301,9 @@ export default function ServicesOverviewPage() {
       badge: "SOCIAL",
       categoryTag: "SOCIAL",
       framesCount: "10",
-      cardImage: "/services/cards/card-04-clean@2x.png",
+      cardImage: "/services/cards/released-based-camp.webp",
       cardImages: [
-        "/services/cards/card-04-clean@2x.png",
+        "/services/cards/released-based-camp.webp",
       ],
       bg: "bg-[#FF6B4A] text-white",
       badgeBg: "#FFE600",
@@ -310,9 +327,9 @@ export default function ServicesOverviewPage() {
       badge: "STREAM",
       categoryTag: "STREAM",
       framesCount: "24",
-      cardImage: "/services/spotify/spotify_songs/Rectangle%20(1).svg",
+      cardImage: "/services/spotify/spotify_songs/Rectangle%20(1).webp",
       cardImages: [
-        "/services/spotify/spotify_songs/Rectangle%20(1).svg",
+        "/services/spotify/spotify_songs/Rectangle%20(1).webp",
       ],
       bg: "bg-[#7CFF6B] text-black",
       badgeBg: "#FFE600",
@@ -338,9 +355,9 @@ export default function ServicesOverviewPage() {
       badge: "ADS",
       categoryTag: "ADS",
       framesCount: "02",
-      cardImage: "/services/cards/card-06-clean@2x.png",
+      cardImage: "/services/cards/card-06-clean@2x.webp",
       cardImages: [
-        "/services/cards/card-06-clean@2x.png",
+        "/services/cards/card-06-clean@2x.webp",
       ],
       bg: "bg-[#2563EB] text-white",
       badgeBg: "#FFE600",
@@ -363,9 +380,9 @@ export default function ServicesOverviewPage() {
       badge: "CONTENT",
       categoryTag: "CONTENT",
       framesCount: "05",
-      cardImage: "/services/cards/card-07-clean@2x.png",
+      cardImage: "/services/cards/released-based-camp.webp",
       cardImages: [
-        "/services/cards/card-07-clean@2x.png",
+        "/services/cards/released-based-camp.webp",
       ],
       bg: "bg-[#E8E6DF] text-black",
       badgeBg: "#FFE600",
@@ -539,21 +556,21 @@ export default function ServicesOverviewPage() {
                         id: "1",
                         title: "Instagram",
                         tag: "Social & Reels",
-                        image: "/services/instagram_content.png",
+                        image: "/services/instagram_content.webp",
                         logo: "/labels_logo/company_logo/instagram-logo.avif",
                       },
                       {
                         id: "2",
                         title: "Spotify",
                         tag: "Streaming Growth",
-                        image: "/services/spotify_growth.png",
+                        image: "/services/spotify_growth.webp",
                         logo: "/labels_logo/company_logo/spotify-logo.png",
                       },
                       {
                         id: "3",
                         title: "YouTube",
                         tag: "Video & Ads",
-                        image: "/services/ads_marketing.png",
+                        image: "/services/ads_marketing.webp",
                         logo: "/labels_logo/company_logo/youtube-logo.png",
                       },
                     ]}

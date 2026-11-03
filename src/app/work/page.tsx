@@ -1,20 +1,33 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import DiscCascadeCarousel, {
-  DiscCascadeItem,
-} from "@/components/ui/disc-cascade-carousel";
+import type { DiscCascadeItem } from "@/components/ui/disc-cascade-carousel";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { TypewriterText } from "@/components/TypewriterText";
 import { X, ArrowDown } from "lucide-react";
 
 import { type SpotifyTrack } from "@/components/ui/spotify-card";
-import { LiquidGlassCarousel } from "@/components/ui/liquid-glass-carousel";
-import DiagonalMarqueeCarousel, { CardItem } from "@/components/ui/great-ui-diagonal-marquee-carousel";
+import type { CardItem } from "@/components/ui/great-ui-diagonal-marquee-carousel";
 import { WorkHeroBackgroundVideo } from "@/components/WorkHeroBackgroundVideo";
 import { STATIC_ARTIST_SIGNS } from "@/lib/artist-signs-data";
+
+const DiscCascadeCarousel = dynamic(
+  () => import("@/components/ui/disc-cascade-carousel"),
+  { ssr: false, loading: () => <div className="min-h-[720px] w-full bg-black" /> }
+);
+
+const LiquidGlassCarousel = dynamic(
+  () => import("@/components/ui/liquid-glass-carousel").then((mod) => mod.LiquidGlassCarousel),
+  { ssr: false, loading: () => <div className="min-h-[400px] w-full" /> }
+);
+
+const DiagonalMarqueeCarousel = dynamic(
+  () => import("@/components/ui/great-ui-diagonal-marquee-carousel"),
+  { ssr: false, loading: () => <div className="min-h-[500px] w-full" /> }
+);
 
 export default function WorkPage() {
   const [selectedVideo, setSelectedVideo] = useState<{
@@ -45,10 +58,8 @@ export default function WorkPage() {
     };
 
     fetchCards();
-    window.addEventListener("focus", fetchCards);
     return () => {
       isMounted = false;
-      window.removeEventListener("focus", fetchCards);
     };
   }, []);
 

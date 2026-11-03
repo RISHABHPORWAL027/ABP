@@ -8,10 +8,19 @@ import { MarqueeBanner } from "@/components/MarqueeBanner";
 import { ArtistsWorkedWithSection } from "@/components/ArtistsWorkedWithSection";
 import { DifferentMovesSection } from "@/components/DifferentMovesSection";
 import { AbpJourneySection } from "@/components/AbpJourneySection";
-import { TestimonialsWithVerticalMarquee } from "@/components/ui/testimonials-with-verticalmarquee";
-import { LogoCloudMarquee } from "@/components/ui/logo-cloud-marquee";
+import dynamic from "next/dynamic";
 import { CountUpNumber } from "@/components/CountUpNumber";
 import { getArtistSignImagesFromDisk } from "@/lib/artist-signs-server";
+
+const TestimonialsWithVerticalMarquee = dynamic(
+  () => import("@/components/ui/testimonials-with-verticalmarquee").then((mod) => mod.TestimonialsWithVerticalMarquee),
+  { loading: () => <div className="min-h-[400px] w-full bg-black" /> }
+);
+
+const LogoCloudMarquee = dynamic(
+  () => import("@/components/ui/logo-cloud-marquee").then((mod) => mod.LogoCloudMarquee),
+  { loading: () => <div className="min-h-[250px] w-full bg-black" /> }
+);
 
 export default function Home() {
   const artistImages = getArtistSignImagesFromDisk();
@@ -28,7 +37,7 @@ export default function Home() {
             fill
             priority
             sizes="100vw"
-            quality={100}
+            quality={85}
             className="object-cover object-top"
           />
           {/* Subtle radial blend overlay to ensure deep velvety transition at edges */}

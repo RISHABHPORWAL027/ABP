@@ -104,7 +104,7 @@ export const FounderSection: React.FC = () => {
               <ScrollReveal direction="left" delay={150} className="w-full">
                 <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] rounded-2xl md:rounded-3xl overflow-hidden bg-[#1A1A1A] border border-white/15 shadow-2xl group">
                   <Image
-                    src="/founder-image.png"
+                    src="/founder-image.webp"
                     alt="Dhaval Kothari - Founder of All By Play"
                     fill
                     sizes="(max-width: 768px) 100vw, 45vw"

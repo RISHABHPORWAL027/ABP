@@ -59,13 +59,13 @@ export const KNOWN_ARTIST_METADATA: Record<
     artist: "Raja Kumari",
     alt: "Raja Kumari - Kashi To Kailash - All By Play",
   },
-  "ScreenShot Tool -20261017024128.png": {
+  "ScreenShot Tool -20261017024128.webp": {
     id: "cs-ananya-birla",
     title: "Ananya Birla",
     artist: "Ananya Birla",
     alt: "Ananya Birla - All By Play",
   },
-  "shrreya1.png": {
+  "shrreya1.webp": {
     id: "cs-shreya-ghoshal",
     title: "Shreya Ghoshal — When Every Headline Was A Melody",
     artist: "Shreya Ghoshal",
@@ -167,16 +167,16 @@ export const STATIC_ARTIST_SIGNS: ArtistSignItem[] = [
   },
   {
     id: "cs-ananya-birla",
-    url: "/artist%20sign/ScreenShot%20Tool%20-20261017024128.png",
-    src: "/artist%20sign/ScreenShot%20Tool%20-20261017024128.png",
+    url: "/artist%20sign/ScreenShot%20Tool%20-20261017024128.webp",
+    src: "/artist%20sign/ScreenShot%20Tool%20-20261017024128.webp",
     title: "Ananya Birla",
     alt: "Ananya Birla - All By Play",
     artist: "Ananya Birla",
   },
   {
     id: "cs-shreya-ghoshal",
-    url: "/artist%20sign/shrreya1.png",
-    src: "/artist%20sign/shrreya1.png",
+    url: "/artist%20sign/shrreya1.webp",
+    src: "/artist%20sign/shrreya1.webp",
     title: "Shreya Ghoshal — When Every Headline Was A Melody",
     alt: "Shreya Ghoshal - When Every Headline Was A Melody - All By Play",
     artist: "Shreya Ghoshal",

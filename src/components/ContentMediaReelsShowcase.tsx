@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import {
   Heart,
@@ -163,8 +163,29 @@ const PhoneMockup: React.FC<PhoneMockupProps> = ({
   isSaved,
   onToggleSave,
 }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { rootMargin: "150px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="relative w-[240px] sm:w-[265px] md:w-[285px] h-[490px] sm:h-[540px] md:h-[580px] rounded-[44px] sm:rounded-[48px] bg-[#1a191f] p-2.5 sm:p-3 shadow-[0_22px_55px_rgba(0,0,0,0.85),0_0_24px_rgba(255,0,67,0.18)] border-2 border-white/20 flex-shrink-0 transition-transform duration-500 hover:scale-[1.025] group/phone select-none">
+    <div
+      ref={containerRef}
+      className="relative w-[240px] sm:w-[265px] md:w-[285px] h-[490px] sm:h-[540px] md:h-[580px] rounded-[44px] sm:rounded-[48px] bg-[#1a191f] p-2.5 sm:p-3 shadow-[0_22px_55px_rgba(0,0,0,0.85),0_0_24px_rgba(255,0,67,0.18)] border-2 border-white/20 flex-shrink-0 transition-transform duration-500 hover:scale-[1.025] group/phone select-none"
+    >
       {/* Hardware Side Buttons */}
       <div className="absolute -left-[4px] top-20 w-[2.5px] h-5 bg-[#2c2b33] rounded-l-xs" />
       <div className="absolute -left-[4px] top-28 w-[2.5px] h-9 bg-[#2c2b33] rounded-l-xs" />
@@ -173,18 +194,27 @@ const PhoneMockup: React.FC<PhoneMockupProps> = ({
 
       {/* Screen */}
       <div className="relative w-full h-full bg-[#000000] rounded-[36px] sm:rounded-[40px] overflow-hidden border border-white/10 shadow-inner">
-        {/* Video Element */}
-        <video
-          playsInline
-          autoPlay
-          loop
-          muted={isMuted}
-          poster={reel.posterSrc}
-          preload="metadata"
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src={reel.videoSrc} type="video/mp4" />
-        </video>
+        {/* Video / Poster Element - Lazy loads and renders video only when intersecting viewport */}
+        {isInView ? (
+          <video
+            playsInline
+            autoPlay
+            loop
+            muted={isMuted}
+            poster={reel.posterSrc}
+            preload="none"
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src={reel.videoSrc} type="video/mp4" />
+          </video>
+        ) : (
+          <img
+            src={reel.posterSrc}
+            alt={reel.name}
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        )}
 
         {/* Top Vignette */}
         <div className="absolute top-0 inset-x-0 h-28 bg-gradient-to-b from-black/85 via-black/40 to-transparent pointer-events-none z-10" />

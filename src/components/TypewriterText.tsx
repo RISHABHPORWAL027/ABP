@@ -28,7 +28,9 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
   noWrap = false,
 }) => {
   const containerRef = React.useRef<HTMLSpanElement>(null);
-  const [hasStarted, setHasStarted] = useState(!triggerOnView);
+  const [hasStarted, setHasStarted] = useState(
+    () => !triggerOnView || typeof window === "undefined" || typeof IntersectionObserver === "undefined"
+  );
   const [canType, setCanType] = useState(!triggerOnView && startDelay === 0);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
@@ -36,25 +38,10 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
 
   // IntersectionObserver to start typewriter only when scrolled into view
   useEffect(() => {
-    if (!triggerOnView) {
-      setHasStarted(true);
-      if (startDelay > 0) {
-        const timer = setTimeout(() => setCanType(true), startDelay);
-        return () => clearTimeout(timer);
-      } else {
-        setCanType(true);
-      }
-      return;
-    }
+    if (!triggerOnView) return;
 
     const element = containerRef.current;
-    if (!element) return;
-
-    if (typeof IntersectionObserver === "undefined") {
-      setHasStarted(true);
-      setCanType(true);
-      return;
-    }
+    if (!element || typeof IntersectionObserver === "undefined") return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -71,19 +58,18 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
     return () => {
       if (element) observer.unobserve(element);
     };
-  }, [triggerOnView, startDelay]);
+  }, [triggerOnView]);
 
   // Handle startDelay once element enters view
   useEffect(() => {
     if (!hasStarted) return;
-    if (startDelay > 0) {
-      const timer = setTimeout(() => {
+    const timer = setTimeout(
+      () => {
         setCanType(true);
-      }, startDelay);
-      return () => clearTimeout(timer);
-    } else {
-      setCanType(true);
-    }
+      },
+      startDelay > 0 ? startDelay : 0
+    );
+    return () => clearTimeout(timer);
   }, [hasStarted, startDelay]);
 
   // Find longest phrase to reserve container space & eliminate flickering

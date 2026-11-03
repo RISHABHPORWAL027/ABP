@@ -1,10 +1,28 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { TypewriterText } from "@/components/TypewriterText";
 
 export const HowWeWorkSection: React.FC = () => {
+  const videoContainerRef = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const el = videoContainerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { rootMargin: "200px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const steps = [
     {
       label: "Understand",
@@ -24,17 +42,24 @@ export const HowWeWorkSection: React.FC = () => {
     <section className="w-full bg-white font-sans overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[85vh]">
         {/* Left Column: Video with "Listen first. Build second." caption */}
-        <div className="lg:col-span-6 relative min-h-[450px] lg:min-h-full bg-[#111111] group overflow-hidden">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          >
-            <source src="/how-we-work.mp4" type="video/mp4" />
-          </video>
+        <div
+          ref={videoContainerRef}
+          className="lg:col-span-6 relative min-h-[450px] lg:min-h-full bg-[#111111] group overflow-hidden"
+        >
+          {isInView ? (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="none"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            >
+              <source src="/how-we-work.mp4" type="video/mp4" />
+            </video>
+          ) : (
+            <div className="absolute inset-0 bg-[#111111]" />
+          )}
 
           {/* Subtle Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />

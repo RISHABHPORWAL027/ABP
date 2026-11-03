@@ -6,29 +6,24 @@ const fontMontserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
   display: "swap",
-  style: ["normal", "italic"],
 });
 
 const fontPlayfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
 });
 
 const fontSyne = Syne({
   subsets: ["latin"],
   variable: "--font-syne",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
 });
 
 const fontDmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dmsans",
   display: "swap",
-  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -93,12 +88,54 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "All By Play",
+    alternateName: "ABP",
+    url: "https://allbyplay.com",
+    logo: "https://allbyplay.com/icon.png",
+    image: "https://allbyplay.com/og-preview.png",
+    description:
+      "All By Play helps artists, labels, and festivals build music campaigns that feel clear, creative, and effective. Release campaigns, Spotify growth, PR, and branding.",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "IN",
+    },
+    sameAs: [
+      "https://www.instagram.com/allbyplay",
+      "https://open.spotify.com",
+    ],
+    knowsAbout: [
+      "Music Marketing",
+      "Release Campaigns",
+      "Spotify Growth",
+      "Music PR",
+      "Artist Branding",
+    ],
+  };
+
   return (
     <html
       lang="en"
       data-scroll-behavior="smooth"
       className={`${fontMontserrat.variable} ${fontPlayfair.variable} ${fontSyne.variable} ${fontDmSans.variable} h-full antialiased scroll-smooth`}
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link rel="preconnect" href="https://img.youtube.com" />
+        <link rel="preconnect" href="https://www.youtube-nocookie.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col font-sans bg-black text-white selection:bg-[#FF0043] selection:text-white overflow-x-hidden w-full max-w-full">
         {children}
       </body>

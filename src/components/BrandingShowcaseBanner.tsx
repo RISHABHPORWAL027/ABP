@@ -79,10 +79,10 @@ export const BrandingShowcaseBanner: React.FC<BrandingShowcaseBannerProps> = ({
           )}
         >
           <div className="relative w-full h-full flex flex-row items-center justify-center bg-black overflow-hidden">
-            {/* Frame 1: Headline Melody (shrreya1.png) */}
+            {/* Frame 1: Headline Melody (shrreya1.webp) */}
             <div className="relative w-1/2 h-full">
               <Image
-                src="/Services page/branding and marketing/shrreya1.png"
+                src="/Services page/branding and marketing/shrreya1.webp"
                 alt="Shreya Ghoshal - When Every Headline Was A Melody"
                 fill
                 sizes="(max-width: 768px) 50vw, (max-width: 1280px) 45vw, 600px"
@@ -91,10 +91,10 @@ export const BrandingShowcaseBanner: React.FC<BrandingShowcaseBannerProps> = ({
               />
             </div>
 
-            {/* Frame 2: PR Rollout (shreya2.png) */}
+            {/* Frame 2: PR Rollout (shreya2.webp) */}
             <div className="relative w-1/2 h-full">
               <Image
-                src="/Services page/branding and marketing/shreya2.png"
+                src="/Services page/branding and marketing/shreya2.webp"
                 alt="Shreya Ghoshal - PR Rollout across Media"
                 fill
                 sizes="(max-width: 768px) 50vw, (max-width: 1280px) 45vw, 600px"

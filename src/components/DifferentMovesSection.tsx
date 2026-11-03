@@ -130,7 +130,7 @@ export const DifferentMovesSection: React.FC = () => {
       {/* Background Image Overlay with Seamless Flow Mask */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image
-          src="/black.png"
+          src="/black.webp"
           alt="Campaigns Background"
           fill
           sizes="100vw"
