@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, Playfair_Display, Syne, DM_Sans } from "next/font/google";
+import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 import "./globals.css";
 
 const fontMontserrat = Montserrat({
@@ -138,6 +139,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col font-sans bg-black text-white selection:bg-[#FF0043] selection:text-white overflow-x-hidden w-full max-w-full">
         {children}
+        <ServiceWorkerRegister />
       </body>
     </html>
   );

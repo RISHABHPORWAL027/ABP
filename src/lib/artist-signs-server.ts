@@ -24,11 +24,21 @@ interface FileMetadata {
   id?: string;
 }
 
+// In-memory cache for artist signs data to eliminate disk I/O on repeated requests
+let cachedArtistSigns: ArtistSignItem[] | null = null;
+let lastCacheTimestamp = 0;
+const CACHE_TTL_MS = 60 * 1000; // 60 seconds TTL
+
 /**
  * Scans `public/artist sign` directory on disk dynamically and returns
  * all valid images with their metadata and web-accessible URLs.
  */
 export function getArtistSignImagesFromDisk(): ArtistSignItem[] {
+  const now = Date.now();
+  if (cachedArtistSigns && now - lastCacheTimestamp < CACHE_TTL_MS) {
+    return cachedArtistSigns;
+  }
+
   try {
     const dir = path.join(process.cwd(), "public", "artist sign");
 
@@ -84,7 +94,7 @@ export function getArtistSignImagesFromDisk(): ArtistSignItem[] {
       return a.mtime !== b.mtime ? a.mtime - b.mtime : a.name.localeCompare(b.name);
     });
 
-    return imageFiles.map(({ name }) => {
+    const results = imageFiles.map(({ name }) => {
       const known = KNOWN_ARTIST_METADATA[name] || {};
       const custom = customMetadata[name] || {};
       const title = custom.title || known.title || formatArtistTitle(name);
@@ -102,6 +112,10 @@ export function getArtistSignImagesFromDisk(): ArtistSignItem[] {
         artist,
       };
     });
+
+    cachedArtistSigns = results;
+    lastCacheTimestamp = Date.now();
+    return results;
   } catch (error) {
     console.error("Error loading artist sign images from disk:", error);
     return STATIC_ARTIST_SIGNS;

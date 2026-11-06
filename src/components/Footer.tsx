@@ -55,7 +55,8 @@ export const Footer: React.FC = () => {
               words={[
                 "Connect with us.",
                 "Start a conversation.",
-                "hello@allbyplay.com",
+                "info@allbyplay.com",
+                "team@allbyplay.com",
               ]}
               loop={true}
               className="text-white"
@@ -68,13 +69,21 @@ export const Footer: React.FC = () => {
             Whether you&apos;re an artist, manager, label, or team, share your profile links, goals, and a short brief. We&apos;ll help you figure out the next step.
           </p>
 
-          {/* Direct Email Link */}
-          <div className="mb-8 sm:mb-14">
+          {/* Direct Email Links */}
+          <div className="mb-8 sm:mb-14 flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2">
             <a
-              href="mailto:hello@allbyplay.com"
+              href="mailto:info@allbyplay.com"
               className="inline-flex items-center gap-2 text-base sm:text-lg font-bold text-[#FF0043] hover:text-[#009082] transition-colors"
             >
-              hello@allbyplay.com
+              info@allbyplay.com
+              <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
+            </a>
+            <span className="text-white/40 font-bold hidden sm:inline">/</span>
+            <a
+              href="mailto:team@allbyplay.com"
+              className="inline-flex items-center gap-2 text-base sm:text-lg font-bold text-[#FF0043] hover:text-[#009082] transition-colors"
+            >
+              team@allbyplay.com
               <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
             </a>
           </div>

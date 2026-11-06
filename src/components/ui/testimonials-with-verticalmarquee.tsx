@@ -15,85 +15,98 @@ interface TestimonialCardProps {
 
 const testimonials: TestimonialCardProps[] = [
   {
-    name: "Prateeksha Srivastava",
+    name: "Curtain Blue",
+    role: "Music Producer & Artist",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    review:
+      "Had a great one working with folks at All by Play. My campaign went well with all organic promotions and thoughtful strategies proposed by the team. Would definitely work with the team again for my next release.",
+    rating: 5,
+  },
+  {
+    name: "Unnati Shah",
     role: "Independent Artist",
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
     review:
-      "ABP helped us turn 'Sajna Ve' into a widespread viral moment. The strategy, editorial playlist pitching, and creator pushes were executed flawlessly.",
+      "All By Play turned my dream into reality. They made my independent music release journey smooth, hassle-free, and impactful. Their expert PR services ensured my debut song reached a wide audience and featured on the right platforms.",
     rating: 5,
   },
   {
-    name: "Arpit Bala",
-    role: "Musician & Creator",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
-    review:
-      "Working with All By Play gave our release campaign the exact sharpness it needed. The Spotify audience growth exceeded all expectations.",
-    rating: 5,
-  },
-  {
-    name: "Mitta Ror",
-    role: "Independent Artist",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
-    review:
-      "The team bridges independent culture and mainstream reach like nobody else in India. 10/10 execution across the board.",
-    rating: 5,
-  },
-  {
-    name: "Silver Strings Music",
-    role: "Music Label Exec",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
-    review:
-      "From release roadmaps to Instagram reels and PR, ABP delivers measurable streaming numbers and genuine listener retention.",
-    rating: 5,
-  },
-  {
-    name: "Ashish Bhatia",
-    role: "Pop Artist",
+    name: "Twinbeatz",
+    role: "DJ & Producer Duo",
     avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=150&auto=format&fit=crop&q=80",
     review:
-      "All By Play brought total clarity to our release strategy. Their campaign direction resulted in top editorial playlist placements.",
+      "All By Play is an amazing team to work with. They're very knowledgeable on the industry, marketing, reaching the proper markets. They're passionate about what they do and go above and beyond!",
     rating: 5,
   },
   {
-    name: "Swara Verma",
-    role: "Playback Singer",
-    avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80",
+    name: "Sparsh Dangwal",
+    role: "Singer-Songwriter & Artist",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
     review:
-      "Transparent reporting, incredible team, and deep understanding of what contemporary music audiences want.",
+      "All By Play's expertise in marketing, playlist pitching, and artist brand development is truly remarkable. Their invaluable support and guidance have propelled my music to new heights, granting it substantial exposure. With a strategic approach and meticulous attention to detail, All By Play has played a pivotal role in shaping my career. I am immensely grateful for their unwavering support and highly recommend them to any artist seeking to elevate their craft and flourish in the music industry.",
     rating: 5,
   },
   {
-    name: "Swaroop Khan",
-    role: "Singer & Composer",
+    name: "Roop Ghuman",
+    role: "Independent Artist",
     avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80",
     review:
-      "Our festival campaign and tour activation sold out faster than ever. Highly recommended for serious music projects.",
+      "All By Play has been an absolute godsend in helping me navigate the wild world of social media and releases. Their invaluable support helped me grow my music and reach audiences I never thought possible. Beyond expertise, their passion and care make them like family. They'll help you swim with the sharks.",
     rating: 5,
   },
   {
-    name: "Kashish Ratnani",
-    role: "Artist Manager",
-    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80",
+    name: "Semwal",
+    role: "Hip-Hop & Recording Artist",
+    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80",
     review:
-      "ABP is our go-to partner for every major single rollout. Sharp strategy, fast execution, and genuine passion for music.",
-    rating: 5,
-  },
-  {
-    name: "Noor",
-    role: "R&B Artist",
-    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80",
-    review:
-      "The Spotify playlisting strategy and social content pushes gave our single millions of organic streams within weeks.",
+      "All By Play has been a game-changer for my music career! From crafting wicked social media campaigns to creating dope content and running slick ads, these guys have my back. Thanks to their targeted Instagram ads, my latest release 'Nedhe Nedhe' is blowing up. The All By Play crew is like my own dream team, constantly planning releases, discussing ideas, and tweaking strategies every week. If you're a serious artist looking to make waves in the industry, ABP is where it's at. They provide the support, guidance, and skills you need to smash it in the music world.",
     rating: 5,
   },
 ];
 
 export const TestimonialsWithVerticalMarquee: React.FC = () => {
   // Split into 4 columns for full-width 3D vertical marquee scrolling
-  const col1 = [...testimonials.slice(0, 4), ...testimonials.slice(0, 4)];
-  const col2 = [...testimonials.slice(4, 7), ...testimonials.slice(4, 7)];
-  const col3 = [...testimonials.slice(6, 9), ...testimonials.slice(6, 9)];
-  const col4 = [...testimonials.slice(1, 5), ...testimonials.slice(1, 5)];
+  // Seamless loop with 4 items per column duplicated once
+  const col1 = [
+    testimonials[0],
+    testimonials[1],
+    testimonials[2],
+    testimonials[3],
+    testimonials[0],
+    testimonials[1],
+    testimonials[2],
+    testimonials[3],
+  ];
+  const col2 = [
+    testimonials[4],
+    testimonials[5],
+    testimonials[0],
+    testimonials[1],
+    testimonials[4],
+    testimonials[5],
+    testimonials[0],
+    testimonials[1],
+  ];
+  const col3 = [
+    testimonials[2],
+    testimonials[3],
+    testimonials[4],
+    testimonials[5],
+    testimonials[2],
+    testimonials[3],
+    testimonials[4],
+    testimonials[5],
+  ];
+  const col4 = [
+    testimonials[1],
+    testimonials[3],
+    testimonials[5],
+    testimonials[0],
+    testimonials[1],
+    testimonials[3],
+    testimonials[5],
+    testimonials[0],
+  ];
 
   return (
     <section className="w-full bg-[#000000] text-white py-14 sm:py-24 md:py-32 font-sans relative overflow-hidden">

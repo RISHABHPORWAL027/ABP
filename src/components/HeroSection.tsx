@@ -244,15 +244,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
             
             {/* Inner Video Container running ABP Showcase video */}
             <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-[1.8rem] sm:rounded-[2.2rem] overflow-hidden bg-[#111113] border border-white/15 shadow-inner">
-              
-
-              {/* ABP Showcase Video */}
-              <iframe
-                src="https://www.youtube-nocookie.com/embed/FzjBVeOJdug?autoplay=1&mute=1&loop=1&playlist=FzjBVeOJdug&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
-                title="All By Play Video"
-                className="w-full h-[125%] -mt-[7%] object-cover pointer-events-none"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              />
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                className="w-full h-full object-cover"
+              >
+                <source src="/abp-bg.mp4" type="video/mp4" />
+              </video>
             </div>
           </div>
 

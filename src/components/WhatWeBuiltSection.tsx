@@ -8,25 +8,25 @@ import { TypewriterText } from "@/components/TypewriterText";
 export const WhatWeBuiltSection: React.FC = () => {
   const stats = [
     {
-      end: 2023,
+      end: 2022,
       start: 2000,
       suffix: "",
       padZeros: 0,
-      label: "FOUNDED IN JANUARY",
+      label: "FOUNDED",
     },
     {
-      end: 50,
+      end: 300,
       start: 0,
       suffix: "+",
       padZeros: 0,
-      label: "ARTISTS SERVED",
+      label: "ARTISTS",
     },
     {
-      end: 3,
+      end: 6000,
       start: 0,
-      suffix: "",
-      padZeros: 2,
-      label: "INDIE, BOLLYWOOD & LABEL CAMPAIGNS",
+      suffix: "+",
+      padZeros: 0,
+      label: "MARKETING CAMPAIGNS",
     },
   ];
 
